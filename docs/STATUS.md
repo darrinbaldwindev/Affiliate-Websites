@@ -6,22 +6,29 @@
 
 - Repository contract and architecture documentation
 - Master UX/global homepage specification
-- Affiliate Master Block Theme scaffold
-- Initial `theme.json` design tokens
-- Global header shell
-- Global footer shell
+- Master Affiliate lightweight WordPress Block Theme scaffold
+- Initial `theme.json` design tokens and semantic colour roles
+- Theme bootstrap in `functions.php`
+- Global header and footer shells
 - Global homepage template shell
-- Reusable country selector pattern
-- Initial global homepage content hierarchy
+- Reusable country selector pattern with fake example domains removed
+- Reusable Earn / Save / Compare pattern
+- Reusable Trust / Methodology pattern
+- Reusable Affiliate Disclosure pattern
+- Country configuration contract
+- Rewards API boundary contract
+- Lightweight WordPress plugin register
+- Initial GitHub Actions theme validation workflow
 
 ## In progress
 
-- Country routing/configuration abstraction
+- Country routing/configuration implementation
 - AU country shell
 - Category/detail template system
-- Trust/evidence components
-- Rewards API interface contract
-- Affiliate resolution/tracking abstraction
+- Trust/evidence UI integration
+- Rewards API client interface
+- Central affiliate resolution/tracking abstraction
+- SEO/schema, accessibility and performance verification
 
 ## Not yet verified
 
