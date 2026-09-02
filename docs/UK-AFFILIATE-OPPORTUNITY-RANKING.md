@@ -27,21 +27,21 @@ Identify the UK affiliate programmes most suitable for the Affiliate Websites di
 ### Alibaba UK
 - Category: broad ecommerce / long-tail products
 - Strong fit for: breadth and long-tail discovery
-- Current evidence: current Awin profile advertises a large product catalogue, 60-day attribution and a new-buyer commission structure; rates are subject to programme terms and can change.
+- Current evidence: current Awin profile advertises 360m+ products, 60-day attribution and a new-buyer commission structure of 6.91% for eligible orders under $5,000; the rate is explicitly non-permanent and applies to orders placed on/after July 1, 2026.
 - Risk: trust, quality variance, returns and merchant/product filtering make governance especially important.
 
 ### Broadband comparison vertical
 **Candidates:** The One Broadband, BT, Lightning Fibre and additional verified UK providers.
 - Strong fit for: comparison pages because commissions can be CPA/fixed-value rather than low product percentages.
 - The One Broadband currently lists £55 / £75 / £90 commissions for its 150Mbps / 900Mbps / 2.2Gbps tariffs, with 30-day attribution; validation depends on installation, first bill and continued customer status.
-- BT currently lists £25 for new-customer broadband and £20 for TV, with commissions stackable on qualifying orders; attribution is 21 days.
+- BT currently lists fixed commissions for qualifying broadband/TV products; current attribution and eligibility must be verified at implementation time.
 - This vertical requires careful availability/address qualification and current offer verification.
 
 ### Amazon UK
 - Category: broad ecommerce
 - Strong fit for: long-tail product coverage and fallback merchant coverage.
 - Current official UK commission tables are category-dependent; rates and programme requirements must be stored as volatile programme metadata rather than hard-coded.
-- The current Awin Amazon Sellers Programme is also live in the UK and describes access to 2,500+ Amazon sellers and 200,000+ trackable ASINs as the PartnerBoost rollout develops.
+- The Awin Amazon Sellers Programme (UK) is live and provides a feed/portal for joined brands, product details, ASINs and tracking links as rollout expands.
 - Risk: programme complexity and strict operating/advertising requirements.
 
 ### eSpares
@@ -54,22 +54,22 @@ Identify the UK affiliate programmes most suitable for the Affiliate Websites di
 
 ### Wayfair UK
 - Category: home / furniture / decor
-- Current Awin profile: 600,000+ product feed, £190 AOV, 14-day attribution and up to 12% for content/influencer partners; current commission groups show 12% for network/content and influencers.
+- Current Awin profile: 600,000+ product feed, £190 AOV, 14-day attribution and up to 12% for content/influencer partners.
 - Strong fit for: room guides, furniture comparisons and visual discovery.
 
 ### LOOKFANTASTIC UK
 - Category: beauty
-- Current Awin profile: 30-day programme context and current commission groups including 10% for content/influencer partners and 5% standard new-customer commission in the current programme information.
+- Current Awin profile: current commission groups include 10% for content/influencer partners and 5% standard new-customer commission in current programme information.
 - Strong fit for: beauty guides, product comparisons and repeat-purchase content.
 
 ### Boots UK
 - Category: beauty / health / personal care / baby / gifts
-- Current Awin profile: broad catalogue and 14-day cookie; current listed commission groups are generally 2% for many categories, with exclusions including Dyson, Chanel, Dior, Fitbit, Baby Milk and prescriptions.
-- Compliance note: Boots currently has explicit UK price-transparency requirements for affiliate activity that includes prices or invitations to purchase.
+- Current Awin profile: broad catalogue and 14-day cookie; current listed commission groups are generally 2% for many categories, with notable exclusions.
+- Compliance note: affiliate price/offer content requires careful adherence to current Boots programme terms.
 
 ### Marks & Spencer UK
 - Category: fashion / home / gifts / food
-- Current Awin profile: 30-day attribution, dedicated feeds and high-AOV positioning; current commission page lists 5% for content affiliates and 2%/1% for certain voucher/cashback/loyalty groups.
+- Current Awin profile: 30-day attribution, dedicated feeds and current commission groups including 5% for content affiliates.
 - Strong fit for: seasonal guides, fashion, home and gifting.
 
 ### Decathlon UK
@@ -105,9 +105,9 @@ Identify the UK affiliate programmes most suitable for the Affiliate Websites di
 
 ### Viator UK
 - Category: travel experiences
-- Current Awin profile: 30-day attribution and thousands of activities in 1,500+ destinations; June 2026 transaction reporting adds destination/category/travel-date context.
-- Technical/compliance note: Viator requires affiliate links to use `rel="sponsored"` and provides this automatically through its link-building tools.
+- Current Awin profile: 30-day attribution and thousands of activities in 1,500+ destinations; current reporting provides additional destination/category/travel-date context.
 - Strong fit for: destination guides and things-to-do comparisons.
+- Technical/compliance note: affiliate links must use appropriate sponsored-link treatment under programme requirements.
 
 ### TUI UK
 - Category: package holidays / flights / cruises
@@ -118,7 +118,66 @@ Identify the UK affiliate programmes most suitable for the Affiliate Websites di
 - Category: running / sportswear
 - Current Awin profile: 2%–20% commission depending on product seasonality and partner type, 30-day cookie and 30-day validation.
 - Strong fit for: running-shoe and performance-gear comparisons.
-- Eligibility note: the current profile contains an application restriction/history that must be checked before treating the programme as open to new publishers.
+- Eligibility note: current profile/application status must be checked before treating the programme as open.
+
+### New high-potential candidates from the latest pass
+
+#### WalkingPad UK
+- Category: home fitness / walking pads
+- Current Awin profile: £400+ AOV, 8% commission, 30-day cookie and product feed.
+- Strategic value: estimated commission per confirmed order can be materially higher than many low-AOV retail programmes.
+- Strong fit for: home-office, compact-fitness and walking-pad comparisons.
+
+#### Ruggable UK
+- Category: home / rugs
+- Current Awin profile: up to 6% commission, £280 AOV, 30-day cookie and product feed.
+- Strong fit for: home-decor comparisons, washable-rug guides and family/pet-friendly content.
+
+#### Fairfax & Favor
+- Category: premium/luxury fashion
+- Current Awin profile: up to 8% commission, £190 AOV, 30-day cookie and optimised product feed.
+- Strong fit for: premium footwear/accessories and rural/lifestyle editorial.
+
+#### Wahl UK
+- Category: grooming / hair tools
+- Current Awin profile: 7% standard commission, 30-day cookie, high AOV and product feed.
+- Strong fit for: grooming-tool comparisons and product-specific buying guides.
+
+#### Aosom UK
+- Category: home / garden / pets / office / fitness / outdoor
+- Current Awin profile: £100 AOV, product feed, category-based commission, regular promotions and free delivery.
+- Strong fit for: broad household comparison content, especially pet/garden/fitness niches.
+
+#### Designerwear
+- Category: premium fashion / footwear
+- Current Awin profile: 30-day cookie, daily product-feed refresh, consistently high AOV and premium brand catalogue.
+- Strong fit for: designer fashion comparisons and price-led shopping guides.
+
+#### Sweatband
+- Category: fitness equipment
+- Current Awin profile: £170+ AOV, 2,000+ products in feed, 30-day cookie and typical conversion rate above 3% according to programme information.
+- Strong fit for: home-gym equipment comparisons.
+- Restriction: PPC prohibited and naked-link promotion prohibited.
+
+#### Furniture48 UK
+- Category: furniture
+- Current Awin profile: £700 AOV, 1% commission, 30-day cookie and product feed.
+- Strategic value: despite low percentage commission, the high AOV makes it worth testing in high-intent furniture comparison pages.
+
+#### Stuart Trevor UK
+- Category: sustainable fashion / streetwear
+- Current Awin profile: 8% standard commission, £120 AOV, 30-day cookie and product inventory feed; 10% offer-code opportunity noted.
+- Strong fit for: sustainable-fashion editorial and premium streetwear discovery.
+
+#### Xero Shoes
+- Category: footwear / running
+- Current Awin profile: dynamic commission up to 10%, 30-day cookie and product feed.
+- Strong fit for: running and minimalist-footwear comparisons.
+
+#### Heart Internet
+- Category: web hosting
+- Current Awin terms: 100% of first month for monthly hosting or 25% of first year for annual hosting, with a 90-day validation period and 30-day attribution.
+- Strong fit for: hosting comparisons, but economics should be compared against Krystal and other providers because commission is non-recurring.
 
 ## Specialist opportunities worth testing
 
@@ -127,6 +186,7 @@ Identify the UK affiliate programmes most suitable for the Affiliate Websites di
 - Scancom UK — UK business airtime/SIMs and BT services; current profile lists 6% default, 15% on certain SIMs and fixed £15/£25/£30 products. B2B telecom opportunity.
 - TLX UK — new/refurbished tech and homeware; current profile advertises 5% commission and £160 AOV. Good candidate for value-focused tech comparisons.
 - Kinguin / Startselect / gaming digital goods — useful specialist category, but programme terms, customer economics and compliance need individual verification.
+- Cloudways — hosting; current Awin profile advertises $50 default CPA and performance slabs up to $125 with a 90-day cookie. Useful as an international hosting candidate where UK eligibility is confirmed.
 
 ## Strategic category ranking
 
@@ -140,6 +200,12 @@ Identify the UK affiliate programmes most suitable for the Affiliate Websites di
 8. **Hosting/digital services** — high commission per conversion and strong intent.
 9. **Fashion/lifestyle** — broad demand but higher competition.
 10. **Specialist parts/consumables** — smaller baskets but unusually high purchase intent and long-tail coverage.
+
+## New commercial insight: feed availability is a launch multiplier
+
+Awin explicitly states that product feeds are essential for content and price-comparison partners. Its current platform also supports APIs and commission rules based on product ID, category, SKU, customer status, coupon, publisher and other dimensions. This strongly supports the Affiliate Websites architecture of keeping volatile product/commission data outside WordPress and resolving commercial destinations centrally.
+
+Awin's current UK advertiser platform advertises more than one million partners globally and API/automation capabilities. The UK YouTube Shopping Affiliate Programme launched through Awin in July 2026 with retailers including Boots, M&S, Currys, Wayfair, Debenhams, Next and Etsy, adding another potential distribution channel for product-led content.
 
 ## Ranking model
 
@@ -172,30 +238,35 @@ The first commercial vertical slice should prioritise:
 3. eSpares — high-intent repair/parts discovery
 4. Broadband — provider comparison with current eligibility/offer verification
 5. Beauty — LOOKFANTASTIC / Boots after programme verification
-6. Wayfair — home/furniture comparison
+6. Wayfair / Ruggable / Aosom — home comparison
 7. Travel — Viator / TUI after programme verification
 8. Krystal — hosting/service comparison
+9. WalkingPad / Sweatband — fitness equipment comparison
+10. Amazon UK — long-tail coverage
 
 This creates multiple commercial models: product percentage, high-AOV products, massive long-tail inventory, fixed CPA, repeat-purchase categories, travel transactions and high-value digital services.
+
+## Network strategy
+
+Awin is the first network to prioritise because its current UK platform provides broad advertiser coverage, product feeds, reporting, APIs and automated commission rules. Do not make Awin the only network. Add other networks/direct programmes where they provide materially better UK coverage, economics, data access or exclusivity.
+
+Commission Factory is worth retaining as a secondary network for UK-relevant opportunities where coverage or economics are stronger. It currently states that affiliates join without fees and that its network contains 600+ advertisers across major verticals, with new advertisers added regularly.
 
 ## Data governance
 
 All rates, cookie durations, product prices, stock, promotions, programme acceptance, eligibility and destination URLs are volatile. Store source, source type, observed date, effective date where known, verification status, confidence, freshness and change history. Do not hard-code volatile commercial facts into WordPress theme templates.
 
-## Network strategy
-
-Awin is the first network to prioritise because its current UK platform provides access to 30,000+ brands and 1M+ approved partners globally and explicitly supports retail, travel, finance, telecoms and comparison-site partner types. Awin's 2026 platform also provides advertiser/partner discovery, reporting and automation capabilities.
-
-Do not make Awin the only network. Add other networks/direct programmes where they provide materially better UK coverage, economics, data access or exclusivity.
-
 ## Evidence checked 2026-09-03
 
-- Awin UK network and advertiser pages
+- Awin UK network and advertiser/pricing pages
+- Awin product-feed and API documentation
+- Awin YouTube Shopping UK announcement
 - Currys UK Awin programme
 - SharkNinja UK official affiliate programme page
 - The One Broadband UK Awin programme
-- BT Broadband UK Awin programme
-- Amazon UK/Awin Amazon Sellers programme
+- BT UK Awin programme
+- Amazon UK Associates and Awin Amazon Sellers programme
+- Alibaba UK Awin programme
 - eSpares UK Awin programme
 - Wayfair UK Awin programme
 - LOOKFANTASTIC UK Awin programme
@@ -210,9 +281,18 @@ Do not make Awin the only network. Add other networks/direct programmes where th
 - Viator UK Awin programme
 - TUI UK official affiliate page
 - On.com UK Awin programme
-- True Image UK Awin programme
-- Allbranded UK Awin programme
-- Scancom UK Awin programme
-- TLX UK Awin programme
+- WalkingPad UK Awin programme
+- Ruggable UK Awin programme
+- Fairfax & Favor Awin programme
+- Wahl UK Awin programme
+- Aosom UK Awin programme
+- Designerwear Awin programme
+- Sweatband Awin programme
+- Furniture48 UK Awin programme
+- Stuart Trevor UK Awin programme
+- Xero Shoes Awin programme
+- Heart Internet Awin programme
+- Cloudways Awin programme
+- Commission Factory affiliate/network information
 
 External research references are evidence for ranking only; final production records require direct programme verification and approval status.
