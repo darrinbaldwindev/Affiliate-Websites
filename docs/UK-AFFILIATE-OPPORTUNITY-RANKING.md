@@ -179,6 +179,78 @@ Identify the UK affiliate programmes most suitable for the Affiliate Websites di
 - Current Awin terms: 100% of first month for monthly hosting or 25% of first year for annual hosting, with a 90-day validation period and 30-day attribution.
 - Strong fit for: hosting comparisons, but economics should be compared against Krystal and other providers because commission is non-recurring.
 
+## Newly researched high-value verticals
+
+### Automotive / tyres — priority expansion
+
+#### TyresNET / Tyres UK
+- Category: tyres / rims / automotive comparison
+- Current Awin profile: 10,000+ products in feed, approximately £115 average transaction value, 30-day cookie, £0.10 clickout/lead and 4% sale commission.
+- Strategic value: unusually strong fit for a comparison engine because the programme explicitly supports a marketplace/price-comparison model and monetises both clickout/lead and completed sale journeys.
+- Verification: programme eligibility and current publisher permissions must be checked before launch.
+
+#### Blackcircles.com
+- Category: tyres
+- Current Awin profile: £200–£250 AOV, 30-day cookie, 14-day return period and explicit interest in comparison websites, automotive bloggers and reviewers.
+- Strategic value: high-AOV automotive comparison candidate with strong consumer intent.
+
+#### Buycarparts UK / AUTODOC UK
+- Category: car parts / accessories
+- Current Awin profiles: approximately 1.5m items, 75,000+ vehicle models, 45-day cookies and 8–10% new-customer commission depending on programme; programme information reports approximately 5% conversion and welcomes price-comparison sites.
+- Strategic value: enormous long-tail catalogue plus exact-vehicle search intent makes this a strong SEO/comparison candidate.
+- Governance: vehicle compatibility, safety-critical parts and merchant/part quality need stricter editorial controls than ordinary retail.
+
+#### Euro Car Parts
+- Category: car parts / accessories / tools
+- Current Awin profile: 130,000+ parts, 250+ branches, vehicle-reg lookup tooling, 3% home-delivery commission and £0.20 click-and-collect value; 30-day cookie.
+- Strategic value: combines online purchase intent with physical fulfilment and local click-and-collect.
+
+### Insurance / home protection — high value but regulated
+
+#### Insure & Escape UK
+- Category: travel insurance / car-hire excess insurance
+- Current Awin profile: £56 AOV, commission starting at 8%, 30-day cookie and UK-only focus.
+- Strategic value: strong travel-content adjacency and meaningful percentage economics.
+- Risk: insurance is regulated; affiliate copy, claims and financial-promotion compliance require dedicated review before publication.
+
+#### Coverwise UK
+- Category: travel insurance
+- Current Awin profile: 20% of gross premium excluding IPT, £20–£40 average premium and 30-day cookie; UK-only.
+- Strategic value: attractive percentage commission and strong travel-intent fit.
+- Risk: insurance content must not drift into personalised advice; current programme restrictions also require care around comparison feeds and branding.
+
+#### MoneySuperMarket Insurance
+- Category: insurance comparison / utilities comparison
+- Current Awin profile: clickout/CPA model, 1-day attribution, multiple insurance channels including car, van, home, pet and travel.
+- Strategic value: highly aligned with the site's comparison architecture because the monetised event can be a qualified clickout rather than a direct sale.
+- Risk: regulated financial promotion/comparison environment; must be treated as a specialist compliance workstream.
+
+#### Home Emergency Assist
+- Category: home emergency / boiler / plumbing / drainage insurance
+- Current Awin terms: UK-only affiliate programme; qualifying products include enhanced/premium home emergency cover and kitchen appliance insurance; brand PPC restrictions apply.
+- Strategic value: strong home-services adjacency and high-intent problem/solution searches.
+- Risk: regulated insurance product; current approved copy and programme restrictions must be respected.
+
+#### AXA Business Insurance
+- Category: SME / sole-trader / landlord / van insurance
+- Current Awin programme: commission can reach £120 on policies priced £300+, 30-day cookie; only approved copy/creative may be used and sales are validated after the cooling-off period.
+- Strategic value: high-value B2B insurance lead opportunity.
+- Risk: significant compliance and content restrictions; do not create independent product claims or advice without approved material.
+
+### Home energy / solar
+
+#### Project Solar
+- Category: residential solar installation
+- Current Awin profile: UK solar installer; 30-day attribution; affiliate promotion can provide customers with a £500 discount subject to qualifying enquiry and purchase conditions.
+- Strategic value: high-ticket home-improvement lead journey and strong energy-saving editorial fit.
+- Risk: lead quality, installation eligibility, current offer terms and substantiation of savings claims require verification before publication.
+
+#### Renogy UK
+- Category: off-grid solar / batteries / renewable-energy hardware
+- Current Awin profile: product-led programme aimed at DIYers, outdoor users and eco-conscious homeowners, with content/CSS/loyalty/cashback/discount-code publisher verticals.
+- Strategic value: high-AOV renewable-energy products that fit product comparison and specialist guides.
+- Risk: electrical/energy products require careful specifications and safety-focused editorial review.
+
 ## Specialist opportunities worth testing
 
 - True Image UK — printer toner and consumables; current Awin profile advertises 1,000+ products and 15% commission with a 120-day tracking cookie. Attractive economics but requires programme/offer verification before prioritisation.
@@ -187,19 +259,26 @@ Identify the UK affiliate programmes most suitable for the Affiliate Websites di
 - TLX UK — new/refurbished tech and homeware; current profile advertises 5% commission and £160 AOV. Good candidate for value-focused tech comparisons.
 - Kinguin / Startselect / gaming digital goods — useful specialist category, but programme terms, customer economics and compliance need individual verification.
 - Cloudways — hosting; current Awin profile advertises $50 default CPA and performance slabs up to $125 with a 90-day cookie. Useful as an international hosting candidate where UK eligibility is confirmed.
+- 20i — UK web hosting; official affiliate page currently advertises up to £100 per new signup and uses Awin. Strong direct-hosting candidate.
+- SiteGround UK — hosting; official UK affiliate page currently lists £30 / £50 / up to £65 per sale by monthly volume, with 60-day attribution. Strong comparison candidate.
+- Hostworld UK — UK hosting; official programme advertises 20% per signup and a 90-day cookie. Requires commercial/stability verification before priority ranking.
+- Hostking UK — hosting; official programme advertises 20% recurring commission on hosting invoices. Attractive lifetime economics, but direct-programme stability and UK commercial positioning should be validated.
 
 ## Strategic category ranking
 
 1. **Technology & appliances** — strongest initial product-comparison opportunity.
 2. **Broadband & telecom** — strongest fixed-CPA opportunity; eligibility and regulatory/offer freshness are critical.
 3. **Home & furniture** — strong AOV and visual/product-comparison potential.
-4. **Beauty & personal care** — strong repeat purchase and content depth.
-5. **Travel & experiences** — high transaction values and large editorial surface area.
-6. **Sports/outdoor** — strong product comparison and seasonal content.
-7. **Refurbished/circular tech** — strong savings angle and differentiated positioning.
-8. **Hosting/digital services** — high commission per conversion and strong intent.
-9. **Fashion/lifestyle** — broad demand but higher competition.
-10. **Specialist parts/consumables** — smaller baskets but unusually high purchase intent and long-tail coverage.
+4. **Automotive / tyres / parts** — newly elevated because of very high search specificity, comparison fit and large catalogues.
+5. **Beauty & personal care** — strong repeat purchase and content depth.
+6. **Travel & experiences** — high transaction values and large editorial surface area.
+7. **Sports/outdoor** — strong product comparison and seasonal content.
+8. **Refurbished/circular tech** — strong savings angle and differentiated positioning.
+9. **Hosting/digital services** — high commission per conversion and strong intent.
+10. **Home energy / solar** — high-ticket potential but needs careful claims/eligibility governance.
+11. **Fashion/lifestyle** — broad demand but higher competition.
+12. **Insurance / financial comparison** — commercially attractive but separated into a regulated-risk track.
+13. **Specialist parts/consumables** — smaller baskets but unusually high purchase intent and long-tail coverage.
 
 ## New commercial insight: feed availability is a launch multiplier
 
@@ -237,14 +316,16 @@ The first commercial vertical slice should prioritise:
 2. SharkNinja — high-value appliance/product comparison
 3. eSpares — high-intent repair/parts discovery
 4. Broadband — provider comparison with current eligibility/offer verification
-5. Beauty — LOOKFANTASTIC / Boots after programme verification
-6. Wayfair / Ruggable / Aosom — home comparison
-7. Travel — Viator / TUI after programme verification
-8. Krystal — hosting/service comparison
-9. WalkingPad / Sweatband — fitness equipment comparison
-10. Amazon UK — long-tail coverage
+5. Automotive — tyres/parts comparison using TyresNET, Blackcircles, AUTODOC/Buycarparts and Euro Car Parts after verification
+6. Beauty — LOOKFANTASTIC / Boots after programme verification
+7. Wayfair / Ruggable / Aosom — home comparison
+8. Travel — Viator / TUI after programme verification
+9. Krystal / 20i / SiteGround — hosting/service comparison
+10. WalkingPad / Sweatband — fitness equipment comparison
+11. Amazon UK — long-tail coverage
+12. Insurance / solar — separate regulated/high-ticket pilot after compliance review
 
-This creates multiple commercial models: product percentage, high-AOV products, massive long-tail inventory, fixed CPA, repeat-purchase categories, travel transactions and high-value digital services.
+This creates multiple commercial models: product percentage, high-AOV products, massive long-tail inventory, fixed CPA, clickout CPA, repeat-purchase categories, travel transactions, automotive parts, high-value digital services and high-ticket home improvement.
 
 ## Network strategy
 
@@ -293,6 +374,21 @@ All rates, cookie durations, product prices, stock, promotions, programme accept
 - Xero Shoes Awin programme
 - Heart Internet Awin programme
 - Cloudways Awin programme
+- TyresNET / Tyres UK Awin programme
+- Blackcircles Awin programme
+- Buycarparts / AUTODOC Awin programmes
+- Euro Car Parts Awin programme
+- Insure & Escape Awin programme
+- Coverwise Awin programme
+- MoneySuperMarket Insurance Awin programme
+- Home Emergency Assist Awin programme
+- AXA Business Insurance Awin programme
+- Project Solar Awin programme
+- Renogy UK Awin programme
+- 20i official affiliate programme
+- SiteGround UK official affiliate programme
+- Hostworld UK official affiliate programme
+- Hostking UK official affiliate programme
 - Commission Factory affiliate/network information
 
 External research references are evidence for ranking only; final production records require direct programme verification and approval status.
