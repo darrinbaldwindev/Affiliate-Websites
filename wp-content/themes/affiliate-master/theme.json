@@ -3,48 +3,41 @@
   "version": 3,
   "settings": {
     "appearanceTools": true,
-    "layout": {
-      "contentSize": "720px",
-      "wideSize": "1200px"
-    },
-    "spacing": {
-      "units": ["px", "rem", "%", "vw"]
-    },
+    "layout": {"contentSize": "720px", "wideSize": "1200px"},
+    "spacing": {"units": ["px", "rem", "%", "vw"]},
     "typography": {
       "fluid": true,
       "fontSizes": [
-        { "slug": "small", "size": "0.875rem", "name": "Small" },
-        { "slug": "medium", "size": "1rem", "name": "Medium" },
-        { "slug": "large", "size": "1.25rem", "name": "Large" },
-        { "slug": "x-large", "size": "clamp(1.75rem, 4vw, 3rem)", "name": "X Large" },
-        { "slug": "xx-large", "size": "clamp(2.25rem, 6vw, 4.5rem)", "name": "XX Large" }
+        {"slug":"small","size":"0.875rem","name":"Small"},
+        {"slug":"medium","size":"1rem","name":"Medium"},
+        {"slug":"large","size":"1.25rem","name":"Large"},
+        {"slug":"x-large","size":"clamp(1.75rem, 4vw, 3rem)","name":"X Large"},
+        {"slug":"xx-large","size":"clamp(2.25rem, 6vw, 4.5rem)","name":"XX Large"}
+      ]
+    },
+    "color": {
+      "palette": [
+        {"slug":"text","color":"#17202A","name":"Text"},
+        {"slug":"muted","color":"#5B6573","name":"Muted"},
+        {"slug":"surface","color":"#F6F7F9","name":"Surface"},
+        {"slug":"border","color":"#D9DEE5","name":"Border"},
+        {"slug":"primary","color":"#175CD3","name":"Primary"},
+        {"slug":"trust","color":"#147D64","name":"Trust"},
+        {"slug":"warning","color":"#A15C00","name":"Warning"},
+        {"slug":"error","color":"#B42318","name":"Error"}
       ]
     }
   },
   "styles": {
-    "spacing": {
-      "blockGap": "1.25rem"
-    },
-    "typography": {
-      "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
-      "lineHeight": "1.6"
-    },
+    "spacing": {"blockGap":"1.25rem"},
+    "typography": {"fontFamily":"system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif","lineHeight":"1.6"},
     "elements": {
-      "heading": {
-        "typography": {
-          "fontWeight": "700",
-          "lineHeight": "1.15"
-        }
-      },
-      "button": {
-        "border": {
-          "radius": "0.5rem"
-        }
-      }
+      "heading": {"typography":{"fontWeight":"700","lineHeight":"1.15"}},
+      "button": {"border":{"radius":"0.5rem"},"typography":{"fontWeight":"600"}}
     }
   },
   "templateParts": [
-    { "name": "header", "title": "Header", "area": "header" },
-    { "name": "footer", "title": "Footer", "area": "footer" }
+    {"name":"header","title":"Header","area":"header"},
+    {"name":"footer","title":"Footer","area":"footer"}
   ]
 }
