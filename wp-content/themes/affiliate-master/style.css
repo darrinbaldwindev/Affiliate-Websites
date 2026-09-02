@@ -1,0 +1,12 @@
+/*
+Theme Name: Affiliate Master
+Theme URI: https://github.com/darrinbaldwindev/Affiliate-Websites
+Description: Lightweight master Block Theme for the Affiliate Websites platform.
+Author: Affiliate Websites
+Version: 0.1.0
+Requires at least: 6.9
+Requires PHP: 8.1
+Text Domain: affiliate-master
+*/
+
+/* Intentionally minimal. Shared design tokens belong in theme.json. */
