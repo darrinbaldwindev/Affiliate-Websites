@@ -4,11 +4,11 @@
 
 ## Repository
 
-`darrinbaldwindev/Affiliate-Websites` is now the canonical application/source repository for the Affiliate Websites project. `darrinbaldwindev/Overseer` remains the control and governance repository.
+`darrinbaldwindev/Affiliate-Websites` is the canonical application/source repository. `darrinbaldwindev/Overseer` remains the control and governance repository.
 
 ## Scan result
 
-The repository is an intentionally minimal WordPress Block Theme foundation. The README and architecture documents establish the intended WordPress → Rewards API → PostgreSQL/Supabase boundary, country model and verification-first commercial architecture.
+The repository is an intentionally minimal WordPress Block Theme foundation. The application repository is now present and implementation has begun.
 
 Current theme assets include:
 
@@ -16,31 +16,39 @@ Current theme assets include:
 - `theme.json`
 - `functions.php`
 - `templates/home.html`
+- `templates/index.html`
 - `templates/page.html`
+- `templates/404.html`
 - `parts/header.html`
 - `parts/footer.html`
+- `patterns/global-homepage.php`
 
 ## Completed in this checkpoint
 
+- Confirmed canonical application repository and default branch `main`.
 - Added minimal WordPress theme bootstrap in `functions.php`.
-- Established reusable design tokens in `theme.json`.
-- Added global homepage starter template.
-- Added reusable page template.
-- Added header and footer template parts.
+- Established reusable design tokens and semantic colour roles in `theme.json`.
+- Added reusable header/footer template parts.
+- Added global homepage starter template and reusable global homepage pattern.
+- Added generic page template and accessible 404/search template.
+- Recorded implementation status and governance boundaries.
 
-## Still required
+## Current health
 
-1. Proper global homepage composition and country-routing controls.
-2. Country configuration model for AU/UK/US.
-3. Country homepage template.
-4. Category/program/product/merchant/comparison templates and patterns.
-5. Trust, evidence and disclosure components.
-6. Rewards API integration boundary.
-7. Central affiliate resolver/click abstraction.
-8. SEO/schema foundations and validation.
-9. Accessibility/performance/security test harness.
-10. Plugin register and deployment/staging documentation.
-11. AU vertical slice validation before UK/US expansion.
+**Repository health: GOOD FOUNDATION / EARLY IMPLEMENTATION**
+
+The codebase is deliberately small, understandable and aligned with the approved architecture. No heavyweight page builder or unnecessary plugin dependency is present. However, it is not production-ready: the homepage is still a starter composition, country routing is not wired, and the commercial/data/API layers do not yet exist.
+
+## Highest-value next work
+
+1. Build the real global homepage from the approved section contract.
+2. Add country configuration and explicit AU/UK/US routing without hard-coded duplicated sites.
+3. Build country homepage, category and detail templates/patterns.
+4. Add trust/evidence/disclosure components.
+5. Define the Rewards API client boundary and central affiliate CTA abstraction without embedding credentials or raw tracking URLs.
+6. Add SEO/schema, accessibility and performance validation.
+7. Add a plugin register and deployment/staging/recovery documentation.
+8. Prove the AU vertical slice before broadening to UK and US.
 
 ## Governance
 
