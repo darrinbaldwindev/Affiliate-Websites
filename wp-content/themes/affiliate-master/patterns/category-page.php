@@ -8,7 +8,7 @@
 ?>
 <!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group">
-<!-- wp:yoast/breadcrumbs /-->
+<!-- wp:paragraph {"fontSize":"small"} --><p class="has-small-font-size">Category</p><!-- /wp:paragraph -->
 <!-- wp:post-title {"level":1} /-->
 <!-- wp:paragraph {"fontSize":"large"} --><p class="has-large-font-size">A concise introduction to this category, tailored to the country and supported by current evidence.</p><!-- /wp:paragraph -->
 <!-- wp:heading {"level":2} --><h2 class="wp-block-heading">What to consider</h2><!-- /wp:heading -->
