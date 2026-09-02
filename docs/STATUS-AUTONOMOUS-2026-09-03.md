@@ -7,6 +7,9 @@
 - Added governed commercial CTA pattern and Rewards API interface contract.
 - Removed an accidental plugin-specific dependency from the category pattern so the master theme remains independent of an unselected SEO plugin.
 - Added AU fixture-readiness guidance preserving the verified-data boundary.
+- Added the canonical rewards data contract covering consumer programs, merchants, user referral relationships, publisher affiliate relationships, commercial offers/destinations, evidence/verification/freshness, change history and commercial resolution audit events.
+- Added the WordPress → Rewards API server-side integration seam covering request context, explicit failure states, secret handling, caching and attribution boundaries.
+- Added an AU fixture contract that forbids fabricated live commercial facts and requires safe blocked/unresolved CTA behaviour until a non-production resolver exists.
 
 ## Evidence boundary
 The AU commercial shortlist remains research input only. Its own status is `RESEARCHED / INDIVIDUAL VERIFICATION REQUIRED`; it explicitly says it is not a ranking and does not authorise publication.
@@ -18,6 +21,7 @@ The AU commercial shortlist remains research input only. Its own status is `RESE
 - No live affiliate destination verified.
 - No end-to-end click attribution verified.
 - No live commissions, prices or availability embedded.
+- No production Rewards API or database migration implemented.
 
 ## Next highest-value objective
-Implement the canonical structured data contract and a safe server-side/API integration seam, then prove the AU slice with non-production fixtures before introducing verified live commercial records.
+Implement the first non-production fixture/data adapter against the canonical contract, then exercise the AU journey from category through guide/comparison/detail to a deliberately blocked governed CTA. After that, independently verify the AU commercial candidates before any live record is promoted.
