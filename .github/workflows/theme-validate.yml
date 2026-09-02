@@ -1,0 +1,46 @@
+name: Theme Validation
+
+on:
+  push:
+    paths:
+      - 'wp-content/themes/affiliate-master/**'
+      - '.github/workflows/theme-validate.yml'
+  pull_request:
+    paths:
+      - 'wp-content/themes/affiliate-master/**'
+      - '.github/workflows/theme-validate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate PHP syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          find wp-content/themes/affiliate-master -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Validate theme.json
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('wp-content/themes/affiliate-master/theme.json')
+          json.loads(path.read_text(encoding='utf-8'))
+          print(f'Valid JSON: {path}')
+          PY
+
+      - name: Validate required theme files
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in style.css theme.json functions.php templates/front-page.html templates/index.html templates/page.html templates/404.html parts/header.html parts/footer.html; do
+            test -f "wp-content/themes/affiliate-master/$file"
+          done
