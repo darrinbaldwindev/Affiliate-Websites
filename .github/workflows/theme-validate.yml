@@ -41,6 +41,17 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for file in style.css theme.json functions.php templates/front-page.html templates/index.html templates/page.html templates/404.html parts/header.html parts/footer.html; do
+          for file in style.css theme.json functions.php templates/front-page.html templates/index.html templates/page.html templates/404.html templates/category.html templates/single.html parts/header.html parts/footer.html; do
             test -f "wp-content/themes/affiliate-master/$file"
           done
+
+      - name: Validate governed category/detail template wiring
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'affiliate-master/category-page' wp-content/themes/affiliate-master/templates/category.html
+          grep -Fq 'affiliate-master/detail-page' wp-content/themes/affiliate-master/templates/single.html
+          grep -Fq '"slug":"header"' wp-content/themes/affiliate-master/templates/category.html
+          grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/category.html
+          grep -Fq '"slug":"header"' wp-content/themes/affiliate-master/templates/single.html
+          grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/single.html
