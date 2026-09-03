@@ -29,12 +29,25 @@ jobs:
       - name: Validate theme.json
         shell: bash
         run: |
+          set -euo pipefail
           python - <<'PY'
           import json
           from pathlib import Path
           path = Path('wp-content/themes/affiliate-master/theme.json')
-          json.loads(path.read_text(encoding='utf-8'))
-          print(f'Valid JSON: {path}')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          assert data.get('version') == 3, 'theme.json must use version 3'
+          assert data.get('settings', {}).get('appearanceTools') is True, 'appearanceTools must be enabled'
+          layout = data.get('settings', {}).get('layout', {})
+          assert layout.get('contentSize') == '720px', 'unexpected contentSize'
+          assert layout.get('wideSize') == '1200px', 'unexpected wideSize'
+          required_palette = {'text', 'muted', 'surface', 'border', 'primary', 'trust', 'warning', 'error'}
+          palette = {item.get('slug') for item in data.get('settings', {}).get('color', {}).get('palette', [])}
+          missing = required_palette - palette
+          assert not missing, f'missing required palette slugs: {sorted(missing)}'
+          parts = {item.get('name'): item for item in data.get('templateParts', [])}
+          assert parts.get('header', {}).get('area') == 'header', 'header template part contract missing'
+          assert parts.get('footer', {}).get('area') == 'footer', 'footer template part contract missing'
+          print(f'Valid governed theme.json: {path}')
           PY
 
       - name: Validate required theme files
