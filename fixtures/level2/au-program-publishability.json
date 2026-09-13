@@ -1,0 +1,10 @@
+{
+  "schema": "affiliate.level2.publishability.v1",
+  "country": "AU",
+  "program": "FIXTURE_PROGRAM",
+  "rewards_user": true,
+  "affiliate_program_verified": false,
+  "publishable": false,
+  "reason": "SYNTHETIC_FIXTURE_ONLY",
+  "production_write": false
+}
