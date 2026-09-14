@@ -29,6 +29,7 @@ Evidence controls completion. No overall GREEN from implementation claims alone.
 - AU Surveys PR #13 remains an open draft lane and already contains category/detail shells, real research staging, publication projection, priority projection and commercial fail-closed tests.
 - PR #14 is a separate security/fixture lane that strengthens publisher timestamp validation. Its authority should be reused/reconciled when eventually incorporated; this batch must not duplicate timestamp authority.
 - Historical AU/USA/legal PRs remain open. They are context, not permission to merge or rewrite this lane.
+- V2 incremental draft PR #15 is based on `work/au-surveys-vertical-batch`, so V2 changes remain isolated from the original batch and from unrelated `main` work.
 
 ## Vertical objective
 
@@ -57,22 +58,33 @@ All real publisher relationships remain UNKNOWN. No real tracking destination is
 
 ## Execution backlog, in priority order
 
-### V2-1 — WordPress/API read-model contract — EXECUTING
-Create a non-authoritative interface contract that tells the presentation layer exactly what it may read from governed projections without making WordPress canonical. Contract must exclude tracking URLs and raw affiliate destinations.
+### V2-1 — WordPress/API read-model contract — IMPLEMENTED / CI PENDING
+Created `data/au/surveys.read-model-contract.json`.
 
-Acceptance:
-- explicit source-of-truth boundary;
-- category-list/detail shapes;
-- lifecycle/display/commercial states;
-- freshness fields;
-- nullable/omitted commercial action unless canonical resolver authorises one;
-- no raw commission-driven ranking input.
+The contract explicitly states:
+- WordPress is not authoritative;
+- canonical Rewards data/publication state/resolver are the authorities;
+- category and detail record shapes are bounded;
+- raw tracking/affiliate URLs are forbidden;
+- lifecycle/freshness/commercial state cannot be editorially overridden;
+- publisher economics cannot drive ranking;
+- `commercial_action` remains null unless the canonical resolver authorises it.
 
-### V2-2 — Projection drift and stale-state assurance — EXECUTING
-Add tests proving publication/priority projections cannot silently drift from staging, include stale/partial records in Flagship/Core, contain URLs/tracking parameters, duplicate ranks, or rank by publisher economics.
+### V2-2 — Projection drift and stale-state assurance — IMPLEMENTED / CI PENDING
+Added `fixtures/au-surveys/test_read_model_contract.py`.
 
-### V2-3 — Comparison-detail deterministic mapping — NEXT
-Define fixture/read-model mapping that proves the same governed program identity drives list and detail views, with no editorial override of eligibility/reward/freshness/commercial state.
+It verifies:
+- staging, publication and priority projections have identical program identity sets;
+- Flagship/Core/Secondary records are VERIFIED and CURRENT;
+- non-verified records remain RESEARCH_HOLD/RESEARCH_REQUIRED;
+- every current real record stays commercially BLOCKED with null destination;
+- priority ranks are unique/contiguous;
+- the priority projection contains no URLs, tracking parameters or commission-rate inputs.
+
+### V2-3 — Comparison-detail deterministic mapping — IMPLEMENTED / CI PENDING
+Added `fixtures/au-surveys/build_presentation_read_model.py` plus `test_presentation_read_model.py`.
+
+The builder deterministically joins staging + publication + priority state by stable program ID, then emits presentation-safe list/detail fields with `commercial_action: null` for all current real records. Tests verify stable identity, contiguous ordering, current freshness for verified records, RESEARCH_HOLD behavior and commercial blocking.
 
 ### V2-4 — Runtime presentation verification — NEXT
 Exercise the AU survey templates against bounded fixture/read-model data. Claim runtime verification only if actually exercised.
@@ -92,6 +104,16 @@ The AU Surveys vertical can only be called implementation-ready when:
 - runtime template rendering is evidenced;
 - no real commercial CTA is enabled without authenticated publisher approval and approved destination;
 - independent Green/PRS evidence exists where required.
+
+## Current execution commits
+
+- `dfc96b5ceb45d19b656236101e9a0824902f9c81` — create V2 standing batch protocol.
+- `87cd44b33742d24d1235de7844a42ca75cd75510` — define non-authoritative read-model contract.
+- `214ee4e21734902d886c0bd71c24da9a2d037f62` — add read-model/drift assurance tests.
+- `25fbaf30be9a3478f66bfe6b888d07166c6f9d87` — wire read-model tests into CI.
+- `47381f5b65930f57e61ddd65f14702cd1181172b` — add deterministic presentation read-model builder.
+- `c6a3bda2990834f0fa0ba596f4048f2eaf354e21` — add deterministic list/detail mapping tests.
+- `a7937e307d394be89b37cc92df3b2144b603c5f9` — wire deterministic mapping tests into CI.
 
 ## Per-cycle maximum-value rule
 
