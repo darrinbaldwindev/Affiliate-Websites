@@ -5,6 +5,11 @@
   "verified_at": "2026-09-14",
   "production_use": false,
   "commercial_activation": false,
+  "freshness_policy": {
+    "policy_scope": "research_staging_only",
+    "review_interval_days": 30,
+    "note": "A 30-day staging review interval is a conservative working policy for volatile consumer reward/referral claims; production policy remains governed by the canonical Rewards layer."
+  },
   "notes": "Research staging records only. Consumer participation evidence is not publisher-affiliate approval. No tracking destinations are present.",
   "programs": [
     {
@@ -14,6 +19,17 @@
       "countries": ["AU"],
       "categories": ["surveys-research"],
       "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {
+        "state": "CURRENT",
+        "last_verified_at": "2026-09-14",
+        "review_due_at": "2026-10-14"
+      },
+      "publication_gate": {
+        "consumer_content": "VERIFIED_NOT_PUBLISHED",
+        "commercial_cta": "BLOCKED",
+        "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
+      },
       "consumer_claims": {
         "participation": "Paid online surveys for Australian members",
         "reward_summary": "Cash rewards; public site also advertises Tell-A-Friend rewards",
@@ -41,6 +57,17 @@
       "countries": ["AU"],
       "categories": ["surveys-research"],
       "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {
+        "state": "CURRENT",
+        "last_verified_at": "2026-09-14",
+        "review_due_at": "2026-10-14"
+      },
+      "publication_gate": {
+        "consumer_content": "VERIFIED_NOT_PUBLISHED",
+        "commercial_cta": "BLOCKED",
+        "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
+      },
       "consumer_claims": {
         "participation": "Online survey panel",
         "reward_summary": "Points-based rewards; current AU referral FAQ states 500 points per successful qualifying referral, capped at 10 rewarded referrals per month",
@@ -68,6 +95,17 @@
       "countries": ["AU"],
       "categories": ["paid-research"],
       "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {
+        "state": "CURRENT",
+        "last_verified_at": "2026-09-14",
+        "review_due_at": "2026-10-14"
+      },
+      "publication_gate": {
+        "consumer_content": "VERIFIED_NOT_PUBLISHED",
+        "commercial_cta": "BLOCKED",
+        "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
+      },
       "consumer_claims": {
         "participation": "Paid research studies",
         "reward_summary": "Participant payments; access may be waitlist-managed",
@@ -102,6 +140,17 @@
       "countries": ["AU"],
       "categories": ["surveys-research"],
       "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {
+        "state": "CURRENT",
+        "last_verified_at": "2026-09-14",
+        "review_due_at": "2026-10-14"
+      },
+      "publication_gate": {
+        "consumer_content": "VERIFIED_NOT_PUBLISHED",
+        "commercial_cta": "BLOCKED",
+        "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
+      },
       "consumer_claims": {
         "participation": "Online paid surveys",
         "reward_summary": "LifePoints redeemable for PayPal and gift cards including Australian brands",
@@ -136,6 +185,17 @@
       "countries": ["AU"],
       "categories": ["surveys-research"],
       "status": "research_required",
+      "lifecycle_state": "RESEARCHED",
+      "freshness": {
+        "state": "PARTIAL",
+        "last_verified_at": "2026-09-14",
+        "review_due_at": "2026-10-14"
+      },
+      "publication_gate": {
+        "consumer_content": "BLOCKED",
+        "commercial_cta": "BLOCKED",
+        "blocking_reasons": ["AU_REWARD_DETAIL_INCOMPLETE", "PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
+      },
       "consumer_claims": {
         "participation": "Survey panel and data-sharing activities",
         "reward_summary": "Points-based reward model verified globally; AU-specific reward catalogue requires direct country verification before publication",
@@ -163,6 +223,17 @@
       "countries": ["AU"],
       "categories": ["surveys-research"],
       "status": "research_required",
+      "lifecycle_state": "RESEARCHED",
+      "freshness": {
+        "state": "PARTIAL",
+        "last_verified_at": "2026-09-14",
+        "review_due_at": "2026-10-14"
+      },
+      "publication_gate": {
+        "consumer_content": "BLOCKED",
+        "commercial_cta": "BLOCKED",
+        "blocking_reasons": ["AU_REWARD_DETAIL_INCOMPLETE", "PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
+      },
       "consumer_claims": {
         "participation": "Survey and research community",
         "reward_summary": "Points-based rewards verified on current Toluna material; AU-specific catalogue requires direct country verification before publication",
