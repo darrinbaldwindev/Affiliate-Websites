@@ -2,7 +2,7 @@
 
 **Workstream:** USA Affiliate Website  
 **Status:** RESEARCHED / verification in progress  
-**Observed:** 2026-09-14  
+**Observed:** 2026-09-15  
 **Purpose:** Maintain a concise, evidence-backed launch registry. This document is not permission to publish every listed program.
 
 ## Ranking rule
@@ -18,9 +18,9 @@ Priority is based on consumer utility, evidence/trust, monetisation potential, U
 | SurveyRewards US | Surveys | Publisher affiliate via Awin | **$0.75 per valid completed survey**, first 20 per unique user, up to **$15** per referred user | VERIFIED | **A** |
 | QuickRewards | Surveys, videos, games, shopping | Publisher affiliate via Awin | **$1** after registration + at least **$0.25 earned**; **30-day attribution** | VERIFIED | **A/B** |
 | Survey Junkie | Surveys / research | Publisher affiliate | Exact payout **UNKNOWN** | VERIFIED | **A** |
-| UserTesting | UX / website / app testing | Affiliate relationship; exact publisher economics **UNKNOWN** | Participant rewards vary by test; exact publisher payout **UNKNOWN** | VERIFIED | **A** |
-| Respondent | Paid research, professional/B2B studies | Participant referral verified; publisher affiliate **UNKNOWN** | Referral economics require reconciliation; do not publish a single amount yet | Strong US evidence | **A** |
-| Ipsos iSay | Surveys / rewards | Publisher affiliate via Impact Radius | Commission amount **UNKNOWN** | Strong platform evidence | **A** |
+| UserTesting | UX / website / app testing | Publisher affiliate **UNKNOWN** | Participant rewards vary by test; exact publisher payout **UNKNOWN** | VERIFIED consumer platform | **A editorial / publisher HOLD** |
+| Respondent | Paid research, professional/B2B studies | Participant referral VERIFIED; publisher affiliate **UNKNOWN** | **$20** network referral after referred participant earns $75+; **$50** qualifying project referral after referred participant completes a $100+ incentive project | Strong US evidence | **A editorial / publisher HOLD** |
+| Ipsos iSay | Surveys / rewards | Publisher affiliate through Impact Radius verified by current first-party partner page | Exact public commission **UNKNOWN** | Strong platform evidence | **A / destination HOLD** |
 | Branded Surveys | Surveys / offers | Publisher affiliate | Commission set by insertion order; exact current amount **UNKNOWN** | VERIFIED | **A** |
 | FocusGroup.com / Sago | Focus groups, surveys, interviews, product testing | Publisher economics **UNKNOWN** | Consumer incentive model verified; publisher terms require verification | VERIFIED | **A/B** |
 
@@ -28,7 +28,7 @@ Priority is based on consumer utility, evidence/trust, monetisation potential, U
 
 | Program | Opportunity | Current status | Decision |
 |---|---|---|---|
-| Swagbucks | Surveys, shopping, rewards, games/offers | Consumer platform active; current publisher economics require fresh verification | A/B |
+| Swagbucks | Surveys, shopping, rewards, games/offers | Current first-party **member referral**: 10% of eligible referral earnings while active; publisher affiliate relationship remains UNKNOWN | A/B editorial / publisher HOLD |
 | Prime Opinion | Surveys / rewards | Consumer product verified; publisher economics UNKNOWN | A/B |
 | KashKick | Surveys, games, deals, shopping | US-only consumer platform verified; publisher economics UNKNOWN | B |
 | Prolific | Paid research | Consumer value high; permanent publisher affiliate not verified | B |
@@ -133,15 +133,52 @@ Source:
 
 ### UserTesting
 
-Current first-party participant material confirms paid testing, variable test rewards, PayPal payment and a participant application/practice-test process. A current affiliates page exists, but current public publisher payout remains UNKNOWN.
+Current first-party participant material confirms paid testing, variable test rewards and a contributor relationship. A page titled `UserTesting Affiliates` exists, but its current contents list UserTesting corporate affiliates/subsidiaries (for example UserZoom entities and User Testing, Inc.) rather than a publisher-marketing affiliate program. Therefore that page is **not evidence of publisher monetisation rights**.
+
+Sources:
+- https://www.usertesting.com/usertesting-affiliates
+- https://www.usertesting.com/privacy-center/terms-of-service-contributor
+
+Current status:
+- consumer/contributor proposition: VERIFIED
+- publisher affiliate relationship: UNKNOWN
+- publisher payout: UNKNOWN
+- CTA readiness: editorial/non-affiliate only until a distinct publisher program and controlled destination are evidenced
 
 ### Respondent
 
-Current Respondent material supports paid research opportunities and participant referrals. Referral documentation has produced conflicting first-party reward figures; publish no single reward amount until reconciled. Publisher affiliate economics remain UNKNOWN.
+Current first-party participant referral policy, dated 2026-04-01, resolves the previously conflicting public referral figures:
+- **$20 signup/network referral bonus** when a brand-new referred participant earns **$75+** from completed studies and payment is PAID;
+- **$50 project referral bonus** when a referred participant completes a qualifying project carrying a **$100+ incentive**;
+- referral bonuses are paid as Tremendous virtual gift cards;
+- misleading/spam promotion is prohibited.
+
+Respondent also lists the United States among its primary recruitment markets.
+
+Sources:
+- https://help.respondent.io/en/articles/5464425-respondent-referral-policy-for-participants
+- https://help.respondent.io/en/articles/5471299-what-countries-can-i-recruit-in-on-respondent
+
+Current status:
+- participant/member referral: VERIFIED_CURRENT
+- US availability: VERIFIED_CURRENT
+- publisher affiliate relationship: UNKNOWN
+- publisher economics: UNKNOWN
+- CTA readiness: consumer editorial / participant-referral relationship only; do not promote as publisher affiliate
 
 ### Ipsos iSay
 
-Current consumer operation in the US is active. Previous first-party partner research supports affiliate recruitment through Impact Radius, but exact current public publisher commission remains UNKNOWN and needs fresh direct verification before monetised CTA use.
+Current first-party partner material states that affiliate partners earn commission for people who sign up to the Ipsos iSay panel and that Ipsos iSay uses **Impact Radius** for affiliate application/tracking/materials. The public material reviewed does not state an exact commission amount.
+
+Source:
+- https://www.ipsosisay.com/fr-fr/partner-us
+
+Current status:
+- publisher relationship: VERIFIED_PUBLISHER via current first-party partner material
+- network/platform: Impact Radius
+- exact commission: UNKNOWN
+- destination: not yet approved/configured in repo evidence reviewed
+- CTA readiness: BLOCKED pending controlled destination/approval and current relationship-specific terms
 
 ### Branded Surveys
 
@@ -150,6 +187,20 @@ Current first-party affiliate terms previously established registration-based af
 ### FocusGroup.com / Sago
 
 Current consumer research participation remains useful for editorial coverage. Publisher affiliate economics remain UNKNOWN.
+
+### Swagbucks
+
+Current first-party member-referral documentation states that a referrer receives **10% of eligible earnings** from referred users while the referral remains active, with no maximum on that percentage stream. Current help material also describes a 300 SB conditional referral bonus and restrictions on manipulated/direct paid traffic methods.
+
+Sources:
+- https://help.swagbucks.com/hc/en-us/articles/360030542251-How-do-I-Earn-SB-from-Referrals
+- https://help.swagbucks.com/hc/en-us/articles/205640984-How-do-I-Earn-SB-from-Referrals
+
+Current status:
+- member referral: VERIFIED_CURRENT
+- publisher affiliate relationship: UNKNOWN
+- publisher economics: UNKNOWN
+- CTA readiness: member-referral/editorial only; never infer publisher approval from member referral terms
 
 ## First destination-readiness queue
 
@@ -180,13 +231,12 @@ A program may be marked **PUBLISHABLE** only when:
 ## Immediate verification queue
 
 1. Build the USA destination-readiness matrix for the first six commercial relationships.
-2. Confirm exact current UserTesting publisher economics and permitted traffic sources.
-3. Reconcile Respondent's conflicting participant-referral documentation.
-4. Obtain current Ipsos iSay US publisher terms and commission.
-5. Obtain current Branded Surveys insertion-order economics after acceptance/application.
-6. Determine whether FocusGroup/Sago currently accepts publisher affiliates and on what terms.
-7. Confirm current Swagbucks publisher economics rather than using historical figures.
-8. Verify Prime Opinion, KashKick and Toluna/ThinkAction publisher relationships.
+2. Find a distinct current UserTesting publisher-marketing program, if one exists; do not treat the corporate-affiliates page as evidence.
+3. Obtain current Ipsos iSay US relationship-specific destination/approval terms; exact commission remains UNKNOWN until evidenced.
+4. Obtain current Branded Surveys insertion-order economics after acceptance/application.
+5. Determine whether FocusGroup/Sago currently accepts publisher affiliates and on what terms.
+6. Determine whether Swagbucks has a distinct publisher/partner program; member referral terms are not sufficient.
+7. Verify Prime Opinion, KashKick and Toluna/ThinkAction publisher relationships.
 
 ## Strategic conclusion
 
