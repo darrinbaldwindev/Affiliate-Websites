@@ -3,7 +3,7 @@
 **Workstream:** Master Affiliate Websites / cross-country commercial research  
 **Repository:** `darrinbaldwindev/Affiliate-Websites`  
 **Mode:** vertical autonomous execution  
-**Status:** EXECUTING / bounded research-and-governance batch  
+**Status:** COMPLETE — bounded research-and-governance batch executed  
 **Rule:** evidence controls completion; merchant claims and prices are not production truth until re-verified through the canonical commercial-data path.
 
 ## Standing trigger
@@ -45,42 +45,29 @@ Establish **Software & Games** as a governed commercial vertical spanning:
 
 The batch must distinguish authorised retailers, direct resellers and multi-seller marketplaces so that cheapest-price ranking cannot silently become a trust claim.
 
-## Batch tasks
+## Task results
 
-### SG1 — Repo reconciliation
-Status: COMPLETE.
+### SG1 — Repo reconciliation — COMPLETE
 
 Fresh scan completed before writing this batch. Existing architecture and batch doctrine reused rather than replaced.
 
-### SG2 — Structured merchant research register
-Status: COMPLETE.
+### SG2 — Structured merchant research register — COMPLETE
 
-Create `docs/data/software-games-merchant-research.json` containing research-only merchant records, commercial signals, trust/provenance class, affiliate evidence, automation/feed signals, source and verification date.
+Created `docs/data/software-games-merchant-research.json` containing research-only merchant records, commercial signals, trust/provenance class, affiliate evidence, automation/feed signals, source and verification date.
 
-### SG3 — Merchant assurance matrix
-Status: COMPLETE.
+### SG3 — Merchant assurance matrix — COMPLETE
 
-Create `docs/SOFTWARE-GAMES-MERCHANT-ASSURANCE-MATRIX-2026-09-14.md` separating:
+Created `docs/SOFTWARE-GAMES-MERCHANT-ASSURANCE-MATRIX-2026-09-14.md` separating publisher/authorised retail signals, direct reseller signals, marketplace signals, affiliate economics, structured-feed/API suitability and diligence requirements.
 
-1. publisher/authorised retail signals;
-2. direct reseller signals;
-3. marketplace signals;
-4. affiliate economics;
-5. structured-feed/API suitability;
-6. diligence requirements.
+### SG4 — Publishability gate — COMPLETE
 
-### SG4 — Publishability gate
-Status: COMPLETE.
+Created `docs/SOFTWARE-GAMES-PUBLISHABILITY-GATE-2026-09-14.md` requiring licence-type, region, device/installation limits, transferability where applicable, merchant class, source/freshness and affiliate approval before a commercial offer is publishable.
 
-Create `docs/SOFTWARE-GAMES-PUBLISHABILITY-GATE-2026-09-14.md` requiring licence-type, region, device/installation limits, transferability where applicable, merchant class, source/freshness and affiliate approval before a commercial offer is publishable.
+### SG5 — Cross-country vertical-slice contract — COMPLETE
 
-### SG5 — Cross-country vertical-slice contract
-Status: COMPLETE.
+Created `docs/vertical-slice/SOFTWARE-GAMES-VERTICAL-SLICE-CONTRACT.md` defining a reusable master comparison journey while keeping AU/UK/US prices, tax, availability and affiliate relationships country-specific.
 
-Create `docs/vertical-slice/SOFTWARE-GAMES-VERTICAL-SLICE-CONTRACT.md` defining a reusable master comparison journey while keeping AU/UK/US prices, tax, availability and affiliate relationships country-specific.
-
-### SG6 — Commercial research findings
-Status: COMPLETE WITH LIMITS.
+### SG6 — Commercial research findings — COMPLETE WITH LIMITS
 
 Primary-source verification on 2026-09-14 established these current research signals:
 
@@ -93,10 +80,19 @@ Primary-source verification on 2026-09-14 established these current research sig
 
 These are **research facts**, not proof that this project is approved as an affiliate, not proof of licence provenance for any individual offer, and not permission to publish live prices or tracked links.
 
-### SG7 — Verification
-Status: PENDING final post-write scan.
+### SG7 — Verification — COMPLETE
 
-After all bounded files are written, fresh-scan repository state and record exact resulting commits/state.
+Fresh post-write repository scan confirmed all bounded artifacts landed on `main`.
+
+Execution commits:
+
+- `70bd17d3da915b457c12ead1772577dbd8287de3` — batch created;
+- `4d8ad100503a00c0828e328b4cc524fc70db73bd` — structured merchant research register;
+- `1ee285315aca644e8e280ab0d211c10834713a39` — merchant assurance matrix;
+- `0637c23dfec5fdd9fd4454c43a1aeecee6a262bc` — publishability gate;
+- `b392089105b0a36cbd8f0a3a56e326a430578ea3` — cross-country vertical-slice contract.
+
+No production code, credentials, live affiliate destinations, merchant applications, purchases or deployments were changed by this batch.
 
 ## Hard governance rules
 
@@ -109,17 +105,30 @@ After all bounded files are written, fresh-scan repository state and record exac
 - UNKNOWN provenance remains UNKNOWN.
 - No production publication is authorised by this batch.
 
-## Next-batch candidates
+## Still OPEN
 
-After this batch closes:
+- live project affiliate approval with any merchant;
+- production tracking destinations;
+- current production prices/stock/coupons;
+- offer-level licence/provenance verification for reseller and marketplace Windows/Office products;
+- country-specific AU/UK/US eligibility and tax presentation;
+- production Rewards API/Supabase integration;
+- automated comparison feed ingestion;
+- browser/runtime validation of Software & Games pages;
+- legal conclusions about any specific licence offer.
 
-1. fresh-scan repo and any concurrent AU/UK/US work;
-2. add fixture-only Software & Games comparison data through the existing commercial-CTA contract;
-3. add fail-closed cases for stale price, wrong region, missing licence type, unapproved merchant and marketplace seller uncertainty;
-4. research country-specific AU/UK/US authorised Microsoft/software benchmarks;
-5. verify which merchants expose stable feeds/APIs suitable for automated price comparison;
-6. only then consider WordPress presentation fixtures.
+## Next vertical batch
+
+On the next `cont` / `continue autonomously`:
+
+1. fresh-scan repo and concurrent AU/UK/US work;
+2. inspect the existing shared commercial-CTA fixture/tests in detail;
+3. add fixture-only Software & Games comparison data through that existing contract;
+4. add fail-closed cases for stale price, wrong region, missing licence type, unapproved merchant and marketplace seller uncertainty;
+5. research country-specific AU/UK/US authorised Microsoft/software benchmark retailers;
+6. verify stable feeds/APIs for automated price comparison;
+7. only then add WordPress presentation fixtures if they reuse master components cleanly.
 
 ## Completion rule
 
-This batch is complete when bounded research/governance artifacts exist and repository state is re-verified. Live merchant approval, production pricing, live tracking links, legal conclusions, production API integration and end-to-end purchase validation remain OPEN until evidenced separately.
+This batch is complete because bounded research/governance artifacts were created and repository state was re-verified. Live merchant approval, production pricing, live tracking links, legal conclusions, production API integration and end-to-end purchase validation remain explicitly OPEN until evidenced separately.
