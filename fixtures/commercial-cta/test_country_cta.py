@@ -15,7 +15,8 @@ BASE = {
             "program_id": "AU-SYNTH-001", "country": "AU", "consumer_reward_evidence": "FIXTURE",
             "country_eligibility_evidence": "FIXTURE", "publisher_relationship": "UNKNOWN",
             "publisher_evidence_source": None, "publisher_verified_at": None, "publisher_evidence_conflict": False,
-            "cta_state": "NON_AFFILIATE_FALLBACK", "destination_url": None, "evidence_freshness": "FIXTURE",
+            "cta_state": "NON_AFFILIATE_FALLBACK", "destination_url": None, "destination_country": None,
+            "evidence_freshness": "FIXTURE", "risk_class": "STANDARD", "enhanced_compliance_gate_passed": False,
             "disclosure_present": True,
         },
         {
@@ -23,14 +24,16 @@ BASE = {
             "country_eligibility_evidence": "FIXTURE", "publisher_relationship": "VERIFIED_PUBLISHER",
             "publisher_evidence_source": "fixture://publisher-program", "publisher_verified_at": "2026-09-14T00:00:00Z",
             "publisher_evidence_conflict": False, "cta_state": "VERIFIED_PUBLISHER",
-            "destination_url": "https://example.invalid/fixture-affiliate", "evidence_freshness": "FIXTURE",
+            "destination_url": "https://example.invalid/fixture-affiliate", "destination_country": "UK",
+            "evidence_freshness": "FIXTURE", "risk_class": "STANDARD", "enhanced_compliance_gate_passed": False,
             "disclosure_present": True,
         },
         {
             "program_id": "US-SYNTH-001", "country": "US", "consumer_reward_evidence": "FIXTURE",
             "country_eligibility_evidence": "FIXTURE", "publisher_relationship": "CONSUMER_REFERRAL_ONLY",
             "publisher_evidence_source": None, "publisher_verified_at": None, "publisher_evidence_conflict": False,
-            "cta_state": "NON_AFFILIATE_FALLBACK", "destination_url": None, "evidence_freshness": "FIXTURE",
+            "cta_state": "NON_AFFILIATE_FALLBACK", "destination_url": None, "destination_country": None,
+            "evidence_freshness": "FIXTURE", "risk_class": "STANDARD", "enhanced_compliance_gate_passed": False,
             "disclosure_present": True,
         },
     ],
@@ -123,6 +126,41 @@ class GovernedCtaTests(unittest.TestCase):
     def test_duplicate_country_declaration_rejected(self):
         data = json.loads(json.dumps(BASE)); data["countries"].append("AU")
         with self.assertRaises(SystemExit): run_case(data)
+
+    def test_verified_cta_destination_country_must_match_program_country(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["destination_country"] = "AU"
+        with self.assertRaisesRegex(SystemExit, "destination_country"):
+            run_case(data)
+
+    def test_nonverified_relationship_cannot_carry_destination_country(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][0]["destination_country"] = "AU"
+        with self.assertRaisesRegex(SystemExit, "destination_country"):
+            run_case(data)
+
+    def test_regulated_finance_requires_enhanced_gate(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["risk_class"] = "REGULATED_FINANCE"
+        with self.assertRaisesRegex(SystemExit, "enhanced compliance gate"):
+            run_case(data)
+
+    def test_regulated_finance_can_pass_when_enhanced_gate_is_explicit(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["risk_class"] = "REGULATED_FINANCE"; data["programs"][1]["enhanced_compliance_gate_passed"] = True
+        result = run_case(data)
+        self.assertEqual(result["status"], "PASS")
+
+    def test_health_sensitive_requires_enhanced_gate(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["risk_class"] = "HEALTH_SENSITIVE"
+        with self.assertRaisesRegex(SystemExit, "enhanced compliance gate"):
+            run_case(data)
+
+    def test_utilities_home_energy_requires_enhanced_gate(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["risk_class"] = "UTILITIES_HOME_ENERGY"
+        with self.assertRaisesRegex(SystemExit, "enhanced compliance gate"):
+            run_case(data)
+
+    def test_invalid_risk_class_rejected(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["risk_class"] = "HIGH_PAYING"
+        with self.assertRaisesRegex(SystemExit, "invalid risk_class"):
+            run_case(data)
 
 
 if __name__ == "__main__":
