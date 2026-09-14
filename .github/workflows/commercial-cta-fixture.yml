@@ -40,4 +40,4 @@ jobs:
         run: python -m unittest -v test_country_cta.py test_au_surveys_cta_gate.py
       - name: Validate AU surveys vertical fixture staging projections and read-model boundary
         working-directory: fixtures/au-surveys
-        run: python -m unittest -v test_shortlist_fixture.py test_staging_data.py test_publication_projection.py test_priority_projection.py test_read_model_contract.py
+        run: python -m unittest -v test_shortlist_fixture.py test_staging_data.py test_publication_projection.py test_priority_projection.py test_read_model_contract.py test_presentation_read_model.py
