@@ -7,41 +7,13 @@
   "production_use": false,
   "contains_tracking_urls": false,
   "records": [
-    {
-      "id": "octopus-group-au",
-      "display_state": "INFORMATIONAL_VERIFIED",
-      "commercial_state": "BLOCKED",
-      "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
-    },
-    {
-      "id": "ipsos-isay-au",
-      "display_state": "INFORMATIONAL_VERIFIED",
-      "commercial_state": "BLOCKED",
-      "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
-    },
-    {
-      "id": "prolific-au",
-      "display_state": "INFORMATIONAL_VERIFIED",
-      "commercial_state": "BLOCKED",
-      "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
-    },
-    {
-      "id": "lifepoints-au",
-      "display_state": "INFORMATIONAL_VERIFIED",
-      "commercial_state": "BLOCKED",
-      "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
-    },
-    {
-      "id": "yougov-au",
-      "display_state": "RESEARCH_REQUIRED",
-      "commercial_state": "BLOCKED",
-      "reason_codes": ["AU_REWARD_DETAIL_INCOMPLETE", "PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
-    },
-    {
-      "id": "toluna-au",
-      "display_state": "RESEARCH_REQUIRED",
-      "commercial_state": "BLOCKED",
-      "reason_codes": ["AU_REWARD_DETAIL_INCOMPLETE", "PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]
-    }
+    {"id": "octopus-group-au", "display_state": "INFORMATIONAL_VERIFIED", "commercial_state": "BLOCKED", "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+    {"id": "ipsos-isay-au", "display_state": "INFORMATIONAL_VERIFIED", "commercial_state": "BLOCKED", "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+    {"id": "prolific-au", "display_state": "INFORMATIONAL_VERIFIED", "commercial_state": "BLOCKED", "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+    {"id": "lifepoints-au", "display_state": "INFORMATIONAL_VERIFIED", "commercial_state": "BLOCKED", "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+    {"id": "opinionworld-au", "display_state": "INFORMATIONAL_VERIFIED", "commercial_state": "BLOCKED", "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+    {"id": "valued-opinions-au", "display_state": "INFORMATIONAL_VERIFIED", "commercial_state": "BLOCKED", "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+    {"id": "yougov-au", "display_state": "RESEARCH_REQUIRED", "commercial_state": "BLOCKED", "reason_codes": ["AU_REWARD_DETAIL_INCOMPLETE", "PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+    {"id": "toluna-au", "display_state": "RESEARCH_REQUIRED", "commercial_state": "BLOCKED", "reason_codes": ["AU_REWARD_DETAIL_INCOMPLETE", "PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]}
   ]
 }
