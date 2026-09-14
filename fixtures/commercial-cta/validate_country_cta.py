@@ -1,0 +1,65 @@
+import json
+import sys
+from pathlib import Path
+
+ALLOWED_COUNTRIES = {"AU", "UK", "US"}
+ALLOWED_CTA_STATES = {"VERIFIED_PUBLISHER", "NON_AFFILIATE_FALLBACK", "UNKNOWN", "STALE"}
+
+
+def fail(message: str):
+    raise SystemExit(f"FAIL: {message}")
+
+
+def validate(path: str):
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    if data.get("fixture") is not True:
+        fail("fixture marker must be true")
+
+    seen = set()
+    for item in data.get("programs", []):
+        pid = item.get("program_id")
+        if not pid or pid in seen:
+            fail("program_id missing or duplicate")
+        seen.add(pid)
+
+        if item.get("country") not in ALLOWED_COUNTRIES:
+            fail(f"{pid}: invalid country")
+        if item.get("cta_state") not in ALLOWED_CTA_STATES:
+            fail(f"{pid}: invalid cta_state")
+
+        relationship = item.get("publisher_relationship")
+        cta_state = item.get("cta_state")
+        source = item.get("publisher_evidence_source")
+        verified_at = item.get("publisher_verified_at")
+        url = item.get("destination_url")
+        freshness = item.get("evidence_freshness")
+
+        if relationship == "VERIFIED_PUBLISHER":
+            if not source or not verified_at:
+                fail(f"{pid}: verified publisher requires source and timestamp")
+            if cta_state != "VERIFIED_PUBLISHER":
+                fail(f"{pid}: verified publisher relationship must resolve to VERIFIED_PUBLISHER")
+            if not isinstance(url, str) or not url.startswith("https://example.invalid/"):
+                fail(f"{pid}: fixture verified CTA must use example.invalid only")
+        else:
+            if cta_state == "VERIFIED_PUBLISHER":
+                fail(f"{pid}: non-verified relationship cannot resolve to publisher CTA")
+            if url:
+                fail(f"{pid}: non-verified relationship cannot contain commercial destination URL")
+
+        if relationship == "CONSUMER_REFERRAL_ONLY" and cta_state != "NON_AFFILIATE_FALLBACK":
+            fail(f"{pid}: consumer referral evidence must remain non-affiliate fallback")
+
+        if freshness in {"UNKNOWN", "STALE"} and cta_state == "VERIFIED_PUBLISHER":
+            fail(f"{pid}: unknown/stale evidence cannot publish verified CTA")
+
+    if set(data.get("countries", [])) != ALLOWED_COUNTRIES:
+        fail("fixture must cover AU, UK and US")
+
+    print(f"PASS: validated {len(seen)} governed CTA fixtures")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        fail("usage: validate_country_cta.py <fixture.json>")
+    validate(sys.argv[1])
