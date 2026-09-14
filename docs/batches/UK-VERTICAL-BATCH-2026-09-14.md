@@ -3,7 +3,7 @@
 **Workstream:** United Kingdom Affiliate Website  
 **Repository:** `darrinbaldwindev/Affiliate-Websites`  
 **Mode:** vertical autonomous execution  
-**Status:** ACTIVE  
+**Status:** COMPLETE — bounded repository batch executed  
 **Rule:** evidence controls completion; research claims are not production truth.
 
 ## Standing trigger
@@ -39,100 +39,120 @@ The UK workstream therefore should not duplicate AU/master architecture. Its hig
 
 Convert the UK opportunity research into an implementation-ready, governance-safe UK vertical package while preserving the master architecture and separating volatile commercial research from production truth.
 
-## Task stack
+## Task results
 
-### B1 — Repo reconciliation
-**Goal:** prove current state before editing.
+### B1 — Repo reconciliation — COMPLETE
 
-Acceptance:
-- inspect repository tree;
-- inspect master README/architecture/data boundary;
-- inspect AU vertical-slice contract as reusable precedent;
-- inspect current UK opportunity ranking;
-- identify stale status statements without treating them as current implementation evidence.
+Verified current repository tree, master README/data boundary, canonical rewards data contract, AU vertical-slice precedent and current UK opportunity research before writing new artifacts.
 
-### B2 — Structured UK research register
-**Goal:** create a machine-readable research-only candidate dataset aligned with the canonical data contract.
+Important reconciliation finding: the repository contains newer commercial-CTA, canonical-data, legal, Level-2 and vertical-slice artifacts that are not fully reflected in older status wording. Work in this batch used the newer repository evidence rather than duplicating those systems.
 
-Acceptance:
-- UK-only records;
-- stable slugs/IDs;
-- category/network/model fields;
-- research status and freshness metadata;
+### B2 — Structured UK research register — COMPLETE
+
+Created:
+
+`docs/data/uk-affiliate-opportunity-research.json`
+
+The register contains UK-only research candidates with stable IDs, categories, networks/commercial models, feed/comparison signals, regulatory-risk classes, research state and freshness state.
+
+Safety boundaries:
+- research-only;
 - no live tracking URLs;
-- no claim that affiliate approval exists;
-- volatile rates treated as evidence snapshots, not production configuration.
+- no claim of programme approval;
+- volatile terms require re-verification;
+- production truth remains behind the canonical data/API workflow.
 
-### B3 — UK commercial scoring matrix
-**Goal:** rank candidates by usefulness, not headline commission.
+### B3 — UK commercial scoring matrix — COMPLETE
 
-Score 0–5 on:
-- revenue potential;
-- purchase/lead intent;
-- AOV/CPA potential;
-- content/search depth;
-- catalogue breadth;
-- feed/API suitability;
-- UK fit;
-- trust;
-- programme stability;
-- restriction/validation risk;
-- regulatory risk;
-- comparison suitability;
-- useful editorial depth.
+Created:
 
-Produce:
+`docs/UK-COMMERCIAL-SCORING-MATRIX-2026-09-14.md`
+
+The matrix separates:
 - launch cohort;
 - expansion cohort;
-- regulated/hold cohort;
-- explicit UNKNOWNs.
+- regulated/hold cohort.
 
-### B4 — UK vertical-slice contract
-**Goal:** define the UK country acceptance path using the reusable master architecture.
+The scores are prioritisation judgements, not measured conversion performance. High commercial value cannot bypass verification or publishability gates.
+
+### B4 — UK vertical-slice contract — COMPLETE
+
+Created:
+
+`docs/vertical-slice/UK-VERTICAL-SLICE-CONTRACT.md`
 
 Target journey:
 
 `Global → UK → Category → Guide/Comparison → Detail → Governed Commercial CTA`
 
-No hard-coded commission, price, tracking URL, cookie duration, approval state or volatile promotion in WordPress templates.
+Recommended first fixture-safe category: technology/appliances, because it exercises comparison/feed/CTA/trust behaviour with less regulatory complexity than insurance/finance.
 
-### B5 — UK publishability gate
-**Goal:** prevent high-paying but unsafe/stale/regulatory-sensitive candidates becoming publishable merely because they monetize well.
+### B5 — UK publishability gate — COMPLETE
 
-Must distinguish:
-- ordinary retail/product affiliate programmes;
-- telecom/broadband;
-- travel;
-- insurance/financial promotions;
-- health-sensitive claims;
-- utilities/home-energy lead generation.
+Created:
 
-Regulated or high-risk categories require a stronger evidence/compliance gate before any commercial CTA can be production-enabled.
+`docs/UK-PUBLISHABILITY-GATE-2026-09-14.md`
 
-### B6 — Implementation mapping
-**Goal:** map UK research to existing master contracts instead of creating a country-specific data silo.
+Defined common publication requirements, freshness classes and six UK risk classes:
 
-Expected boundary:
-- research register = staging evidence;
-- canonical structured data = Supabase/Postgres behind Rewards API;
+1. ordinary retail/product affiliate;
+2. telecom/broadband;
+3. travel;
+4. insurance/financial promotion;
+5. health-sensitive content;
+6. utilities/home-energy lead generation.
+
+Insurance/financial promotion defaults to HOLD until enhanced compliance evidence is satisfied. Broadband must use a separate telecom gate rather than ordinary retail rules.
+
+### B6 — Implementation mapping — COMPLETE
+
+The new artifacts preserve the existing boundary:
+
+- UK research register = staging/research evidence;
+- canonical structured data = PostgreSQL/Supabase behind Rewards API;
 - WordPress = approved presentation data only;
-- affiliate destination = controlled resolver;
+- affiliate destination = shared controlled resolver;
 - AgentOS = research/verification/monitoring/orchestration.
 
-### B7 — Verification and log
-**Goal:** verify repository writes and CI state, then update this batch with results.
+No alternate UK source of truth was created.
 
-Do not claim browser rendering, live programme approval, end-to-end tracking, accessibility, Core Web Vitals or production affiliate resolution without evidence.
+### B7 — Verification and log — COMPLETE WITH EXPLICIT LIMITS
 
-## Execution order
+Verified `main` after writes. The UK publishability-gate commit became current `main` head during verification.
 
-1. B1 repository reconciliation — execute first.
-2. B2 structured UK research register.
-3. B3 commercial scoring matrix.
-4. B4 UK vertical-slice contract.
-5. B5 UK publishability gate.
-6. B6 map outputs to master architecture.
-7. B7 verify files/CI and record results.
+Relevant commits in this batch:
+- `9d24c433d071a43f48de53c987234a0ca7320b44` — batch file created;
+- `20eeccd46aaccac3a823fa51d6da88691b60e5f9` — structured UK research register;
+- `8e694313eca12dda925672258ede3e429aa2514c` — UK commercial scoring matrix;
+- `a613dfe44846cb107896af230a3e95554cc8ae1a` — UK vertical-slice contract;
+- `12a53a13d3e935b58a20d9ec8e42d83d7d5a07ba` — UK publishability gate.
+
+Repository activity also showed concurrent AU vertical-batch work with a successful Theme Validation run on AU pull request #13. That CI success is useful repository-health evidence but is **not** claimed as validation of this UK documentation batch.
+
+## Still OPEN
+
+The following are not claimed complete:
+
+- live UK programme approvals;
+- current production affiliate destinations;
+- current rates/prices/stock/offers;
+- production Rewards API/Supabase integration;
+- UK WordPress/browser rendering;
+- accessibility/Core Web Vitals verification;
+- end-to-end affiliate tracking;
+- regulated-category legal/compliance approval;
+- runtime tests proving stale/unapproved UK destinations fail closed.
+
+## Next vertical batch
+
+On the next `cont` / `continue autonomously`:
+
+1. re-scan repo and concurrent PR/main movement;
+2. inspect existing commercial-CTA fixture implementation in detail;
+3. build a **UK fixture dataset** matching the shared commercial-CTA contract;
+4. add bounded negative tests for UK stale, unapproved, wrong-country and regulated-gate failures without creating a second resolver;
+5. add the first UK country/category fixture shell only if it can reuse the master theme cleanly;
+6. verify CI and record exact evidence.
 
 ## Completion rule
 
