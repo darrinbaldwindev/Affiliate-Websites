@@ -4,6 +4,8 @@ from pathlib import Path
 
 ALLOWED_COUNTRIES = {"AU", "UK", "US"}
 ALLOWED_CTA_STATES = {"VERIFIED_PUBLISHER", "NON_AFFILIATE_FALLBACK", "UNKNOWN", "STALE"}
+ALLOWED_RELATIONSHIPS = {"VERIFIED_PUBLISHER", "CONSUMER_REFERRAL_ONLY", "UNKNOWN"}
+ALLOWED_FRESHNESS = {"CURRENT", "STALE", "UNKNOWN", "FIXTURE"}
 
 
 def fail(message: str):
@@ -26,6 +28,8 @@ def validate(path: str):
             fail(f"{pid}: invalid country")
         if item.get("cta_state") not in ALLOWED_CTA_STATES:
             fail(f"{pid}: invalid cta_state")
+        if not item.get("consumer_reward_evidence"):
+            fail(f"{pid}: consumer reward evidence is required independently of publisher evidence")
 
         relationship = item.get("publisher_relationship")
         cta_state = item.get("cta_state")
@@ -34,9 +38,16 @@ def validate(path: str):
         url = item.get("destination_url")
         freshness = item.get("evidence_freshness")
 
+        if relationship not in ALLOWED_RELATIONSHIPS:
+            fail(f"{pid}: invalid publisher_relationship")
+        if freshness not in ALLOWED_FRESHNESS:
+            fail(f"{pid}: invalid evidence_freshness")
+
         if relationship == "VERIFIED_PUBLISHER":
             if not source or not verified_at:
                 fail(f"{pid}: verified publisher requires source and timestamp")
+            if freshness not in {"CURRENT", "FIXTURE"}:
+                fail(f"{pid}: verified publisher evidence must be current")
             if cta_state != "VERIFIED_PUBLISHER":
                 fail(f"{pid}: verified publisher relationship must resolve to VERIFIED_PUBLISHER")
             if not isinstance(url, str) or not url.startswith("https://example.invalid/"):
@@ -44,6 +55,8 @@ def validate(path: str):
         else:
             if cta_state == "VERIFIED_PUBLISHER":
                 fail(f"{pid}: non-verified relationship cannot resolve to publisher CTA")
+            if source or verified_at:
+                fail(f"{pid}: non-verified relationship cannot carry publisher verification evidence")
             if url:
                 fail(f"{pid}: non-verified relationship cannot contain commercial destination URL")
 
