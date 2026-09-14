@@ -1,0 +1,66 @@
+{
+  "schema": "affiliate.au.surveys.read-model-contract.v1",
+  "status": "NON_AUTHORITATIVE_PRESENTATION_CONTRACT",
+  "country": "AU",
+  "category": "surveys-research",
+  "authoritative_sources": {
+    "consumer_research": "canonical Rewards data layer",
+    "publication_state": "governed publication projection derived from canonical data",
+    "commercial_action": "canonical affiliate resolver only"
+  },
+  "presentation_boundary": {
+    "wordpress_is_authority": false,
+    "may_store_raw_tracking_urls": false,
+    "may_store_raw_affiliate_destinations": false,
+    "may_rank_by_publisher_economics": false,
+    "may_override_lifecycle_state": false,
+    "may_override_freshness_state": false,
+    "may_override_commercial_state": false
+  },
+  "category_list_record": {
+    "required": [
+      "id",
+      "name",
+      "display_state",
+      "tier",
+      "rank",
+      "participation_summary",
+      "reward_summary",
+      "freshness_state",
+      "review_due_at",
+      "commercial_state",
+      "commercial_action"
+    ],
+    "commercial_action": {
+      "type": ["null", "object"],
+      "default": null,
+      "rule": "Must remain null unless supplied by the canonical resolver after all commercial gates pass."
+    }
+  },
+  "detail_record": {
+    "required": [
+      "id",
+      "name",
+      "display_state",
+      "lifecycle_state",
+      "participation_summary",
+      "reward_summary",
+      "evidence_state",
+      "freshness_state",
+      "last_verified_at",
+      "review_due_at",
+      "commercial_state",
+      "blocking_reasons",
+      "commercial_action"
+    ],
+    "commercial_action": {
+      "type": ["null", "object"],
+      "default": null,
+      "allowed_fields_if_resolved": ["label", "resolver_token"],
+      "forbidden_fields": ["raw_url", "tracking_url", "affiliate_url", "commission_rate"]
+    }
+  },
+  "allowed_display_states": ["INFORMATIONAL_VERIFIED", "RESEARCH_REQUIRED"],
+  "allowed_commercial_states": ["BLOCKED", "RESOLVED_BY_CANONICAL_GATE"],
+  "current_real_dataset_rule": "All current AU survey records must remain BLOCKED until authenticated publisher approval and an approved destination are established outside WordPress editorial content."
+}
