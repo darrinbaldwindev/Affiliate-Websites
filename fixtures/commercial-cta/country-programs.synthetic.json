@@ -6,34 +6,43 @@
       "program_id": "AU-SYNTH-001",
       "country": "AU",
       "consumer_reward_evidence": "FIXTURE",
+      "country_eligibility_evidence": "FIXTURE",
       "publisher_relationship": "UNKNOWN",
       "publisher_evidence_source": null,
       "publisher_verified_at": null,
+      "publisher_evidence_conflict": false,
       "cta_state": "NON_AFFILIATE_FALLBACK",
       "destination_url": null,
-      "evidence_freshness": "FIXTURE"
+      "evidence_freshness": "FIXTURE",
+      "disclosure_present": true
     },
     {
       "program_id": "UK-SYNTH-001",
       "country": "UK",
       "consumer_reward_evidence": "FIXTURE",
+      "country_eligibility_evidence": "FIXTURE",
       "publisher_relationship": "VERIFIED_PUBLISHER",
       "publisher_evidence_source": "fixture://publisher-program",
       "publisher_verified_at": "2026-09-14T00:00:00Z",
+      "publisher_evidence_conflict": false,
       "cta_state": "VERIFIED_PUBLISHER",
       "destination_url": "https://example.invalid/fixture-affiliate",
-      "evidence_freshness": "FIXTURE"
+      "evidence_freshness": "FIXTURE",
+      "disclosure_present": true
     },
     {
       "program_id": "US-SYNTH-001",
       "country": "US",
       "consumer_reward_evidence": "FIXTURE",
+      "country_eligibility_evidence": "FIXTURE",
       "publisher_relationship": "CONSUMER_REFERRAL_ONLY",
       "publisher_evidence_source": null,
       "publisher_verified_at": null,
+      "publisher_evidence_conflict": false,
       "cta_state": "NON_AFFILIATE_FALLBACK",
       "destination_url": null,
-      "evidence_freshness": "FIXTURE"
+      "evidence_freshness": "FIXTURE",
+      "disclosure_present": true
     }
   ]
 }
