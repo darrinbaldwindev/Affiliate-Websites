@@ -25,54 +25,65 @@ A public website, referral link, affiliate-network listing, or visible reward is
 ## Batch execution state
 
 ### B1 — Route and presentation shell — IMPLEMENTED
-
 Created the AU Surveys category page template using the existing master information architecture. It communicates suitability, comparison criteria, limitations and verification without fabricated earnings or publisher claims.
 
 ### B2 — Comparison-ready fixture — IMPLEMENTED
-
 Created an explicitly synthetic AU shortlist fixture. It contains no live rate, tracking URL or invented real-world publisher relationship.
 
 ### B3 — Buying-guide/comparison path — IMPLEMENTED AT SHELL/FIXTURE LEVEL
-
 The AU shell covers eligibility, reward/payment type, participation model, qualification variability, cashout, trust/evidence, freshness and publisher-relationship state. Runtime data binding remains outside this batch.
 
 ### B4 — Detail path — IMPLEMENTED AT PRESENTATION BOUNDARY
-
 Created `page-au-earn-surveys-detail.html` as a representative governed-data detail shell. WordPress runtime rendering/data binding is not claimed.
 
 ### B5 — Commercial CTA assurance — IMPLEMENTED / CI-GATED
-
 Adversarial tests reuse the existing `validate_country_cta.py` authority and cover verified synthetic publisher state, conflicts, stale evidence, missing disclosure, unknown publisher state retaining a destination, and consumer-referral-only misuse. Unsafe variants fail closed; only the synthetic `example.invalid` fixture can resolve a synthetic destination.
 
 ### B6 — Current primary-source staging — IMPLEMENTED / NON-COMMERCIAL
+`data/au/surveys.staging.json` holds real research records only. All publisher relationships remain UNKNOWN, every tracking destination is null, and every commercial CTA is blocked.
 
-`data/au/surveys.staging.json` holds real research records only. Current staged set: Octopus Group, Ipsos iSay, Prolific, LifePoints, YouGov and Toluna. All publisher relationships remain UNKNOWN, every tracking destination is null, and every commercial CTA is blocked.
+### B7 — Machine-readable lifecycle and freshness — IMPLEMENTED / CI-GATED
+Staging records carry lifecycle state, publication gate, machine-readable blocking reasons, and a staging-only 30-day freshness policy. Tests enforce freshness consistency and an expired-evidence negative case.
 
-### B7 — Machine-readable lifecycle and freshness projection — IMPLEMENTED / CI PENDING
+### B8 — Additional AU candidate verification — IMPLEMENTED IN STAGING
+Fresh first-party evidence was rechecked on 2026-09-14 and two further AU programs were staged:
 
-Added canonical lifecycle projection and explicit freshness metadata to staging records:
+- OpinionWorld Australia — AU online surveys/research; points redeemable for gift cards and PayPal credit.
+- Valued Opinions Australia — AU paid surveys/product research; reward credit redeemable for Australian retailer vouchers.
 
-- strong AU primary evidence → `lifecycle_state: VERIFIED`;
-- partial AU evidence → `lifecycle_state: RESEARCHED`;
-- verified records stop at `VERIFIED_NOT_PUBLISHED`, not `PUBLISHABLE`;
-- all commercial CTAs remain `BLOCKED` with machine-readable reasons;
-- staging-only 30-day review metadata is explicit and labelled as a conservative working policy, not production policy;
-- tests enforce lifecycle/freshness consistency and simulate expired evidence failing the current-state check.
+Both are consumer-evidence VERIFIED but remain `VERIFIED_NOT_PUBLISHED`. Publisher relationship stays UNKNOWN, tracking destination is null and commercial CTA remains BLOCKED.
 
-### B8 — Additional AU candidate verification — RESEARCHED, STAGING ADDITION PENDING
+### B9 — WordPress-facing publication projection — IMPLEMENTED / CI PENDING
+Added `data/au/surveys.publication-projection.json` as a derived, non-production view of the staging dataset. It contains no tracking/destination URLs and maps source state into only:
 
-Fresh first-party AU pages verified two further candidates suitable for staged consumer records:
+- `INFORMATIONAL_VERIFIED` for verified consumer records not yet published;
+- `RESEARCH_REQUIRED` for partial/researched records;
+- `BLOCKED` for every commercial state in the current real dataset.
 
-- OpinionWorld Australia — AU paid surveys; rewards points redeemable for gift cards and PayPal credit;
-- Valued Opinions Australia — AU paid surveys/product research; credit redeemable for Australian-brand vouchers.
+`fixtures/au-surveys/test_publication_projection.py` verifies one-to-one record coverage, source-gate consistency, blocking-reason parity and URL absence. The existing Commercial CTA workflow now runs these projection tests.
 
-Neither public site establishes this project's publisher approval. Any staged records must therefore remain commercial-CTA blocked with no tracking destination.
+## Current staged set
+
+Consumer-evidence VERIFIED / informational-only:
+- Octopus Group
+- Ipsos iSay
+- Prolific
+- LifePoints
+- OpinionWorld Australia
+- Valued Opinions Australia
+
+RESEARCH_REQUIRED:
+- YouGov
+- Toluna
+
+No real staged record is commercially eligible.
 
 ## Verification evidence
 
 - Head `bd2f510139173ca9fed446431fffe48744c4ceb0`: Theme Validation SUCCESS; Commercial CTA fixture validation SUCCESS.
 - Head `07f76d2ff93d308b5d0cb0fe583d5049cde780b5`: Theme Validation SUCCESS; Commercial CTA fixture validation SUCCESS.
-- Publication/freshness commits `dd6e2b6b692c9a9b53e62b2e4cf6074c734c087a` and `ac3da8367944362c11bacd4141abd0c7f03adcdd` require fresh head-associated CI evidence before being called verified.
+- Head `dd6e2b6b692c9a9b53e62b2e4cf6074c734c087a`: Commercial CTA fixture validation SUCCESS; Theme Validation was still in progress when rechecked.
+- Current head after projection/candidate staging must obtain fresh exact-head CI before the new work is called verified.
 
 ## Current blockers
 
@@ -85,16 +96,15 @@ Neither public site establishes this project's publisher approval. Any staged re
 
 ## Smallest next safe actions
 
-1. Inspect CI for the lifecycle/freshness head.
-2. Stage OpinionWorld Australia and Valued Opinions Australia into the existing single AU surveys staging dataset with VERIFIED consumer evidence, UNKNOWN publisher relationship and BLOCKED CTA.
-3. Add a derived informational comparison projection that excludes `RESEARCHED`/partial records from best-of claims without creating another source of truth.
-4. Continue current first-party verification of remaining reputable AU candidates.
+1. Inspect exact-head CI for the projection and two newly staged records.
+2. Build a derived informational comparison projection that excludes `RESEARCH_REQUIRED` records from best-of/ranking claims and never ranks by publisher economics.
+3. Continue first-party verification of reputable AU candidates only where evidence materially improves consumer choice.
+4. Prepare the WordPress/API binding contract for reading the publication projection without turning the projection into a new canonical store.
 5. Keep commercial activation blocked pending authenticated publisher approval and account-specific terms.
 
 ## Standing `cont` protocol
 
 For each future `cont` / `continue autonomously`:
-
 1. rescan `main`, this branch, open PRs and newest commits;
 2. reconcile the batch against any newer canonical contracts/tests;
 3. execute the highest-value incomplete item above;
