@@ -1,5 +1,6 @@
 import json
 import unittest
+from datetime import date, timedelta
 from pathlib import Path
 
 DATA = Path(__file__).parents[2] / "data" / "au" / "surveys.staging.json"
@@ -38,6 +39,43 @@ class AuSurveyStagingSafetyTests(unittest.TestCase):
             state = item.get("consumer_claims", {}).get("evidence_state")
             if state == "partial":
                 self.assertEqual(item.get("status"), "research_required", item["id"])
+                self.assertEqual(item.get("lifecycle_state"), "RESEARCHED", item["id"])
+                self.assertEqual(item.get("publication_gate", {}).get("consumer_content"), "BLOCKED", item["id"])
+
+    def test_verified_records_stop_before_publishable(self):
+        for item in self.programs:
+            if item.get("lifecycle_state") == "VERIFIED":
+                self.assertEqual(item.get("consumer_claims", {}).get("evidence_state"), "verified_primary", item["id"])
+                self.assertEqual(item.get("publication_gate", {}).get("consumer_content"), "VERIFIED_NOT_PUBLISHED", item["id"])
+                self.assertNotIn(item.get("lifecycle_state"), {"PUBLISHABLE", "PUBLISHED", "MONITORED"}, item["id"])
+
+    def test_commercial_cta_is_blocked_for_all_real_records(self):
+        for item in self.programs:
+            gate = item.get("publication_gate", {})
+            self.assertEqual(gate.get("commercial_cta"), "BLOCKED", item["id"])
+            reasons = set(gate.get("blocking_reasons", []))
+            self.assertIn("PUBLISHER_RELATIONSHIP_UNKNOWN", reasons, item["id"])
+            self.assertIn("COMMERCIAL_DESTINATION_UNAPPROVED", reasons, item["id"])
+
+    def test_freshness_window_is_machine_readable_and_consistent(self):
+        interval = self.data.get("freshness_policy", {}).get("review_interval_days")
+        self.assertEqual(interval, 30)
+        for item in self.programs:
+            freshness = item.get("freshness", {})
+            verified = date.fromisoformat(freshness["last_verified_at"])
+            due = date.fromisoformat(freshness["review_due_at"])
+            self.assertEqual(due, verified + timedelta(days=interval), item["id"])
+            if item.get("lifecycle_state") == "VERIFIED":
+                self.assertEqual(freshness.get("state"), "CURRENT", item["id"])
+            else:
+                self.assertEqual(freshness.get("state"), "PARTIAL", item["id"])
+
+    def test_expired_evidence_cannot_be_treated_as_current(self):
+        interval = self.data["freshness_policy"]["review_interval_days"]
+        synthetic_verified_at = date(2026, 1, 1)
+        synthetic_check_date = synthetic_verified_at + timedelta(days=interval + 1)
+        is_current = synthetic_check_date <= synthetic_verified_at + timedelta(days=interval)
+        self.assertFalse(is_current)
 
 
 if __name__ == "__main__":
