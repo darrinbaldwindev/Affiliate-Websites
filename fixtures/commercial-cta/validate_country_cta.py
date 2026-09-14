@@ -1,6 +1,7 @@
 import json
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ALLOWED_COUNTRIES = {"AU", "UK", "US"}
 ALLOWED_CTA_STATES = {"VERIFIED_PUBLISHER", "NON_AFFILIATE_FALLBACK", "UNKNOWN", "STALE"}
@@ -12,6 +13,28 @@ ENHANCED_GATE_RISKS = {"REGULATED_FINANCE", "HEALTH_SENSITIVE", "UTILITIES_HOME_
 
 def fail(message: str):
     raise SystemExit(f"FAIL: {message}")
+
+
+def validate_fixture_destination(pid: str, url: str, seen_destinations: set[str]):
+    if not isinstance(url, str):
+        fail(f"{pid}: verified fixture CTA requires destination URL")
+    parsed = urlsplit(url)
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname != "example.invalid"
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.port is not None
+        or not parsed.path
+        or parsed.path == "/"
+        or parsed.query
+        or parsed.fragment
+    ):
+        fail(f"{pid}: fixture verified CTA must use one canonical example.invalid path with no credentials, port, query or fragment")
+    canonical = f"https://example.invalid{parsed.path}"
+    if canonical in seen_destinations:
+        fail(f"{pid}: duplicate verified synthetic destination")
+    seen_destinations.add(canonical)
 
 
 def validate(path: str):
@@ -32,17 +55,20 @@ def validate(path: str):
         fail("fixture must contain at least one program per country")
 
     seen = set()
+    seen_destinations = set()
     represented_countries = set()
     audit_events = []
     for item in programs:
         pid = item.get("program_id")
-        if not pid or pid in seen:
+        if not isinstance(pid, str) or not pid.strip() or pid in seen:
             fail("program_id missing or duplicate")
         seen.add(pid)
 
         country = item.get("country")
         if country not in ALLOWED_COUNTRIES:
             fail(f"{pid}: invalid country")
+        if not pid.startswith(f"{country}-"):
+            fail(f"{pid}: program_id must be bound to declared country")
         represented_countries.add(country)
 
         if item.get("cta_state") not in ALLOWED_CTA_STATES:
@@ -81,8 +107,7 @@ def validate(path: str):
                 fail(f"{pid}: verified publisher evidence must be current")
             if cta_state != "VERIFIED_PUBLISHER":
                 fail(f"{pid}: verified publisher relationship must resolve to VERIFIED_PUBLISHER")
-            if not isinstance(url, str) or not url.startswith("https://example.invalid/"):
-                fail(f"{pid}: fixture verified CTA must use example.invalid only")
+            validate_fixture_destination(pid, url, seen_destinations)
             if destination_country != country:
                 fail(f"{pid}: verified CTA destination_country must match program country")
             if risk_class in ENHANCED_GATE_RISKS and enhanced_gate_passed is not True:
@@ -113,6 +138,7 @@ def validate(path: str):
     if represented_countries != ALLOWED_COUNTRIES:
         fail("fixture programs must represent AU, UK and US")
 
+    audit_events.sort(key=lambda event: event["program_id"])
     print(json.dumps({"status": "PASS", "validated": len(seen), "audit_events": audit_events}, sort_keys=True))
 
 
