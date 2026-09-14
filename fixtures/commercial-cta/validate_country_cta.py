@@ -6,6 +6,8 @@ ALLOWED_COUNTRIES = {"AU", "UK", "US"}
 ALLOWED_CTA_STATES = {"VERIFIED_PUBLISHER", "NON_AFFILIATE_FALLBACK", "UNKNOWN", "STALE"}
 ALLOWED_RELATIONSHIPS = {"VERIFIED_PUBLISHER", "CONSUMER_REFERRAL_ONLY", "UNKNOWN"}
 ALLOWED_FRESHNESS = {"CURRENT", "STALE", "UNKNOWN", "FIXTURE"}
+ALLOWED_RISK_CLASSES = {"STANDARD", "TELECOM", "TRAVEL", "REGULATED_FINANCE", "HEALTH_SENSITIVE", "UTILITIES_HOME_ENERGY"}
+ENHANCED_GATE_RISKS = {"REGULATED_FINANCE", "HEALTH_SENSITIVE", "UTILITIES_HOME_ENERGY"}
 
 
 def fail(message: str):
@@ -57,13 +59,18 @@ def validate(path: str):
         source = item.get("publisher_evidence_source")
         verified_at = item.get("publisher_verified_at")
         url = item.get("destination_url")
+        destination_country = item.get("destination_country")
         freshness = item.get("evidence_freshness")
         conflict = item.get("publisher_evidence_conflict", False)
+        risk_class = item.get("risk_class", "STANDARD")
+        enhanced_gate_passed = item.get("enhanced_compliance_gate_passed", False)
 
         if relationship not in ALLOWED_RELATIONSHIPS:
             fail(f"{pid}: invalid publisher_relationship")
         if freshness not in ALLOWED_FRESHNESS:
             fail(f"{pid}: invalid evidence_freshness")
+        if risk_class not in ALLOWED_RISK_CLASSES:
+            fail(f"{pid}: invalid risk_class")
         if conflict and cta_state == "VERIFIED_PUBLISHER":
             fail(f"{pid}: conflicting publisher evidence blocks verified CTA")
 
@@ -76,6 +83,10 @@ def validate(path: str):
                 fail(f"{pid}: verified publisher relationship must resolve to VERIFIED_PUBLISHER")
             if not isinstance(url, str) or not url.startswith("https://example.invalid/"):
                 fail(f"{pid}: fixture verified CTA must use example.invalid only")
+            if destination_country != country:
+                fail(f"{pid}: verified CTA destination_country must match program country")
+            if risk_class in ENHANCED_GATE_RISKS and enhanced_gate_passed is not True:
+                fail(f"{pid}: enhanced compliance gate required for {risk_class}")
         else:
             if cta_state == "VERIFIED_PUBLISHER":
                 fail(f"{pid}: non-verified relationship cannot resolve to publisher CTA")
@@ -83,6 +94,8 @@ def validate(path: str):
                 fail(f"{pid}: non-verified relationship cannot carry publisher verification evidence")
             if url:
                 fail(f"{pid}: non-verified relationship cannot contain commercial destination URL")
+            if destination_country is not None:
+                fail(f"{pid}: non-verified relationship cannot carry destination_country")
 
         if relationship == "CONSUMER_REFERRAL_ONLY" and cta_state != "NON_AFFILIATE_FALLBACK":
             fail(f"{pid}: consumer referral evidence must remain non-affiliate fallback")
