@@ -75,6 +75,23 @@
       ]
     },
     {
+      "id": "pureprofile-au",
+      "name": "Pureprofile",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Paid surveys and related profile-matched activities", "reward_summary": "Cash rewards with redemption options that include bank account, gift cards and online payments; current AU/NZ referral terms are also publicly documented", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [
+        {"source": "https://join.pureprofile.com/get-paid/", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Paid surveys and cash rewards with bank-account redemption", "verification_status": "verified"},
+        {"source": "https://pureprofile.com/bring-a-buddy/", "source_type": "primary", "verified_at": "2026-09-14", "claim": "AU/NZ consumer referral rewards and eligibility terms", "verification_status": "verified"}
+      ]
+    },
+    {
       "id": "opinionworld-au",
       "name": "OpinionWorld Australia",
       "type": "consumer_reward_program",
@@ -109,6 +126,23 @@
       ]
     },
     {
+      "id": "toluna-au",
+      "name": "Toluna Influencers",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Australian survey and research community", "reward_summary": "Current Australian registration material shows rewards including PayPal, Amazon Australia and Coles", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [
+        {"source": "https://www.toluna.com/en-AU/registration", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Australian registration page displays PayPal, Amazon Australia and Coles among rewards", "verification_status": "verified"},
+        {"source": "https://www.toluna.com/pl/privacyapac", "source_type": "primary", "verified_at": "2026-09-14", "claim": "APAC membership terms describe Toluna points, rewards and voucher/coupon redemption", "verification_status": "verified"}
+      ]
+    },
+    {
       "id": "yougov-au",
       "name": "YouGov",
       "type": "consumer_reward_program",
@@ -118,23 +152,12 @@
       "lifecycle_state": "RESEARCHED",
       "freshness": {"state": "PARTIAL", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
       "publication_gate": {"consumer_content": "BLOCKED", "commercial_cta": "BLOCKED", "blocking_reasons": ["AU_REWARD_DETAIL_INCOMPLETE", "PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
-      "consumer_claims": {"participation": "Survey panel and data-sharing activities", "reward_summary": "Points-based reward model verified globally; AU-specific reward catalogue requires direct country verification before publication", "evidence_state": "partial"},
+      "consumer_claims": {"participation": "Survey panel and data-sharing activities", "reward_summary": "YouGov confirms Australia is an operated panel market and confirms its points/rewards model globally, but an AU-specific member reward catalogue is still required before publication", "evidence_state": "partial"},
       "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
-      "evidence": [{"source": "https://yougov.com/about/panel", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Panel members receive points for surveys and other data-sharing activity", "verification_status": "verified"}]
-    },
-    {
-      "id": "toluna-au",
-      "name": "Toluna",
-      "type": "consumer_reward_program",
-      "countries": ["AU"],
-      "categories": ["surveys-research"],
-      "status": "research_required",
-      "lifecycle_state": "RESEARCHED",
-      "freshness": {"state": "PARTIAL", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
-      "publication_gate": {"consumer_content": "BLOCKED", "commercial_cta": "BLOCKED", "blocking_reasons": ["AU_REWARD_DETAIL_INCOMPLETE", "PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
-      "consumer_claims": {"participation": "Survey and research community", "reward_summary": "Points-based rewards verified on current Toluna material; AU-specific catalogue requires direct country verification before publication", "evidence_state": "partial"},
-      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
-      "evidence": [{"source": "https://www.toluna.com/cs/rewards-landing-page", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Survey points and reward catalogue model", "verification_status": "verified"}]
+      "evidence": [
+        {"source": "https://yougov.com/about/panel", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Panel members receive points for surveys and other data-sharing activity", "verification_status": "verified"},
+        {"source": "https://yougov.com/business/panel", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Australia is listed among markets where YouGov operates panels", "verification_status": "verified"}
+      ]
     }
   ]
 }
