@@ -9,6 +9,7 @@ on:
       - 'data/au/surveys.staging.json'
       - 'data/au/surveys.publication-projection.json'
       - 'data/au/surveys.priority-projection.json'
+      - 'data/au/surveys.read-model-contract.json'
       - '.github/workflows/commercial-cta-fixture.yml'
   pull_request:
     paths:
@@ -17,6 +18,7 @@ on:
       - 'data/au/surveys.staging.json'
       - 'data/au/surveys.publication-projection.json'
       - 'data/au/surveys.priority-projection.json'
+      - 'data/au/surveys.read-model-contract.json'
       - '.github/workflows/commercial-cta-fixture.yml'
   workflow_dispatch:
 
@@ -36,6 +38,6 @@ jobs:
       - name: Run country and AU survey CTA negative cases
         working-directory: fixtures/commercial-cta
         run: python -m unittest -v test_country_cta.py test_au_surveys_cta_gate.py
-      - name: Validate AU surveys vertical fixture staging and projections
+      - name: Validate AU surveys vertical fixture staging projections and read-model boundary
         working-directory: fixtures/au-surveys
-        run: python -m unittest -v test_shortlist_fixture.py test_staging_data.py test_publication_projection.py test_priority_projection.py
+        run: python -m unittest -v test_shortlist_fixture.py test_staging_data.py test_publication_projection.py test_priority_projection.py test_read_model_contract.py
