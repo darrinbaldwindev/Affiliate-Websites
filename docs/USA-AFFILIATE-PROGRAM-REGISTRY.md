@@ -2,7 +2,7 @@
 
 **Workstream:** USA Affiliate Website  
 **Status:** RESEARCHED / verification in progress  
-**Observed:** 2026-09-03  
+**Observed:** 2026-09-14  
 **Purpose:** Maintain a concise, evidence-backed launch registry. This document is not permission to publish every listed program.
 
 ## Ranking rule
@@ -15,6 +15,8 @@ Priority is based on consumer utility, evidence/trust, monetisation potential, U
 |---|---|---|---|---|---|
 | Freecash | Rewards/GPT, games, surveys, apps/offers | Publisher affiliate via Impact | **$3–$10 CPA** for simple email registration is currently advertised; custom CPA may apply | VERIFIED | **A+** |
 | User Interviews | Paid research, interviews, focus groups | Participant affiliate + researcher affiliate | Participant affiliate **$15–$30** per qualifying participant; researcher affiliate **$100** per qualified discovery call | VERIFIED | **A+** |
+| SurveyRewards US | Surveys | Publisher affiliate via Awin | **$0.75 per valid completed survey**, first 20 per unique user, up to **$15** per referred user | VERIFIED | **A** |
+| QuickRewards | Surveys, videos, games, shopping | Publisher affiliate via Awin | **$1** after registration + at least **$0.25 earned**; **30-day attribution** | VERIFIED | **A/B** |
 | Survey Junkie | Surveys / research | Publisher affiliate | Exact payout **UNKNOWN** | VERIFIED | **A** |
 | UserTesting | UX / website / app testing | Affiliate relationship; exact publisher economics **UNKNOWN** | Participant rewards vary by test; exact publisher payout **UNKNOWN** | VERIFIED | **A** |
 | Respondent | Paid research, professional/B2B studies | Participant referral verified; publisher affiliate **UNKNOWN** | Referral economics require reconciliation; do not publish a single amount yet | Strong US evidence | **A** |
@@ -34,57 +36,131 @@ Priority is based on consumer utility, evidence/trust, monetisation potential, U
 | Fieldwork | Focus groups, product trials, interviews | Consumer opportunity verified; publisher economics UNKNOWN | B |
 | Toluna / ThinkAction | Survey/panel recruitment | Affiliate-network opportunity identified; current economics need fresh verification | B / verify |
 
+## Current CTA-governance interpretation
+
+Current master CTA governance distinguishes `VERIFIED_PUBLISHER`, `CONSUMER_REFERRAL_ONLY`, and `UNKNOWN`. USA records should therefore treat publisher verification as an executable CTA gate rather than merely descriptive metadata.
+
+For any program intended to resolve to a monetised CTA, require current publisher evidence, eligibility evidence, disclosure, freshness, conflict status, and a separately approved destination. Consumer-referral-only or unknown publisher relationships must remain non-affiliate fallbacks.
+
 ## Current evidence — highest-value records
 
 ### Freecash
 
-Freecash's current partner page says publishers can work through Impact and advertises a competitive **$3–$10 CPA for simple email registration**, with no purchase required. It also says high-volume partners may receive custom CPA arrangements. This is a first-party commercial claim and should be stored with its observation date. citeturn0search3
+Current first-party material continues to support a publisher partner program through Impact and advertises **$3–$10 CPA for simple email registration**, with no purchase required. Custom CPA deals may apply after onboarding.
 
-Freecash's current partner advertising policy says the platform includes games, surveys, app testing and offers and that users can withdraw through PayPal, crypto, gift cards and bank transfer. citeturn0search6
+Sources:
+- https://freecash.com/academy/en/discover/partner/become-a-partner
+- https://freecash.com/en/policies/partner-advertiser-policy
 
-Its current US participant-referral terms identify the United States as eligible. A current support page lists the US referral amounts as $2.50 after the first qualifying activity and $10 after withdrawal, while noting that the structure may change. These are participant referral rewards, not publisher CPA. citeturn4search9turn4search15
+Current status:
+- publisher relationship: VERIFIED_PUBLISHER
+- commercial terms: CURRENT public first-party claim
+- destination: not yet approved/configured in repo evidence reviewed
+- CTA readiness: BLOCKED pending controlled destination
 
 ### User Interviews
 
-The current participant affiliate page states that an affiliate referring a new participant who completes a study earns at least **$15**, currently up to **$30** for high-value participants, with an additional bonus for more than 100 participants per month. citeturn4search0
+The current researcher affiliate page continues to state **$100 per qualified discovery call**. The current participant affiliate page states at least **$15**, currently up to **$30**, for a newly referred participant who completes a study, with a volume bonus above 100 qualifying participants/month.
 
-The current researcher affiliate page states that a publisher earns **$100 per qualified discovery call**. It specifically targets professionals conducting user research, including product managers, UX/UI designers and user researchers. citeturn0search0
+Sources:
+- https://www.userinterviews.com/research-affiliates
+- https://www.userinterviews.com/user-interviews-affiliates
 
-Current study pages also demonstrate materially higher consumer incentives than ordinary surveys, including $225–$250 Visa incentives for qualifying one-hour shop-along studies. These are individual study examples, not a guaranteed earning rate. citeturn4search13turn4search14
+Current participant guidance also says participation is selective and it is typical to be approved for only 1–2 studies per year. This reinforces the editorial rule that paid research is not guaranteed income.
+
+Source:
+- https://support.userinterviews.com/hc/en-us/articles/51535829031571-Create-a-participant-account
+
+Current status:
+- researcher affiliate: VERIFIED_PUBLISHER / B2B
+- participant affiliate: VERIFIED publisher relationship, separate event/audience
+- destination: not yet approved/configured in repo evidence reviewed
+- CTA readiness: BLOCKED pending controlled relationship-specific destination
+
+### SurveyRewards US
+
+Current Awin program terms state:
+- **$0.75** per valid completed survey;
+- commissions on the first 20 completed surveys per unique user;
+- maximum potential **$15 per referred user**;
+- new users only;
+- no VPN/proxy/bot traffic;
+- incentivized traffic prohibited;
+- email, social, content/blog and general web traffic allowed;
+- PPC requires explicit written approval;
+- brand bidding prohibited;
+- false earnings claims prohibited.
+
+Source:
+- https://ui.awin.com/merchant-profile-terms/104951
+
+Current status:
+- publisher relationship: VERIFIED_PUBLISHER
+- qualification event: completed survey
+- traffic restrictions: material
+- destination: not yet approved/configured in repo evidence reviewed
+- CTA readiness: BLOCKED pending controlled destination
+
+### QuickRewards
+
+Current Awin profile states **$1** after the visitor registers and earns at least **$0.25**, with a **30-day attribution period**. Higher rates may be available for high-volume affiliates.
+
+Source:
+- https://ui.awin.com/merchant-profile/87781
+
+Current status:
+- publisher relationship: VERIFIED_PUBLISHER
+- qualification event: registration + $0.25 earned
+- attribution: 30 days
+- destination: not yet approved/configured in repo evidence reviewed
+- CTA readiness: BLOCKED pending controlled destination
 
 ### Survey Junkie
 
-The current affiliate page explicitly invites publishers and says affiliates earn commission for driving traffic, with real-time reporting and affiliate support. The exact commission is not publicly stated on the page, so it remains **UNKNOWN**. citeturn0search16
+Current first-party partnerships material continues to invite affiliates and says affiliates earn commission for driving traffic. A live publisher application also exists.
+
+Sources:
+- https://www.surveyjunkie.com/partnerships
+- https://affiliates.surveyjunkie.com/Account/Application
+- https://affiliateterms.surveyjunkie.com/
+
+Exact current publisher payout remains **UNKNOWN**.
+
+Survey Junkie's current Surf to Earn option can collect browsing-related activity such as searches, websites visited, apps used, shopping activity and ads viewed after opt-in. Treat this as higher privacy/data-sensitivity than ordinary survey participation.
+
+Source:
+- https://www.surveyjunkie.com/pulse-program
 
 ### UserTesting
 
-Current first-party participant material confirms paid testing, variable test rewards, PayPal payment and a participant application/practice-test process. citeturn3search6turn3search11
-
-A current UserTesting affiliates page exists, but the available public material does not establish a current publisher payout. Therefore `publisher_payout=UNKNOWN`. citeturn3search0
+Current first-party participant material confirms paid testing, variable test rewards, PayPal payment and a participant application/practice-test process. A current affiliates page exists, but current public publisher payout remains UNKNOWN.
 
 ### Respondent
 
-Current Respondent material says participants apply through unpaid screeners, researchers select participants, and payments are processed after attendance/completion through Tremendous. citeturn0search20turn0search1
-
-Respondent's current panel page reports **1.8M US participants** and **$35M US incentives paid**. These are company-reported platform figures and must be labelled as such, not treated as independently audited statistics. citeturn0search7
-
-Respondent referral documentation has produced conflicting first-party reward figures in earlier research. Until reconciled, the registry must not publish a single referral amount as current fact.
+Current Respondent material supports paid research opportunities and participant referrals. Referral documentation has produced conflicting first-party reward figures; publish no single reward amount until reconciled. Publisher affiliate economics remain UNKNOWN.
 
 ### Ipsos iSay
 
-Current first-party partner material says affiliates earn commissions for recruiting people to the Ipsos iSay panel and that the program uses Impact Radius. The exact commission is not publicly disclosed. citeturn4search1
-
-Current US FAQ material says Ipsos iSay is free to join and take surveys and explicitly warns against promises of large earnings. It also explains that survey qualification varies by participant profile. citeturn1search3
+Current consumer operation in the US is active. Previous first-party partner research supports affiliate recruitment through Impact Radius, but exact current public publisher commission remains UNKNOWN and needs fresh direct verification before monetised CTA use.
 
 ### Branded Surveys
 
-Current first-party affiliate terms establish a publisher referral program. Visitors have 30 days after the affiliate click to complete registration; a subsequent referral/source-coded link can overwrite attribution; only first-time registrations qualify; commission is defined by the affiliate's insertion order. citeturn2search0
+Current first-party affiliate terms previously established registration-based affiliate attribution and qualification rules. Exact current commission remains insertion-order/private unless independently confirmed.
 
 ### FocusGroup.com / Sago
 
-Current first-party material verifies focus groups, surveys, interviews, product testing and other research participation, plus identity verification and reward redemption. Current site material says participants are rewarded and describes Visa, Amazon and Best Buy among redemption options. citeturn2search7turn2search3
+Current consumer research participation remains useful for editorial coverage. Publisher affiliate economics remain UNKNOWN.
 
-Publisher affiliate economics are not yet verified and remain **UNKNOWN**.
+## First destination-readiness queue
+
+1. Freecash
+2. User Interviews — participant affiliate
+3. User Interviews — researcher affiliate
+4. SurveyRewards US
+5. QuickRewards
+6. Survey Junkie
+
+The next implementation-oriented step is to map these six relationships to the master Rewards API / governed CTA fields and identify the blocker type for each: public evidence, private network acceptance, destination configuration, disclosure, or monitoring.
 
 ## Publication gates
 
@@ -98,14 +174,15 @@ A program may be marked **PUBLISHABLE** only when:
 6. privacy and identity requirements are disclosed where material;
 7. all monetary claims have a current first-party/network source;
 8. conflicts are resolved or visibly flagged;
-9. the outbound destination resolves through the controlled affiliate layer.
+9. the outbound destination resolves through the controlled affiliate layer;
+10. current CTA governance permits the relationship state to resolve to a monetised destination.
 
 ## Immediate verification queue
 
-1. Obtain current network terms for Survey Junkie.
-2. Confirm the exact UserTesting publisher affiliate economics and permitted traffic sources.
+1. Build the USA destination-readiness matrix for the first six commercial relationships.
+2. Confirm exact current UserTesting publisher economics and permitted traffic sources.
 3. Reconcile Respondent's conflicting participant-referral documentation.
-4. Obtain current Ipsos iSay US Impact terms and commission.
+4. Obtain current Ipsos iSay US publisher terms and commission.
 5. Obtain current Branded Surveys insertion-order economics after acceptance/application.
 6. Determine whether FocusGroup/Sago currently accepts publisher affiliates and on what terms.
 7. Confirm current Swagbucks publisher economics rather than using historical figures.
@@ -113,8 +190,8 @@ A program may be marked **PUBLISHABLE** only when:
 
 ## Strategic conclusion
 
-The strongest initial US commercial cluster is **not a generic survey directory**. It is a decision-support cluster spanning rewards/GPT (Freecash), paid research (User Interviews, Respondent), UX testing (UserTesting), mainstream survey panels (Survey Junkie, Branded Surveys, Ipsos iSay), and focus groups/product research (FocusGroup/Sago).
+The strongest initial US commercial cluster is not a generic survey directory. It is a governed decision-support and matching layer spanning rewards/GPT, paid research, UX testing, mainstream survey panels, focus groups/product research and a secondary B2B research-tools path.
 
-This supports a matching-oriented information architecture where users can choose by activity, time, expected reward range, eligibility, privacy burden and device/location requirements.
+The current repository architecture means the next commercial bottleneck is **approved destination readiness**, not discovery of more program names.
 
-**Evidence rule:** all current monetary values above are either first-party publisher/referral claims or explicitly marked UNKNOWN. No third-party payout claims are promoted to verified status.
+**Evidence rule:** all monetary values above are current first-party/network claims or explicitly marked UNKNOWN. No third-party payout claims are promoted to verified status.
