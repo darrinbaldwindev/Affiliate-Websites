@@ -4,10 +4,18 @@ on:
   push:
     paths:
       - 'wp-content/themes/affiliate-master/**'
+      - 'fixtures/au-surveys/**'
+      - 'data/au/surveys.staging.json'
+      - 'data/au/surveys.publication-projection.json'
+      - 'data/au/surveys.priority-projection.json'
       - '.github/workflows/theme-validate.yml'
   pull_request:
     paths:
       - 'wp-content/themes/affiliate-master/**'
+      - 'fixtures/au-surveys/**'
+      - 'data/au/surveys.staging.json'
+      - 'data/au/surveys.publication-projection.json'
+      - 'data/au/surveys.priority-projection.json'
       - '.github/workflows/theme-validate.yml'
 
 permissions:
@@ -25,6 +33,7 @@ jobs:
         run: |
           set -euo pipefail
           find wp-content/themes/affiliate-master -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+          php -l fixtures/au-surveys/test_theme_renderer.php
 
       - name: Validate theme.json
         shell: bash
@@ -68,3 +77,10 @@ jobs:
           grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/category.html
           grep -Fq '"slug":"header"' wp-content/themes/affiliate-master/templates/single.html
           grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/single.html
+
+      - name: Exercise AU surveys governed presentation renderer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python fixtures/au-surveys/build_presentation_read_model.py > /tmp/au-surveys-read-model.json
+          php fixtures/au-surveys/test_theme_renderer.php /tmp/au-surveys-read-model.json
