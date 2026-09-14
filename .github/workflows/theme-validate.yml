@@ -68,3 +68,20 @@ jobs:
           grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/category.html
           grep -Fq '"slug":"header"' wp-content/themes/affiliate-master/templates/single.html
           grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/single.html
+
+      - name: Validate publication state safety pattern
+        shell: bash
+        run: |
+          set -euo pipefail
+          file='wp-content/themes/affiliate-master/patterns/publication-state.php'
+          test -f "$file"
+          grep -Fqi 'Verified:' "$file"
+          grep -Fqi 'Research required:' "$file"
+          grep -Fqi 'Verification due:' "$file"
+          grep -Fqi 'Conflicting information:' "$file"
+          grep -Fqi 'Commercial action blocked:' "$file"
+          grep -Fqi 'does not prove that this site has an approved publisher affiliate relationship' "$file"
+          if grep -Eqi 'https?://[^ ]*(affiliate|track|click)' "$file"; then
+            echo 'publication-state pattern must not contain tracking/affiliate destinations'
+            exit 1
+          fi
