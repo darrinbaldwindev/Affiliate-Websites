@@ -124,6 +124,26 @@ class GovernedCtaTests(unittest.TestCase):
         data = json.loads(json.dumps(BASE)); data["countries"].append("AU")
         with self.assertRaises(SystemExit): run_case(data)
 
+    def test_future_publisher_datetime_rejected(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["publisher_verified_at"] = "2999-01-01T00:00:00Z"
+        with self.assertRaisesRegex(SystemExit, "cannot be in the future"):
+            run_case(data)
+
+    def test_future_publisher_date_rejected(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["publisher_verified_at"] = "2999-01-01"
+        with self.assertRaisesRegex(SystemExit, "cannot be in the future"):
+            run_case(data)
+
+    def test_malformed_publisher_timestamp_rejected(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["publisher_verified_at"] = "not-a-date"
+        with self.assertRaisesRegex(SystemExit, "invalid publisher verification timestamp"):
+            run_case(data)
+
+    def test_naive_publisher_datetime_rejected(self):
+        data = json.loads(json.dumps(BASE)); data["programs"][1]["publisher_verified_at"] = "2026-09-14T00:00:00"
+        with self.assertRaisesRegex(SystemExit, "must include timezone"):
+            run_case(data)
+
 
 if __name__ == "__main__":
     unittest.main()
