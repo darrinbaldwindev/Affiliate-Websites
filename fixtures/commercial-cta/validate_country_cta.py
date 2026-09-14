@@ -14,6 +14,18 @@ def fail(message: str):
     raise SystemExit(f"FAIL: {message}")
 
 
+def blocked_reason(relationship: str, cta_state: str, freshness: str) -> str:
+    if freshness == "STALE" or cta_state == "STALE":
+        return "STALE_EVIDENCE"
+    if freshness == "UNKNOWN" or cta_state == "UNKNOWN":
+        return "UNKNOWN_EVIDENCE"
+    if relationship == "CONSUMER_REFERRAL_ONLY":
+        return "CONSUMER_REFERRAL_ONLY"
+    if relationship == "UNKNOWN":
+        return "NO_VERIFIED_PUBLISHER_RELATIONSHIP"
+    return "NON_PUBLISHABLE_CTA_STATE"
+
+
 def validate(path: str):
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     if data.get("fixture") is not True:
@@ -105,8 +117,10 @@ def validate(path: str):
         allowed = cta_state == "VERIFIED_PUBLISHER"
         audit_events.append({
             "program_id": pid,
+            "country": country,
+            "risk_class": risk_class,
             "decision": "ALLOWED" if allowed else "BLOCKED",
-            "reason": "VERIFIED_SYNTHETIC_PUBLISHER" if allowed else f"CTA_STATE_{cta_state}",
+            "reason": "VERIFIED_SYNTHETIC_PUBLISHER" if allowed else blocked_reason(relationship, cta_state, freshness),
             "tracking_url": None,
         })
 
