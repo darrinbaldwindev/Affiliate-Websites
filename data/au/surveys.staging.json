@@ -1,0 +1,187 @@
+{
+  "status": "STAGING_ONLY",
+  "country": "AU",
+  "category": "surveys-research",
+  "verified_at": "2026-09-14",
+  "production_use": false,
+  "commercial_activation": false,
+  "notes": "Research staging records only. Consumer participation evidence is not publisher-affiliate approval. No tracking destinations are present.",
+  "programs": [
+    {
+      "id": "octopus-group-au",
+      "name": "Octopus Group",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "consumer_claims": {
+        "participation": "Paid online surveys for Australian members",
+        "reward_summary": "Cash rewards; public site also advertises Tell-A-Friend rewards",
+        "evidence_state": "verified_primary"
+      },
+      "publisher_relationship": {
+        "status": "unknown",
+        "tracking_destination": null,
+        "cta_eligible": false
+      },
+      "evidence": [
+        {
+          "source": "https://octopusgroup.com.au/",
+          "source_type": "primary",
+          "verified_at": "2026-09-14",
+          "claim": "AU survey panel, cash rewards and referral program",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "ipsos-isay-au",
+      "name": "Ipsos iSay",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "consumer_claims": {
+        "participation": "Online survey panel",
+        "reward_summary": "Points-based rewards; current AU referral FAQ states 500 points per successful qualifying referral, capped at 10 rewarded referrals per month",
+        "evidence_state": "verified_primary"
+      },
+      "publisher_relationship": {
+        "status": "unknown",
+        "tracking_destination": null,
+        "cta_eligible": false
+      },
+      "evidence": [
+        {
+          "source": "https://www.ipsosisay.com/en-au/faq-refer-a-friend",
+          "source_type": "primary",
+          "verified_at": "2026-09-14",
+          "claim": "AU referral mechanics and eligibility",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "prolific-au",
+      "name": "Prolific",
+      "type": "consumer_research_program",
+      "countries": ["AU"],
+      "categories": ["paid-research"],
+      "status": "active",
+      "consumer_claims": {
+        "participation": "Paid research studies",
+        "reward_summary": "Participant payments; access may be waitlist-managed",
+        "evidence_state": "verified_primary"
+      },
+      "publisher_relationship": {
+        "status": "unknown",
+        "tracking_destination": null,
+        "cta_eligible": false
+      },
+      "evidence": [
+        {
+          "source": "https://researcher-help.prolific.com/en/articles/445224-who-are-the-participants-on-prolific",
+          "source_type": "primary",
+          "verified_at": "2026-09-14",
+          "claim": "Australia is a supported participant country",
+          "verification_status": "verified"
+        },
+        {
+          "source": "https://www.prolific.com/participants-frequently-asked-questions",
+          "source_type": "primary",
+          "verified_at": "2026-09-14",
+          "claim": "18+ participation, supported-country requirement and waitlist model",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "lifepoints-au",
+      "name": "LifePoints",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "consumer_claims": {
+        "participation": "Online paid surveys",
+        "reward_summary": "LifePoints redeemable for PayPal and gift cards including Australian brands",
+        "evidence_state": "verified_primary"
+      },
+      "publisher_relationship": {
+        "status": "unknown",
+        "tracking_destination": null,
+        "cta_eligible": false
+      },
+      "evidence": [
+        {
+          "source": "https://www.lifepointspanel.com/en-au/rewards",
+          "source_type": "primary",
+          "verified_at": "2026-09-14",
+          "claim": "AU rewards include PayPal and gift cards",
+          "verification_status": "verified"
+        },
+        {
+          "source": "https://www.lifepointspanel.com/en-au/how-it-works",
+          "source_type": "primary",
+          "verified_at": "2026-09-14",
+          "claim": "Survey participation and points-based rewards",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "yougov-au",
+      "name": "YouGov",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "research_required",
+      "consumer_claims": {
+        "participation": "Survey panel and data-sharing activities",
+        "reward_summary": "Points-based reward model verified globally; AU-specific reward catalogue requires direct country verification before publication",
+        "evidence_state": "partial"
+      },
+      "publisher_relationship": {
+        "status": "unknown",
+        "tracking_destination": null,
+        "cta_eligible": false
+      },
+      "evidence": [
+        {
+          "source": "https://yougov.com/about/panel",
+          "source_type": "primary",
+          "verified_at": "2026-09-14",
+          "claim": "Panel members receive points for surveys and other data-sharing activity",
+          "verification_status": "verified"
+        }
+      ]
+    },
+    {
+      "id": "toluna-au",
+      "name": "Toluna",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "research_required",
+      "consumer_claims": {
+        "participation": "Survey and research community",
+        "reward_summary": "Points-based rewards verified on current Toluna material; AU-specific catalogue requires direct country verification before publication",
+        "evidence_state": "partial"
+      },
+      "publisher_relationship": {
+        "status": "unknown",
+        "tracking_destination": null,
+        "cta_eligible": false
+      },
+      "evidence": [
+        {
+          "source": "https://www.toluna.com/cs/rewards-landing-page",
+          "source_type": "primary",
+          "verified_at": "2026-09-14",
+          "claim": "Survey points and reward catalogue model",
+          "verification_status": "verified"
+        }
+      ]
+    }
+  ]
+}
