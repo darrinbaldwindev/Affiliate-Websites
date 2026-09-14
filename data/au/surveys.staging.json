@@ -1,0 +1,163 @@
+{
+  "status": "STAGING_ONLY",
+  "country": "AU",
+  "category": "surveys-research",
+  "verified_at": "2026-09-14",
+  "production_use": false,
+  "commercial_activation": false,
+  "freshness_policy": {
+    "policy_scope": "research_staging_only",
+    "review_interval_days": 30,
+    "note": "A 30-day staging review interval is a conservative working policy for volatile consumer reward/referral claims; production policy remains governed by the canonical Rewards layer."
+  },
+  "notes": "Research staging records only. Consumer participation evidence is not publisher-affiliate approval. No tracking destinations are present.",
+  "programs": [
+    {
+      "id": "octopus-group-au",
+      "name": "Octopus Group",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Paid online surveys for Australian members", "reward_summary": "Cash rewards; public site also advertises Tell-A-Friend rewards", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [{"source": "https://octopusgroup.com.au/", "source_type": "primary", "verified_at": "2026-09-14", "claim": "AU survey panel, cash rewards and referral program", "verification_status": "verified"}]
+    },
+    {
+      "id": "ipsos-isay-au",
+      "name": "Ipsos iSay",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Online survey panel", "reward_summary": "Points-based rewards; current AU referral FAQ states 500 points per successful qualifying referral, capped at 10 rewarded referrals per month", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [{"source": "https://www.ipsosisay.com/en-au/faq-refer-a-friend", "source_type": "primary", "verified_at": "2026-09-14", "claim": "AU referral mechanics and eligibility", "verification_status": "verified"}]
+    },
+    {
+      "id": "prolific-au",
+      "name": "Prolific",
+      "type": "consumer_research_program",
+      "countries": ["AU"],
+      "categories": ["paid-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Paid research studies", "reward_summary": "Participant payments; access may be waitlist-managed", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [
+        {"source": "https://researcher-help.prolific.com/en/articles/445224-who-are-the-participants-on-prolific", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Australia is a supported participant country", "verification_status": "verified"},
+        {"source": "https://www.prolific.com/participants-frequently-asked-questions", "source_type": "primary", "verified_at": "2026-09-14", "claim": "18+ participation, supported-country requirement and waitlist model", "verification_status": "verified"}
+      ]
+    },
+    {
+      "id": "lifepoints-au",
+      "name": "LifePoints",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Online paid surveys", "reward_summary": "LifePoints redeemable for PayPal and gift cards including Australian brands", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [
+        {"source": "https://www.lifepointspanel.com/en-au/rewards", "source_type": "primary", "verified_at": "2026-09-14", "claim": "AU rewards include PayPal and gift cards", "verification_status": "verified"},
+        {"source": "https://www.lifepointspanel.com/en-au/how-it-works", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Survey participation and points-based rewards", "verification_status": "verified"}
+      ]
+    },
+    {
+      "id": "pureprofile-au",
+      "name": "Pureprofile",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Paid surveys and related profile-matched activities", "reward_summary": "Cash rewards with redemption options that include bank account, gift cards and online payments; current AU/NZ referral terms are also publicly documented", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [
+        {"source": "https://join.pureprofile.com/get-paid/", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Paid surveys and cash rewards with bank-account redemption", "verification_status": "verified"},
+        {"source": "https://pureprofile.com/bring-a-buddy/", "source_type": "primary", "verified_at": "2026-09-14", "claim": "AU/NZ consumer referral rewards and eligibility terms", "verification_status": "verified"}
+      ]
+    },
+    {
+      "id": "opinionworld-au",
+      "name": "OpinionWorld Australia",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Australian online surveys and related research activities", "reward_summary": "Points redeemable for gift cards and PayPal credit", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [
+        {"source": "https://www.opinionworld.com.au/", "source_type": "primary", "verified_at": "2026-09-14", "claim": "AU paid survey community with points-based rewards including gift cards and PayPal credit", "verification_status": "verified"},
+        {"source": "https://www.opinionworld.com.au/how-it-works", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Rewards include PayPal and Flexi eGift Card options", "verification_status": "verified"}
+      ]
+    },
+    {
+      "id": "valued-opinions-au",
+      "name": "Valued Opinions Australia",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Australian paid online surveys and product research", "reward_summary": "Credit redeemable for gift vouchers from Australian retailers", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [
+        {"source": "https://www.valuedopinions.com.au/", "source_type": "primary", "verified_at": "2026-09-14", "claim": "AU paid online surveys with reward credit redeemable for retailer vouchers", "verification_status": "verified"},
+        {"source": "https://www.valuedopinions.com.au/about", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Paid market research includes surveys and product testing with gift-voucher rewards", "verification_status": "verified"}
+      ]
+    },
+    {
+      "id": "toluna-au",
+      "name": "Toluna Influencers",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "active",
+      "lifecycle_state": "VERIFIED",
+      "freshness": {"state": "CURRENT", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "VERIFIED_NOT_PUBLISHED", "commercial_cta": "BLOCKED", "blocking_reasons": ["PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Australian survey and research community", "reward_summary": "Current Australian registration material shows rewards including PayPal, Amazon Australia and Coles", "evidence_state": "verified_primary"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [
+        {"source": "https://www.toluna.com/en-AU/registration", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Australian registration page displays PayPal, Amazon Australia and Coles among rewards", "verification_status": "verified"},
+        {"source": "https://www.toluna.com/pl/privacyapac", "source_type": "primary", "verified_at": "2026-09-14", "claim": "APAC membership terms describe Toluna points, rewards and voucher/coupon redemption", "verification_status": "verified"}
+      ]
+    },
+    {
+      "id": "yougov-au",
+      "name": "YouGov",
+      "type": "consumer_reward_program",
+      "countries": ["AU"],
+      "categories": ["surveys-research"],
+      "status": "research_required",
+      "lifecycle_state": "RESEARCHED",
+      "freshness": {"state": "PARTIAL", "last_verified_at": "2026-09-14", "review_due_at": "2026-10-14"},
+      "publication_gate": {"consumer_content": "BLOCKED", "commercial_cta": "BLOCKED", "blocking_reasons": ["AU_REWARD_DETAIL_INCOMPLETE", "PUBLISHER_RELATIONSHIP_UNKNOWN", "COMMERCIAL_DESTINATION_UNAPPROVED"]},
+      "consumer_claims": {"participation": "Survey panel and data-sharing activities", "reward_summary": "YouGov confirms Australia is an operated panel market and confirms its points/rewards model globally, but an AU-specific member reward catalogue is still required before publication", "evidence_state": "partial"},
+      "publisher_relationship": {"status": "unknown", "tracking_destination": null, "cta_eligible": false},
+      "evidence": [
+        {"source": "https://yougov.com/about/panel", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Panel members receive points for surveys and other data-sharing activity", "verification_status": "verified"},
+        {"source": "https://yougov.com/business/panel", "source_type": "primary", "verified_at": "2026-09-14", "claim": "Australia is listed among markets where YouGov operates panels", "verification_status": "verified"}
+      ]
+    }
+  ]
+}

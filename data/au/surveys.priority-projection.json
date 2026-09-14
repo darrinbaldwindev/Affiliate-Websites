@@ -1,0 +1,21 @@
+{
+  "schema": "affiliate.au.surveys.priority-projection.v1",
+  "status": "STAGING_PRIORITY_ONLY",
+  "country": "AU",
+  "category": "surveys-research",
+  "generated_from": "data/au/surveys.staging.json",
+  "production_use": false,
+  "commercial_economics_used": false,
+  "ranking_principle": "User value, AU evidence quality, reward clarity, participation differentiation and trust evidence. Publisher commission is excluded.",
+  "records": [
+    {"rank": 1, "id": "octopus-group-au", "tier": "FLAGSHIP", "display_state": "INFORMATIONAL_VERIFIED", "reason_codes": ["AU_NATIVE_POSITIONING", "CASH_REWARD_CLARITY", "CONSUMER_REFERRAL_VISIBLE"]},
+    {"rank": 2, "id": "pureprofile-au", "tier": "FLAGSHIP", "display_state": "INFORMATIONAL_VERIFIED", "reason_codes": ["AU_EVIDENCE_STRONG", "CASH_REWARD_CLARITY", "CONSUMER_REFERRAL_VISIBLE"]},
+    {"rank": 3, "id": "prolific-au", "tier": "FLAGSHIP", "display_state": "INFORMATIONAL_VERIFIED", "reason_codes": ["PAID_RESEARCH_DIFFERENTIATOR", "AU_PARTICIPATION_SUPPORTED", "WAITLIST_TRANSPARENCY"]},
+    {"rank": 4, "id": "ipsos-isay-au", "tier": "CORE", "display_state": "INFORMATIONAL_VERIFIED", "reason_codes": ["AU_REWARD_CATALOGUE_STRONG", "PAYPAL_AND_GIFTCARDS", "CONSUMER_REFERRAL_VISIBLE"]},
+    {"rank": 5, "id": "lifepoints-au", "tier": "CORE", "display_state": "INFORMATIONAL_VERIFIED", "reason_codes": ["AU_REWARDS_VERIFIED", "PAYPAL_AND_GIFTCARDS", "ESTABLISHED_RESEARCH_PANEL"]},
+    {"rank": 6, "id": "toluna-au", "tier": "CORE", "display_state": "INFORMATIONAL_VERIFIED", "reason_codes": ["AU_REGISTRATION_VERIFIED", "PAYPAL_AND_AU_RETAIL_REWARDS", "SURVEY_COMMUNITY"]},
+    {"rank": 7, "id": "opinionworld-au", "tier": "SECONDARY", "display_state": "INFORMATIONAL_VERIFIED", "reason_codes": ["AU_SITE_VERIFIED", "PAYPAL_AND_GIFTCARDS", "MULTIPLE_RESEARCH_FORMATS"]},
+    {"rank": 8, "id": "valued-opinions-au", "tier": "SECONDARY", "display_state": "INFORMATIONAL_VERIFIED", "reason_codes": ["AU_SITE_VERIFIED", "AU_RETAIL_VOUCHERS", "SURVEYS_AND_PRODUCT_RESEARCH"]},
+    {"rank": 9, "id": "yougov-au", "tier": "RESEARCH_HOLD", "display_state": "RESEARCH_REQUIRED", "reason_codes": ["AU_PANEL_MARKET_VERIFIED", "POINTS_MODEL_VERIFIED", "AU_REWARD_DETAIL_INCOMPLETE"]}
+  ]
+}
