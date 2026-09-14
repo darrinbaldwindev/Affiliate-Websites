@@ -5,10 +5,12 @@ on:
     branches: [main]
     paths:
       - 'fixtures/commercial-cta/**'
+      - 'fixtures/au-surveys/**'
       - '.github/workflows/commercial-cta-fixture.yml'
   pull_request:
     paths:
       - 'fixtures/commercial-cta/**'
+      - 'fixtures/au-surveys/**'
       - '.github/workflows/commercial-cta-fixture.yml'
   workflow_dispatch:
 
@@ -28,3 +30,6 @@ jobs:
       - name: Run negative cases
         working-directory: fixtures/commercial-cta
         run: python -m unittest -v test_country_cta.py
+      - name: Validate AU surveys vertical fixture
+        working-directory: fixtures/au-surveys
+        run: python -m unittest -v test_shortlist_fixture.py
