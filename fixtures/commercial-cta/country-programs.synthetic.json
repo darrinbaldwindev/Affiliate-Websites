@@ -13,7 +13,10 @@
       "publisher_evidence_conflict": false,
       "cta_state": "NON_AFFILIATE_FALLBACK",
       "destination_url": null,
+      "destination_country": null,
       "evidence_freshness": "FIXTURE",
+      "risk_class": "STANDARD",
+      "enhanced_compliance_gate_passed": false,
       "disclosure_present": true
     },
     {
@@ -27,7 +30,10 @@
       "publisher_evidence_conflict": false,
       "cta_state": "VERIFIED_PUBLISHER",
       "destination_url": "https://example.invalid/fixture-affiliate",
+      "destination_country": "UK",
       "evidence_freshness": "FIXTURE",
+      "risk_class": "STANDARD",
+      "enhanced_compliance_gate_passed": false,
       "disclosure_present": true
     },
     {
@@ -41,7 +47,10 @@
       "publisher_evidence_conflict": false,
       "cta_state": "NON_AFFILIATE_FALLBACK",
       "destination_url": null,
+      "destination_country": null,
       "evidence_freshness": "FIXTURE",
+      "risk_class": "STANDARD",
+      "enhanced_compliance_gate_passed": false,
       "disclosure_present": true
     }
   ]
