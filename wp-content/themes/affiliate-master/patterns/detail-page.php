@@ -15,6 +15,7 @@
 <!-- wp:list --><ul><li>Eligibility and suitability</li><li>Core reward/value proposition</li><li>Requirements and exclusions</li><li>Availability and freshness</li></ul><!-- /wp:list -->
 <!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Evidence and verification</h2><!-- /wp:heading -->
 <!-- wp:paragraph --><p>Material claims must identify their source, verification status and relevant date. Conflicting information must be surfaced rather than silently resolved.</p><!-- /wp:paragraph -->
+<!-- wp:pattern {"slug":"affiliate-master/publication-state"} /-->
 <!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Limitations</h2><!-- /wp:heading -->
 <!-- wp:paragraph --><p>Explain important caveats and circumstances where this option may not be suitable.</p><!-- /wp:paragraph -->
 <!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Next step</h2><!-- /wp:heading -->
