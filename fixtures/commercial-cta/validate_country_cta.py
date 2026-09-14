@@ -31,6 +31,7 @@ def validate(path: str):
 
     seen = set()
     represented_countries = set()
+    audit_events = []
     for item in programs:
         pid = item.get("program_id")
         if not pid or pid in seen:
@@ -46,6 +47,10 @@ def validate(path: str):
             fail(f"{pid}: invalid cta_state")
         if not item.get("consumer_reward_evidence"):
             fail(f"{pid}: consumer reward evidence is required independently of publisher evidence")
+        if item.get("country_eligibility_evidence") != "FIXTURE":
+            fail(f"{pid}: country eligibility requires independent fixture evidence")
+        if item.get("disclosure_present") is not True:
+            fail(f"{pid}: disclosure must be present")
 
         relationship = item.get("publisher_relationship")
         cta_state = item.get("cta_state")
@@ -53,11 +58,14 @@ def validate(path: str):
         verified_at = item.get("publisher_verified_at")
         url = item.get("destination_url")
         freshness = item.get("evidence_freshness")
+        conflict = item.get("publisher_evidence_conflict", False)
 
         if relationship not in ALLOWED_RELATIONSHIPS:
             fail(f"{pid}: invalid publisher_relationship")
         if freshness not in ALLOWED_FRESHNESS:
             fail(f"{pid}: invalid evidence_freshness")
+        if conflict and cta_state == "VERIFIED_PUBLISHER":
+            fail(f"{pid}: conflicting publisher evidence blocks verified CTA")
 
         if relationship == "VERIFIED_PUBLISHER":
             if not source or not verified_at:
@@ -78,14 +86,21 @@ def validate(path: str):
 
         if relationship == "CONSUMER_REFERRAL_ONLY" and cta_state != "NON_AFFILIATE_FALLBACK":
             fail(f"{pid}: consumer referral evidence must remain non-affiliate fallback")
-
         if freshness in {"UNKNOWN", "STALE"} and cta_state == "VERIFIED_PUBLISHER":
             fail(f"{pid}: unknown/stale evidence cannot publish verified CTA")
+
+        allowed = cta_state == "VERIFIED_PUBLISHER"
+        audit_events.append({
+            "program_id": pid,
+            "decision": "ALLOWED" if allowed else "BLOCKED",
+            "reason": "VERIFIED_SYNTHETIC_PUBLISHER" if allowed else f"CTA_STATE_{cta_state}",
+            "tracking_url": None,
+        })
 
     if represented_countries != ALLOWED_COUNTRIES:
         fail("fixture programs must represent AU, UK and US")
 
-    print(f"PASS: validated {len(seen)} governed CTA fixtures")
+    print(json.dumps({"status": "PASS", "validated": len(seen), "audit_events": audit_events}, sort_keys=True))
 
 
 if __name__ == "__main__":
