@@ -1,0 +1,48 @@
+{
+  "fixture": true,
+  "country": "UK",
+  "category": {
+    "slug": "technology-appliances",
+    "title": "Technology & appliances",
+    "route": "/uk/technology-appliances/",
+    "pattern": "affiliate-master/category-page",
+    "summary": "Fixture-only decision support for comparing technology and appliance options in the UK.",
+    "trust_signal": "Fixture evidence only — verify current product and commercial facts before publication."
+  },
+  "journey": [
+    {
+      "type": "category",
+      "route": "/uk/technology-appliances/",
+      "pattern": "affiliate-master/category-page"
+    },
+    {
+      "type": "comparison",
+      "route": "/uk/technology-appliances/comparisons/example-appliances/",
+      "pattern": "affiliate-master/comparison-page",
+      "title": "Example appliance comparison",
+      "criteria": ["suitability", "features", "warranty-and-support", "verification-status"]
+    },
+    {
+      "type": "buying-guide",
+      "route": "/uk/technology-appliances/buying-guides/choosing-an-appliance/",
+      "pattern": "affiliate-master/buying-guide",
+      "title": "Choosing an appliance",
+      "questions": ["What do you need it to do?", "Which features materially affect suitability?", "What evidence should be rechecked before buying?"]
+    },
+    {
+      "type": "detail",
+      "route": "/uk/technology-appliances/example-option/",
+      "pattern": "affiliate-master/detail-page",
+      "title": "Example technology option",
+      "program_id": "UK-TECH-FIXTURE-001",
+      "evidence_state": "FIXTURE",
+      "disclosure_required": true,
+      "commercial_action": {
+        "pattern": "affiliate-master/commercial-cta",
+        "resolver_ref": "UK-TECH-FIXTURE-001"
+      }
+    }
+  ],
+  "forbidden_live_fields": ["commission", "price", "sale_price", "stock", "cookie_days", "tracking_url", "affiliate_url", "live_destination"],
+  "notes": "This file proves route, pattern and resolver mapping only. It contains no live merchant claim, price, commission, stock state or tracking destination."
+}
