@@ -69,6 +69,14 @@ class GovernedCtaTests(unittest.TestCase):
         with self.assertRaises(SystemExit):
             run_case(data)
 
+    def test_nonverified_relationship_cannot_carry_publisher_evidence(self):
+        for index in (0, 2):
+            data = json.loads(json.dumps(BASE))
+            data["programs"][index]["publisher_evidence_source"] = "fixture://leaked-publisher-proof"
+            data["programs"][index]["publisher_verified_at"] = "2026-09-14T00:00:00Z"
+            with self.assertRaises(SystemExit):
+                run_case(data)
+
     def test_verified_publisher_requires_source(self):
         data = json.loads(json.dumps(BASE))
         data["programs"][1]["publisher_evidence_source"] = None
@@ -84,6 +92,24 @@ class GovernedCtaTests(unittest.TestCase):
     def test_stale_evidence_cannot_publish_verified_cta(self):
         data = json.loads(json.dumps(BASE))
         data["programs"][1]["evidence_freshness"] = "STALE"
+        with self.assertRaises(SystemExit):
+            run_case(data)
+
+    def test_missing_consumer_reward_evidence_rejected(self):
+        data = json.loads(json.dumps(BASE))
+        data["programs"][1]["consumer_reward_evidence"] = None
+        with self.assertRaises(SystemExit):
+            run_case(data)
+
+    def test_invalid_publisher_relationship_rejected(self):
+        data = json.loads(json.dumps(BASE))
+        data["programs"][0]["publisher_relationship"] = "NETWORK_LISTED_ONLY"
+        with self.assertRaises(SystemExit):
+            run_case(data)
+
+    def test_invalid_freshness_rejected(self):
+        data = json.loads(json.dumps(BASE))
+        data["programs"][0]["evidence_freshness"] = "MAYBE"
         with self.assertRaises(SystemExit):
             run_case(data)
 
