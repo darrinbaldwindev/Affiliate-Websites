@@ -25,6 +25,8 @@ jobs:
           python-version: '3.12'
       - name: Validate synthetic country CTA fixture
         run: python fixtures/commercial-cta/validate_country_cta.py fixtures/commercial-cta/country-programs.synthetic.json
+      - name: Validate governed UK CTA fixture
+        run: python fixtures/commercial-cta/validate_country_cta.py fixtures/commercial-cta/uk-governance.synthetic.json
       - name: Validate synthetic Software & Games offer fixture
         run: python fixtures/commercial-cta/validate_software_games_offer.py fixtures/commercial-cta/software-games-offers.synthetic.json
       - name: Run governed CTA negative cases
