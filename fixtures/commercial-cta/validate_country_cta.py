@@ -1,5 +1,6 @@
 import json
 import sys
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 ALLOWED_COUNTRIES = {"AU", "UK", "US"}
@@ -10,6 +11,28 @@ ALLOWED_FRESHNESS = {"CURRENT", "STALE", "UNKNOWN", "FIXTURE"}
 
 def fail(message: str):
     raise SystemExit(f"FAIL: {message}")
+
+
+def parse_publisher_verified_at(value: str, pid: str):
+    if not isinstance(value, str) or not value.strip():
+        fail(f"{pid}: verified publisher requires a valid timestamp")
+
+    raw = value.strip()
+    try:
+        if len(raw) == 10:
+            parsed = date.fromisoformat(raw)
+            if parsed > datetime.now(timezone.utc).date():
+                fail(f"{pid}: publisher verification timestamp cannot be in the future")
+            return
+
+        normalized = raw[:-1] + "+00:00" if raw.endswith("Z") else raw
+        parsed = datetime.fromisoformat(normalized)
+        if parsed.tzinfo is None:
+            fail(f"{pid}: publisher verification datetime must include timezone")
+        if parsed.astimezone(timezone.utc) > datetime.now(timezone.utc):
+            fail(f"{pid}: publisher verification timestamp cannot be in the future")
+    except ValueError:
+        fail(f"{pid}: invalid publisher verification timestamp")
 
 
 def validate(path: str):
@@ -70,6 +93,7 @@ def validate(path: str):
         if relationship == "VERIFIED_PUBLISHER":
             if not source or not verified_at:
                 fail(f"{pid}: verified publisher requires source and timestamp")
+            parse_publisher_verified_at(verified_at, pid)
             if freshness not in {"CURRENT", "FIXTURE"}:
                 fail(f"{pid}: verified publisher evidence must be current")
             if cta_state != "VERIFIED_PUBLISHER":
