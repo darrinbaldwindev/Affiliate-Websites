@@ -14,108 +14,82 @@ The goal is depth over breadth. Finish or materially advance the whole path befo
 
 ## Repository scan snapshot
 
-Current `main` already contains:
+Current `main` already contains the Affiliate Master block theme, global homepage and reusable category/buying-guide/comparison/detail patterns, affiliate disclosure/commercial CTA patterns, canonical Rewards data contract, synthetic commercial-CTA validator/tests, and AU research/verification material.
 
-- the Affiliate Master block theme;
-- global homepage and reusable category/buying-guide/comparison/detail patterns;
-- affiliate disclosure and commercial CTA patterns;
-- a canonical Rewards data contract;
-- a synthetic commercial-CTA fixture plus validator/tests;
-- AU affiliate research, verification and publishability documents.
-
-Open work remains distributed across several historical homepage branches, AU research, USA research, and reconciliation PRs. This batch must not create a competing master architecture, scheduler, canonical data store, or affiliate-resolution authority.
+Open historical branches remain separate. This batch must not create a competing master architecture, canonical data store, resolver or commercial authority.
 
 ## Evidence boundary
 
-A public website, referral link, affiliate-network listing, or visible reward is not proof that this site has an approved publisher relationship.
+A public website, referral link, affiliate-network listing, or visible reward is not proof that this site has an approved publisher relationship. A live commercial CTA remains blocked unless the canonical gate establishes required country, consumer-claim, publisher-relationship, freshness, disclosure and destination evidence.
 
-A live commercial CTA remains blocked unless the canonical commercial gate can establish all required evidence, freshness, disclosure and destination conditions. Where this is not established, the UI must render a neutral/non-affiliate state.
-
-## Batch execution order
+## Batch execution state
 
 ### B1 — Route and presentation shell — IMPLEMENTED
 
-Created the AU Surveys category page template using the existing header/footer and master information architecture.
-
-**Acceptance:** page communicates who surveys suit, what to compare, limitations, and how verification works; no fabricated earnings or publisher claims.
+Created the AU Surveys category page template using the existing master information architecture. It communicates suitability, comparison criteria, limitations and verification without fabricated earnings or publisher claims.
 
 ### B2 — Comparison-ready fixture — IMPLEMENTED
 
-Created an explicitly synthetic AU survey shortlist fixture that exercises the presentation model without introducing live rates, tracking URLs or invented real-world relationship state.
-
-**Acceptance:** fixture is clearly marked synthetic/fixture-only and compatible with later mapping to canonical Rewards records.
+Created an explicitly synthetic AU shortlist fixture. It contains no live rate, tracking URL or invented real-world publisher relationship.
 
 ### B3 — Buying-guide/comparison path — IMPLEMENTED AT SHELL/FIXTURE LEVEL
 
-The AU category template and synthetic shortlist represent the comparison criteria without ranking by publisher economics.
-
-Criteria include:
-
-- AU eligibility;
-- reward/payment type;
-- typical participation model;
-- qualification variability;
-- payout/cashout conditions;
-- trust/evidence strength;
-- verification freshness;
-- publisher relationship state.
-
-**Remaining:** runtime data binding to the future Rewards API/canonical store is not implemented or claimed.
+The AU shell covers eligibility, reward/payment type, participation model, qualification variability, cashout, trust/evidence, freshness and publisher-relationship state. Runtime data binding remains outside this batch.
 
 ### B4 — Detail path — IMPLEMENTED AT PRESENTATION BOUNDARY
 
-Created `page-au-earn-surveys-detail.html` as a representative detail shell. It explicitly requires governed data for eligibility, reward and commercial fields and renders a safe development fallback when no approved action exists.
-
-**Remaining:** WordPress runtime rendering/data binding is not yet verified.
+Created `page-au-earn-surveys-detail.html` as a representative governed-data detail shell. WordPress runtime rendering/data binding is not claimed.
 
 ### B5 — Commercial CTA assurance — IMPLEMENTED / CI-GATED
 
-Added adversarial tests against the existing `validate_country_cta.py` authority. The AU survey cases cover:
-
-- fully synthetic verified publisher state;
-- conflicting publisher evidence;
-- stale publisher evidence;
-- missing disclosure;
-- unknown publisher relationship retaining a destination;
-- consumer-referral-only state attempting a publisher CTA.
-
-Unsafe variants are expected to fail closed. The only passing commercial case remains a fully synthetic `example.invalid` fixture.
+Adversarial tests reuse the existing `validate_country_cta.py` authority and cover verified synthetic publisher state, conflicts, stale evidence, missing disclosure, unknown publisher state retaining a destination, and consumer-referral-only misuse. Unsafe variants fail closed; only the synthetic `example.invalid` fixture can resolve a synthetic destination.
 
 ### B6 — Current primary-source staging — IMPLEMENTED / NON-COMMERCIAL
 
-Created `data/au/surveys.staging.json` after a 2026-09-14 primary-source refresh. Current staging set:
+`data/au/surveys.staging.json` holds real research records only. Current staged set: Octopus Group, Ipsos iSay, Prolific, LifePoints, YouGov and Toluna. All publisher relationships remain UNKNOWN, every tracking destination is null, and every commercial CTA is blocked.
 
-- Octopus Group — current AU primary evidence; publisher relationship UNKNOWN;
-- Ipsos iSay — current AU referral evidence; publisher relationship UNKNOWN;
-- Prolific — Australia supported for participants; publisher relationship UNKNOWN;
-- LifePoints — current AU rewards evidence; publisher relationship UNKNOWN;
-- YouGov — global panel/reward evidence only; AU-specific reward detail still RESEARCH_REQUIRED;
-- Toluna — current reward/community evidence but AU-specific catalogue still RESEARCH_REQUIRED.
+### B7 — Machine-readable lifecycle and freshness projection — IMPLEMENTED / CI PENDING
 
-No record is CTA-eligible. No tracking destination is stored. CI tests assert these boundaries.
+Added canonical lifecycle projection and explicit freshness metadata to staging records:
+
+- strong AU primary evidence → `lifecycle_state: VERIFIED`;
+- partial AU evidence → `lifecycle_state: RESEARCHED`;
+- verified records stop at `VERIFIED_NOT_PUBLISHED`, not `PUBLISHABLE`;
+- all commercial CTAs remain `BLOCKED` with machine-readable reasons;
+- staging-only 30-day review metadata is explicit and labelled as a conservative working policy, not production policy;
+- tests enforce lifecycle/freshness consistency and simulate expired evidence failing the current-state check.
+
+### B8 — Additional AU candidate verification — RESEARCHED, STAGING ADDITION PENDING
+
+Fresh first-party AU pages verified two further candidates suitable for staged consumer records:
+
+- OpinionWorld Australia — AU paid surveys; rewards points redeemable for gift cards and PayPal credit;
+- Valued Opinions Australia — AU paid surveys/product research; credit redeemable for Australian-brand vouchers.
+
+Neither public site establishes this project's publisher approval. Any staged records must therefore remain commercial-CTA blocked with no tracking destination.
 
 ## Verification evidence
 
-- PR #13 head `bd2f510139173ca9fed446431fffe48744c4ceb0`: Theme Validation completed SUCCESS.
-- PR #13 head `bd2f510139173ca9fed446431fffe48744c4ceb0`: Commercial CTA fixture validation completed SUCCESS.
-- Subsequent commits add CTA adversarial cases plus staging-data safety checks; their final workflow result must be inspected before claiming them verified.
+- Head `bd2f510139173ca9fed446431fffe48744c4ceb0`: Theme Validation SUCCESS; Commercial CTA fixture validation SUCCESS.
+- Head `07f76d2ff93d308b5d0cb0fe583d5049cde780b5`: Theme Validation SUCCESS; Commercial CTA fixture validation SUCCESS.
+- Publication/freshness commits `dd6e2b6b692c9a9b53e62b2e4cf6074c734c087a` and `ac3da8367944362c11bacd4141abd0c7f03adcdd` require fresh head-associated CI evidence before being called verified.
 
-## Current blockers that must remain explicit
+## Current blockers
 
 - No authenticated affiliate/publisher approval is established by repository or public-source evidence.
 - No live AU survey destination should be enabled from public research evidence alone.
-- Runtime WordPress rendering is not claimed unless actually exercised.
+- Runtime WordPress rendering is not claimed unless exercised.
 - Production Rewards API/database/resolver state is separate from documentation, staging data and synthetic fixtures.
-- Volatile reward, referral and commission values require current primary/account-specific evidence before publication.
-- YouGov and Toluna need stronger AU-country-specific reward/eligibility evidence before consumer-facing publication.
+- Volatile reward/referral/commission values require current primary/account-specific evidence before publication.
+- YouGov and Toluna still need stronger AU-country-specific reward/eligibility evidence.
 
 ## Smallest next safe actions
 
-1. Inspect the newest CI runs for CTA adversarial and staging safety tests.
-2. Add a machine-readable publication-state projection so WordPress can distinguish `RESEARCH_REQUIRED`, informational-only and commercial-eligible records without storing tracking URLs.
-3. Add exact freshness-due metadata and a stale-data negative case to AU survey staging.
-4. Verify additional top AU survey candidates from current first-party sources and add them only when country evidence is adequate.
-5. Keep all commercial activation blocked pending authenticated publisher approval and account-specific terms.
+1. Inspect CI for the lifecycle/freshness head.
+2. Stage OpinionWorld Australia and Valued Opinions Australia into the existing single AU surveys staging dataset with VERIFIED consumer evidence, UNKNOWN publisher relationship and BLOCKED CTA.
+3. Add a derived informational comparison projection that excludes `RESEARCHED`/partial records from best-of claims without creating another source of truth.
+4. Continue current first-party verification of remaining reputable AU candidates.
+5. Keep commercial activation blocked pending authenticated publisher approval and account-specific terms.
 
 ## Standing `cont` protocol
 
