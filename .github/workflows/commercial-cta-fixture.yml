@@ -1,0 +1,30 @@
+name: Commercial CTA fixture validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'fixtures/commercial-cta/**'
+      - '.github/workflows/commercial-cta-fixture.yml'
+  pull_request:
+    paths:
+      - 'fixtures/commercial-cta/**'
+      - '.github/workflows/commercial-cta-fixture.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate synthetic country CTA fixture
+        run: python fixtures/commercial-cta/validate_country_cta.py fixtures/commercial-cta/country-programs.synthetic.json
+      - name: Run negative cases
+        working-directory: fixtures/commercial-cta
+        run: python -m unittest -v test_country_cta.py
