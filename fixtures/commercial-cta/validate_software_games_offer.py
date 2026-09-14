@@ -6,11 +6,15 @@ ALLOWED_COUNTRIES = {"AU", "UK", "US"}
 CURRENCIES = {"AU": "AUD", "UK": "GBP", "US": "USD"}
 ALLOWED_CATEGORIES = {"WINDOWS", "OFFICE", "PRODUCTIVITY", "ANTIVIRUS", "VPN", "UTILITY", "GAME", "GIFT_CARD", "SUBSCRIPTION"}
 ALLOWED_MERCHANT_CLASSES = {"AUTHORISED_RETAILER", "DIRECT_RESELLER", "MARKETPLACE"}
-REQUIRES_LICENCE_TYPE = {"WINDOWS", "OFFICE", "PRODUCTIVITY"}
+REQUIRES_LICENCE_DETAIL = {"WINDOWS", "OFFICE", "PRODUCTIVITY"}
 
 
 def fail(message: str):
     raise SystemExit(f"FAIL: {message}")
+
+
+def _known(value):
+    return value not in {None, "", "UNKNOWN"}
 
 
 def evaluate_offer(item: dict):
@@ -37,10 +41,31 @@ def evaluate_offer(item: dict):
         reasons.append("INVALID_PRICE")
     if item.get("disclosure_present") is not True:
         reasons.append("DISCLOSURE_MISSING")
-    if category in REQUIRES_LICENCE_TYPE and item.get("licence_type") in {None, "", "UNKNOWN"}:
-        reasons.append("LICENCE_TYPE_UNKNOWN")
     if merchant_class == "MARKETPLACE" and item.get("seller_provenance") != "VERIFIED":
         reasons.append("MARKETPLACE_SELLER_UNVERIFIED")
+
+    if category in REQUIRES_LICENCE_DETAIL:
+        if not _known(item.get("licence_type")):
+            reasons.append("LICENCE_TYPE_UNKNOWN")
+        if not _known(item.get("transferability")):
+            reasons.append("TRANSFERABILITY_UNKNOWN")
+        if not _known(item.get("account_binding")):
+            reasons.append("ACCOUNT_BINDING_UNKNOWN")
+        installs = item.get("device_install_count")
+        if not isinstance(installs, int) or isinstance(installs, bool) or installs <= 0:
+            reasons.append("DEVICE_INSTALL_COUNT_UNKNOWN")
+        if not _known(item.get("activation_platform")):
+            reasons.append("ACTIVATION_PLATFORM_UNKNOWN")
+        if not _known(item.get("product_family")):
+            reasons.append("PRODUCT_FAMILY_UNKNOWN")
+        if not _known(item.get("edition")):
+            reasons.append("EDITION_UNKNOWN")
+        if not _known(item.get("equivalence_group")):
+            reasons.append("EQUIVALENCE_GROUP_UNKNOWN")
+        elif _known(item.get("product_family")) and _known(item.get("edition")) and _known(item.get("licence_type")):
+            expected_prefix = f"{item['product_family']}|{item['edition']}|{item['licence_type']}|"
+            if not str(item.get("equivalence_group")).startswith(expected_prefix):
+                reasons.append("EQUIVALENCE_GROUP_MISMATCH")
 
     decision = "BLOCKED" if reasons else "ALLOWED"
     return decision, reasons
@@ -83,22 +108,15 @@ def validate(path: str):
         elif url is not None:
             fail(f"{oid}: blocked offer must not contain destination URL")
 
-        decisions.append({
-            "offer_id": oid,
-            "decision": decision,
-            "reasons": reasons,
-            "tracking_url": None,
-        })
+        decisions.append({"offer_id": oid, "decision": decision, "reasons": reasons, "tracking_url": None})
 
     if represented != ALLOWED_COUNTRIES:
         fail("fixture offers must represent AU, UK and US")
 
     required_block_reasons = {
-        "PRICE_NOT_CURRENT",
-        "REGION_MISMATCH",
-        "LICENCE_TYPE_UNKNOWN",
-        "MERCHANT_NOT_APPROVED",
-        "MARKETPLACE_SELLER_UNVERIFIED",
+        "PRICE_NOT_CURRENT", "REGION_MISMATCH", "LICENCE_TYPE_UNKNOWN", "MERCHANT_NOT_APPROVED",
+        "MARKETPLACE_SELLER_UNVERIFIED", "TRANSFERABILITY_UNKNOWN", "ACCOUNT_BINDING_UNKNOWN",
+        "DEVICE_INSTALL_COUNT_UNKNOWN", "ACTIVATION_PLATFORM_UNKNOWN", "EQUIVALENCE_GROUP_MISMATCH",
     }
     observed = {reason for result in decisions for reason in result["reasons"]}
     missing = sorted(required_block_reasons - observed)
