@@ -17,15 +17,31 @@ def validate(path: str):
     if data.get("fixture") is not True:
         fail("fixture marker must be true")
 
+    countries = data.get("countries", [])
+    if not isinstance(countries, list):
+        fail("countries must be a list")
+    if len(countries) != len(set(countries)):
+        fail("countries must not contain duplicates")
+    if set(countries) != ALLOWED_COUNTRIES:
+        fail("fixture must cover AU, UK and US")
+
+    programs = data.get("programs", [])
+    if not isinstance(programs, list) or not programs:
+        fail("fixture must contain at least one program per country")
+
     seen = set()
-    for item in data.get("programs", []):
+    represented_countries = set()
+    for item in programs:
         pid = item.get("program_id")
         if not pid or pid in seen:
             fail("program_id missing or duplicate")
         seen.add(pid)
 
-        if item.get("country") not in ALLOWED_COUNTRIES:
+        country = item.get("country")
+        if country not in ALLOWED_COUNTRIES:
             fail(f"{pid}: invalid country")
+        represented_countries.add(country)
+
         if item.get("cta_state") not in ALLOWED_CTA_STATES:
             fail(f"{pid}: invalid cta_state")
         if not item.get("consumer_reward_evidence"):
@@ -66,8 +82,8 @@ def validate(path: str):
         if freshness in {"UNKNOWN", "STALE"} and cta_state == "VERIFIED_PUBLISHER":
             fail(f"{pid}: unknown/stale evidence cannot publish verified CTA")
 
-    if set(data.get("countries", [])) != ALLOWED_COUNTRIES:
-        fail("fixture must cover AU, UK and US")
+    if represented_countries != ALLOWED_COUNTRIES:
+        fail("fixture programs must represent AU, UK and US")
 
     print(f"PASS: validated {len(seen)} governed CTA fixtures")
 
