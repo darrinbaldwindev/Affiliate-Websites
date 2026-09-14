@@ -3,7 +3,7 @@
 **Workstream:** United Kingdom Affiliate Website  
 **Repository:** `darrinbaldwindev/Affiliate-Websites`  
 **Mode:** vertical autonomous execution  
-**Status:** COMPLETE — bounded repository batch executed  
+**Status:** COMPLETE — second bounded repository batch executed  
 **Rule:** evidence controls completion; research claims are not production truth.
 
 ## Standing trigger
@@ -19,140 +19,172 @@ When the owner says **`cont`** or **`continue autonomously`** in this workstream
 
 Do not create duplicate architecture, canonical stores, schedulers, governance systems or country-specific forks of reusable master code.
 
-## Repository scan baseline
+## First batch — research-to-governance package
 
-Current repository evidence shows the project has progressed beyond the older high-level status wording. The tree includes:
+Completed previously:
 
-- lightweight WordPress Block Theme and master UX contracts;
-- country configuration and API contracts;
-- canonical rewards data contract;
-- governed commercial-CTA contract/server seam;
-- commercial-CTA fixture and CI workflow;
-- legal page register;
-- AU vertical-slice contract/readiness/fixture material;
-- Level-2 AgentOS workload fixture;
-- UK affiliate opportunity ranking/research.
+- repo reconciliation;
+- `docs/data/uk-affiliate-opportunity-research.json`;
+- `docs/UK-COMMERCIAL-SCORING-MATRIX-2026-09-14.md`;
+- `docs/vertical-slice/UK-VERTICAL-SLICE-CONTRACT.md`;
+- `docs/UK-PUBLISHABILITY-GATE-2026-09-14.md`;
+- mapping to shared Supabase/Postgres → Rewards API → WordPress → controlled resolver architecture.
 
-The UK workstream therefore should not duplicate AU/master architecture. Its highest-value work is to turn UK research into structured, reusable country data/governance and a UK-specific acceptance path.
+No live programme approval, production destination, commission, price, stock or promotional fact was inferred from research.
 
-## Batch objective
+## Second batch — governed UK commercial CTA assurance
 
-Convert the UK opportunity research into an implementation-ready, governance-safe UK vertical package while preserving the master architecture and separating volatile commercial research from production truth.
+### B8 — Fresh repository scan — COMPLETE
 
-## Task results
+Re-scanned `main` before work. The repository had moved since the first batch and now included additional commercial-CTA and software/games fixture work plus `.overseer/VERTICAL-BATCH-ADOPTION.md`.
 
-### B1 — Repo reconciliation — COMPLETE
+The shared commercial-CTA fixture already enforced:
 
-Verified current repository tree, master README/data boundary, canonical rewards data contract, AU vertical-slice precedent and current UK opportunity research before writing new artifacts.
+- current/fixture evidence for verified publisher CTAs;
+- publisher evidence source + verification timestamp;
+- independent country eligibility evidence;
+- disclosure presence;
+- conflict rejection;
+- non-live `example.invalid` destinations in fixtures;
+- fail-closed handling for unknown/stale/non-verified relationships.
 
-Important reconciliation finding: the repository contains newer commercial-CTA, canonical-data, legal, Level-2 and vertical-slice artifacts that are not fully reflected in older status wording. Work in this batch used the newer repository evidence rather than duplicating those systems.
+Therefore this batch extended the shared validator rather than creating a UK resolver.
 
-### B2 — Structured UK research register — COMPLETE
+### B9 — Country-bound destination gate — COMPLETE
+
+Updated:
+
+`fixtures/commercial-cta/validate_country_cta.py`
+
+A verified CTA must now carry `destination_country`, and it must exactly match the programme country. Non-verified relationships may not carry `destination_country` at all.
+
+This creates an explicit wrong-country fail-closed gate suitable for AU/UK/US rather than a UK-only exception.
+
+Commit:
+
+`297ff4baba968f7ec079a86651ea57cfa9e4cba7`
+
+### B10 — Risk-class / enhanced compliance gate — COMPLETE
+
+The shared validator now recognises controlled risk classes:
+
+- `STANDARD`
+- `TELECOM`
+- `TRAVEL`
+- `REGULATED_FINANCE`
+- `HEALTH_SENSITIVE`
+- `UTILITIES_HOME_ENERGY`
+
+A verified CTA in `REGULATED_FINANCE`, `HEALTH_SENSITIVE` or `UTILITIES_HOME_ENERGY` cannot publish unless `enhanced_compliance_gate_passed` is explicitly true.
+
+This is fixture/governance enforcement only. It does **not** claim legal approval, FCA approval, merchant approval or production readiness.
+
+### B11 — Shared fixture migration — COMPLETE
+
+Updated:
+
+`fixtures/commercial-cta/country-programs.synthetic.json`
+
+The existing synthetic records now carry explicit destination-country and risk-class fields while preserving non-live fixture destinations.
+
+Commit:
+
+`0562018880c7fbf0ddf15c0c7f6818d144719610`
+
+### B12 — Negative assurance tests — COMPLETE
+
+Updated:
+
+`fixtures/commercial-cta/test_country_cta.py`
+
+Added bounded tests proving rejection of:
+
+- verified CTA whose destination country differs from programme country;
+- destination-country metadata on a non-verified relationship;
+- regulated-finance verified CTA without enhanced compliance gate;
+- health-sensitive verified CTA without enhanced compliance gate;
+- utilities/home-energy verified CTA without enhanced compliance gate;
+- invalid risk classes.
+
+Also added a positive fixture case proving a regulated synthetic CTA can pass only when the enhanced gate is explicitly asserted.
+
+Commit:
+
+`7c15d44242302789ca65c235cddd6672f683eafa`
+
+### B13 — Dedicated UK governed fixture — COMPLETE
 
 Created:
 
-`docs/data/uk-affiliate-opportunity-research.json`
+`fixtures/commercial-cta/uk-governance.synthetic.json`
 
-The register contains UK-only research candidates with stable IDs, categories, networks/commercial models, feed/comparison signals, regulatory-risk classes, research state and freshness state.
+The UK-focused fixture includes:
 
-Safety boundaries:
-- research-only;
-- no live tracking URLs;
-- no claim of programme approval;
-- volatile terms require re-verification;
-- production truth remains behind the canonical data/API workflow.
+- standard UK technology example with a synthetic verified publisher CTA;
+- UK broadband/telecom non-affiliate fallback;
+- UK regulated-finance non-affiliate fallback;
+- UK utilities/home-energy stale state;
+- AU/US guard records so the shared country fixture contract remains intact.
 
-### B3 — UK commercial scoring matrix — COMPLETE
+It contains no live merchant tracking URLs or claimed live approval.
 
-Created:
+Commit:
 
-`docs/UK-COMMERCIAL-SCORING-MATRIX-2026-09-14.md`
+`fba51ecb11597c698e17ccd4cdbd9b5bada9dd48`
 
-The matrix separates:
-- launch cohort;
-- expansion cohort;
-- regulated/hold cohort.
+### B14 — CI integration — COMPLETE AND VERIFIED
 
-The scores are prioritisation judgements, not measured conversion performance. High commercial value cannot bypass verification or publishability gates.
+Updated:
 
-### B4 — UK vertical-slice contract — COMPLETE
+`.github/workflows/commercial-cta-fixture.yml`
 
-Created:
+CI now validates the dedicated UK governed fixture through the same shared validator before running the negative assurance suite.
 
-`docs/vertical-slice/UK-VERTICAL-SLICE-CONTRACT.md`
+Commit:
 
-Target journey:
+`9a1ff841c2003bde0e045d39bd40b32af508ba3f`
 
-`Global → UK → Category → Guide/Comparison → Detail → Governed Commercial CTA`
+Concurrent repository work landed immediately after this commit (`f2dd846d7992556a63bee3083e73471e9afaa944`) with `9a1ff841...` as its parent. Commercial CTA fixture validation run **#50 / 34826525159** completed successfully on that descendant head. Therefore the successful run includes this UK validator, fixture, workflow and test work plus the concurrent software/games change.
 
-Recommended first fixture-safe category: technology/appliances, because it exercises comparison/feed/CTA/trust behaviour with less regulatory complexity than insurance/finance.
+## Assurance result
 
-### B5 — UK publishability gate — COMPLETE
+The UK vertical now has executable evidence for several core fail-closed properties:
 
-Created:
+- stale verified evidence cannot publish;
+- unknown/unapproved publisher relationship cannot publish a commercial destination;
+- conflicting publisher evidence cannot publish;
+- missing disclosure cannot publish;
+- wrong-country commercial destination cannot publish;
+- regulated/high-risk classes cannot publish a verified CTA without an explicit enhanced compliance gate;
+- fixtures cannot smuggle live merchant URLs into verified synthetic CTA records.
 
-`docs/UK-PUBLISHABILITY-GATE-2026-09-14.md`
-
-Defined common publication requirements, freshness classes and six UK risk classes:
-
-1. ordinary retail/product affiliate;
-2. telecom/broadband;
-3. travel;
-4. insurance/financial promotion;
-5. health-sensitive content;
-6. utilities/home-energy lead generation.
-
-Insurance/financial promotion defaults to HOLD until enhanced compliance evidence is satisfied. Broadband must use a separate telecom gate rather than ordinary retail rules.
-
-### B6 — Implementation mapping — COMPLETE
-
-The new artifacts preserve the existing boundary:
-
-- UK research register = staging/research evidence;
-- canonical structured data = PostgreSQL/Supabase behind Rewards API;
-- WordPress = approved presentation data only;
-- affiliate destination = shared controlled resolver;
-- AgentOS = research/verification/monitoring/orchestration.
-
-No alternate UK source of truth was created.
-
-### B7 — Verification and log — COMPLETE WITH EXPLICIT LIMITS
-
-Verified `main` after writes. The UK publishability-gate commit became current `main` head during verification.
-
-Relevant commits in this batch:
-- `9d24c433d071a43f48de53c987234a0ca7320b44` — batch file created;
-- `20eeccd46aaccac3a823fa51d6da88691b60e5f9` — structured UK research register;
-- `8e694313eca12dda925672258ede3e429aa2514c` — UK commercial scoring matrix;
-- `a613dfe44846cb107896af230a3e95554cc8ae1a` — UK vertical-slice contract;
-- `12a53a13d3e935b58a20d9ec8e42d83d7d5a07ba` — UK publishability gate.
-
-Repository activity also showed concurrent AU vertical-batch work with a successful Theme Validation run on AU pull request #13. That CI success is useful repository-health evidence but is **not** claimed as validation of this UK documentation batch.
+This materially strengthens the UK acceptance path while retaining one shared commercial resolver contract.
 
 ## Still OPEN
 
-The following are not claimed complete:
+Not claimed complete:
 
 - live UK programme approvals;
-- current production affiliate destinations;
-- current rates/prices/stock/offers;
+- live production affiliate destinations;
+- actual FCA/legal/compliance approval for regulated categories;
 - production Rewards API/Supabase integration;
-- UK WordPress/browser rendering;
-- accessibility/Core Web Vitals verification;
-- end-to-end affiliate tracking;
-- regulated-category legal/compliance approval;
-- runtime tests proving stale/unapproved UK destinations fail closed.
+- runtime resolver implementation outside the synthetic validator;
+- live WordPress/browser rendering;
+- accessibility/Core Web Vitals evidence;
+- end-to-end click/tracking receipts;
+- freshness monitoring against live programme sources;
+- address-level broadband availability resolution.
 
 ## Next vertical batch
 
 On the next `cont` / `continue autonomously`:
 
-1. re-scan repo and concurrent PR/main movement;
-2. inspect existing commercial-CTA fixture implementation in detail;
-3. build a **UK fixture dataset** matching the shared commercial-CTA contract;
-4. add bounded negative tests for UK stale, unapproved, wrong-country and regulated-gate failures without creating a second resolver;
-5. add the first UK country/category fixture shell only if it can reuse the master theme cleanly;
-6. verify CI and record exact evidence.
+1. re-scan main and concurrent work;
+2. inspect reusable `country-homepage`, `category-page`, `buying-guide`, `comparison-page`, `detail-page` and `commercial-cta` patterns;
+3. create a UK technology/appliances fixture content contract that maps cleanly onto those shared patterns;
+4. add fixture-safe UK category → comparison/guide → detail mappings without hard-coded volatile commercial facts;
+5. strengthen CTA audit-event assertions so blocked UK decisions expose stable machine-readable reason codes;
+6. verify Theme Validation and Commercial CTA CI and record exact results.
 
 ## Completion rule
 
