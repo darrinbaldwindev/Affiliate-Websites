@@ -46,60 +46,71 @@ Adversarial tests reuse the existing `validate_country_cta.py` authority and cov
 Staging records carry lifecycle state, publication gate, machine-readable blocking reasons, and a staging-only 30-day freshness policy. Tests enforce freshness consistency and an expired-evidence negative case.
 
 ### B8 — Additional AU candidate verification — IMPLEMENTED IN STAGING
-Fresh first-party evidence was rechecked on 2026-09-14 and two further AU programs were staged:
+Fresh first-party evidence was rechecked on 2026-09-14. OpinionWorld Australia and Valued Opinions Australia were added as consumer-evidence VERIFIED records while commercial state remained blocked.
 
-- OpinionWorld Australia — AU online surveys/research; points redeemable for gift cards and PayPal credit.
-- Valued Opinions Australia — AU paid surveys/product research; reward credit redeemable for Australian retailer vouchers.
+### B9 — WordPress-facing publication projection — IMPLEMENTED / CI-GATED
+`data/au/surveys.publication-projection.json` is a derived, non-production view of the staging dataset. It contains no tracking/destination URLs and maps source state into only `INFORMATIONAL_VERIFIED`, `RESEARCH_REQUIRED`, and commercial `BLOCKED`. Tests require one-to-one source coverage, source-gate consistency, blocking-reason parity and URL absence.
 
-Both are consumer-evidence VERIFIED but remain `VERIFIED_NOT_PUBLISHED`. Publisher relationship stays UNKNOWN, tracking destination is null and commercial CTA remains BLOCKED.
+### B10 — Flagship/core user-value priority projection — IMPLEMENTED / CI PENDING
+Fresh first-party evidence materially improved two records:
 
-### B9 — WordPress-facing publication projection — IMPLEMENTED / CI PENDING
-Added `data/au/surveys.publication-projection.json` as a derived, non-production view of the staging dataset. It contains no tracking/destination URLs and maps source state into only:
+- Pureprofile — paid surveys/cash rewards plus current AU/NZ consumer-referral terms; staged as VERIFIED consumer evidence.
+- Toluna Influencers — Australia-specific registration material currently displays PayPal, Amazon Australia and Coles rewards; promoted from partial research to VERIFIED consumer evidence.
 
-- `INFORMATIONAL_VERIFIED` for verified consumer records not yet published;
-- `RESEARCH_REQUIRED` for partial/researched records;
-- `BLOCKED` for every commercial state in the current real dataset.
+YouGov remains `RESEARCH_REQUIRED`: current first-party evidence confirms Australia as a YouGov panel market and confirms the global points/reward model, but the batch still lacks sufficiently specific Australian member reward-catalogue evidence for consumer publication.
 
-`fixtures/au-surveys/test_publication_projection.py` verifies one-to-one record coverage, source-gate consistency, blocking-reason parity and URL absence. The existing Commercial CTA workflow now runs these projection tests.
+Added `data/au/surveys.priority-projection.json` to express the current best-of ordering without using publisher commission or commercial economics. Current evidence-led ordering:
+
+1. Octopus Group — FLAGSHIP
+2. Pureprofile — FLAGSHIP
+3. Prolific — FLAGSHIP
+4. Ipsos iSay — CORE
+5. LifePoints — CORE
+6. Toluna Influencers — CORE
+7. OpinionWorld Australia — SECONDARY
+8. Valued Opinions Australia — SECONDARY
+9. YouGov — RESEARCH_HOLD
+
+`fixtures/au-surveys/test_priority_projection.py` requires unique contiguous ranks, known source IDs, no tracking/affiliate URL fields, no commission-rate input, current primary evidence for FLAGSHIP/CORE entries, and RESEARCH_HOLD for partial records. This projection is editorial/research staging only and does not grant publication or commercial eligibility.
 
 ## Current staged set
 
 Consumer-evidence VERIFIED / informational-only:
 - Octopus Group
-- Ipsos iSay
+- Pureprofile
 - Prolific
+- Ipsos iSay
 - LifePoints
+- Toluna Influencers
 - OpinionWorld Australia
 - Valued Opinions Australia
 
 RESEARCH_REQUIRED:
 - YouGov
-- Toluna
 
 No real staged record is commercially eligible.
 
 ## Verification evidence
 
-- Head `bd2f510139173ca9fed446431fffe48744c4ceb0`: Theme Validation SUCCESS; Commercial CTA fixture validation SUCCESS.
-- Head `07f76d2ff93d308b5d0cb0fe583d5049cde780b5`: Theme Validation SUCCESS; Commercial CTA fixture validation SUCCESS.
-- Head `dd6e2b6b692c9a9b53e62b2e4cf6074c734c087a`: Commercial CTA fixture validation SUCCESS; Theme Validation was still in progress when rechecked.
-- Current head after projection/candidate staging must obtain fresh exact-head CI before the new work is called verified.
+- Head `31926c50968f911b619de89d5ff245b31db00f4d`: Theme Validation SUCCESS; Commercial CTA fixture validation SUCCESS.
+- Earlier lifecycle/freshness and projection heads also obtained successful workflow evidence.
+- Current exact head after Pureprofile/Toluna/priority-projection work must obtain fresh CI before this newest work is called verified.
 
 ## Current blockers
 
 - No authenticated affiliate/publisher approval is established by repository or public-source evidence.
 - No live AU survey destination should be enabled from public research evidence alone.
 - Runtime WordPress rendering is not claimed unless exercised.
-- Production Rewards API/database/resolver state is separate from documentation, staging data and synthetic fixtures.
+- Production Rewards API/database/resolver state is separate from documentation, staging data and derived projections.
 - Volatile reward/referral/commission values require current primary/account-specific evidence before publication.
-- YouGov and Toluna still need stronger AU-country-specific reward/eligibility evidence.
+- YouGov still needs stronger AU-member reward-catalogue evidence before consumer-facing publication.
 
 ## Smallest next safe actions
 
-1. Inspect exact-head CI for the projection and two newly staged records.
-2. Build a derived informational comparison projection that excludes `RESEARCH_REQUIRED` records from best-of/ranking claims and never ranks by publisher economics.
+1. Inspect exact-head CI for the Pureprofile/Toluna and priority-projection changes.
+2. Add an API/read-model contract mapping the publication and priority projections to WordPress fields without making either projection canonical.
 3. Continue first-party verification of reputable AU candidates only where evidence materially improves consumer choice.
-4. Prepare the WordPress/API binding contract for reading the publication projection without turning the projection into a new canonical store.
+4. Add ranking-change tests so a `RESEARCH_REQUIRED` or stale record cannot silently enter FLAGSHIP/CORE.
 5. Keep commercial activation blocked pending authenticated publisher approval and account-specific terms.
 
 ## Standing `cont` protocol
