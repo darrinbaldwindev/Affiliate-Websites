@@ -6,6 +6,7 @@
  * Inserter: true
  */
 ?>
+<!-- publication-state-contract:v1 -->
 <!-- wp:group {"style":{"border":{"width":"1px","style":"solid"},"spacing":{"padding":{"top":"1.25rem","right":"1.25rem","bottom":"1.25rem","left":"1.25rem"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="border-style:solid;border-width:1px;padding-top:1.25rem;padding-right:1.25rem;padding-bottom:1.25rem;padding-left:1.25rem">
 <!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Verification and publication status</h2><!-- /wp:heading -->
