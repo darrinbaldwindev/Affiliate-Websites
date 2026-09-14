@@ -68,3 +68,23 @@ jobs:
           grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/category.html
           grep -Fq '"slug":"header"' wp-content/themes/affiliate-master/templates/single.html
           grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/single.html
+
+      - name: Validate publication state safety and detail wiring
+        shell: bash
+        run: |
+          set -euo pipefail
+          state='wp-content/themes/affiliate-master/patterns/publication-state.php'
+          detail='wp-content/themes/affiliate-master/patterns/detail-page.php'
+          test -f "$state"
+          grep -Fqi 'Verified:' "$state"
+          grep -Fqi 'Research required:' "$state"
+          grep -Fqi 'Verification due:' "$state"
+          grep -Fqi 'Conflicting information:' "$state"
+          grep -Fqi 'Commercial action blocked:' "$state"
+          grep -Fqi 'does not prove that this site has an approved publisher affiliate relationship' "$state"
+          grep -Fq 'affiliate-master/publication-state' "$detail"
+          grep -Fqi 'Do not place raw tracking URLs in editorial templates' "$detail"
+          if grep -Eqi 'https?://[^ ]*(affiliate|track|click)' "$state" "$detail"; then
+            echo 'publication/detail patterns must not contain tracking or affiliate destinations'
+            exit 1
+          fi
