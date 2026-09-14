@@ -20,7 +20,7 @@ class AuSurveyShortlistFixtureTests(unittest.TestCase):
 
     def test_all_records_are_au(self):
         self.assertEqual(self.data.get("country"), "AU")
-        self.assertGreaterEqual(len(self.programs), 3)
+        self.assertGreaterEqual(len(self.programs), 6)
 
     def test_unverified_relationships_cannot_have_destination(self):
         for program in self.programs:
@@ -28,17 +28,38 @@ class AuSurveyShortlistFixtureTests(unittest.TestCase):
                 self.assertIsNone(program.get("commercial_destination"), program["program_id"])
                 self.assertEqual(program.get("cta_state"), "NON_AFFILIATE_FALLBACK", program["program_id"])
 
-    def test_verified_fixture_is_still_synthetic(self):
-        verified = [p for p in self.programs if p["publisher_relationship"] == "VERIFIED_PUBLISHER"]
-        self.assertEqual(len(verified), 1)
-        item = verified[0]
+    def test_only_fully_safe_verified_fixture_can_have_destination(self):
+        enabled = [p for p in self.programs if p.get("commercial_destination")]
+        self.assertEqual(len(enabled), 1)
+        item = enabled[0]
+        self.assertEqual(item["publisher_relationship"], "VERIFIED_PUBLISHER")
+        self.assertFalse(item["publisher_evidence_conflict"])
+        self.assertEqual(item["evidence_freshness"], "FIXTURE_FRESH")
+        self.assertTrue(item["disclosure_present"])
         self.assertTrue(item["publisher_evidence_source"].startswith("fixture://"))
         self.assertTrue(item["commercial_destination"].startswith("https://example.invalid/"))
         self.assertEqual(item["cta_state"], "VERIFIED_PUBLISHER")
 
-    def test_disclosure_present_for_every_record(self):
-        for program in self.programs:
-            self.assertTrue(program.get("disclosure_present"), program["program_id"])
+    def test_conflicting_verified_relationship_is_blocked(self):
+        item = next(p for p in self.programs if p["program_id"] == "AU-SURVEY-SYNTH-004")
+        self.assertEqual(item["publisher_relationship"], "VERIFIED_PUBLISHER")
+        self.assertTrue(item["publisher_evidence_conflict"])
+        self.assertIsNone(item["commercial_destination"])
+        self.assertEqual(item["cta_state"], "BLOCKED_CONFLICT")
+
+    def test_stale_verified_relationship_is_blocked(self):
+        item = next(p for p in self.programs if p["program_id"] == "AU-SURVEY-SYNTH-005")
+        self.assertEqual(item["publisher_relationship"], "VERIFIED_PUBLISHER")
+        self.assertEqual(item["evidence_freshness"], "STALE")
+        self.assertIsNone(item["commercial_destination"])
+        self.assertEqual(item["cta_state"], "BLOCKED_STALE")
+
+    def test_missing_disclosure_is_blocked(self):
+        item = next(p for p in self.programs if p["program_id"] == "AU-SURVEY-SYNTH-006")
+        self.assertEqual(item["publisher_relationship"], "VERIFIED_PUBLISHER")
+        self.assertFalse(item["disclosure_present"])
+        self.assertIsNone(item["commercial_destination"])
+        self.assertEqual(item["cta_state"], "BLOCKED_DISCLOSURE")
 
 
 if __name__ == "__main__":
