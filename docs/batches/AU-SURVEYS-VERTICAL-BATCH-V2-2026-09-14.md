@@ -4,7 +4,7 @@
 **Repository:** `darrinbaldwindev/Affiliate-Websites`  
 **Branch:** `work/au-surveys-vertical-batch-v2`  
 **Mode:** maximum-value vertical autonomous execution  
-**Status:** ACTIVE  
+**Status:** ACTIVE — runtime-ready presentation seam now CI-verified  
 **Standing trigger:** whenever the owner says `cont` or `continue autonomously`, execute this protocol again from a fresh repository scan.
 
 ## Owner instruction
@@ -23,19 +23,19 @@ Each autonomous cycle MUST:
 
 Evidence controls completion. No overall GREEN from implementation claims alone.
 
-## Fresh scan snapshot
+## Fresh scan snapshot — current cycle
 
-- `main` advanced independently to `edb79f2c3dc45394c1342934e653c674cc158178` with a completed Software & Games research/governance batch.
-- AU Surveys PR #13 remains an open draft lane and already contains category/detail shells, real research staging, publication projection, priority projection and commercial fail-closed tests.
-- PR #14 is a separate security/fixture lane that strengthens publisher timestamp validation. Its authority should be reused/reconciled when eventually incorporated; this batch must not duplicate timestamp authority.
-- Historical AU/USA/legal PRs remain open. They are context, not permission to merge or rewrite this lane.
-- V2 incremental draft PR #15 is based on `work/au-surveys-vertical-batch`, so V2 changes remain isolated from the original batch and from unrelated `main` work.
+- `main` advanced independently to `661370c4226ca45e97239a728e6b3483d65c5d6e` with Software & Games Batch 002 closure. This is a separate lane; no rebase/merge performed.
+- AU Surveys PR #15 remains open, draft and mergeable, based on `work/au-surveys-vertical-batch`.
+- PR #14 remains a separate timestamp-security lane; this batch does not duplicate its timestamp authority.
+- Exact pre-cycle PR #15 head `6ab57d82f25307b162508d3cddcb42d3691e8f36` had Commercial CTA fixture validation SUCCESS.
+- No Docker/`wp-env`/full WordPress runtime harness exists in the repository. This cycle therefore implemented and exercised the smallest real executable presentation seam inside the theme without fabricating a full WordPress runtime claim.
 
 ## Vertical objective
 
 Drive one complete governed user journey as far as repository evidence permits:
 
-`AU → Earn → Surveys → verified shortlist → comparison/read model → detail read model → publication gate → governed CTA boundary → runtime-ready contract`
+`AU → Earn → Surveys → verified shortlist → comparison/read model → detail read model → publication gate → governed CTA boundary → runtime-ready presentation seam`
 
 Depth beats horizontal expansion.
 
@@ -58,7 +58,7 @@ All real publisher relationships remain UNKNOWN. No real tracking destination is
 
 ## Execution backlog, in priority order
 
-### V2-1 — WordPress/API read-model contract — IMPLEMENTED / CI PENDING
+### V2-1 — WordPress/API read-model contract — IMPLEMENTED / CI-VERIFIED
 Created `data/au/surveys.read-model-contract.json`.
 
 The contract explicitly states:
@@ -70,43 +70,66 @@ The contract explicitly states:
 - publisher economics cannot drive ranking;
 - `commercial_action` remains null unless the canonical resolver authorises it.
 
-### V2-2 — Projection drift and stale-state assurance — IMPLEMENTED / CI PENDING
-Added `fixtures/au-surveys/test_read_model_contract.py`.
+### V2-2 — Projection drift and stale-state assurance — IMPLEMENTED / CI-VERIFIED
+`fixtures/au-surveys/test_read_model_contract.py` verifies identity-set parity, current freshness for ranked verified records, research-hold behavior, commercial blocking, rank uniqueness and absence of URL/tracking/commission inputs.
 
-It verifies:
-- staging, publication and priority projections have identical program identity sets;
-- Flagship/Core/Secondary records are VERIFIED and CURRENT;
-- non-verified records remain RESEARCH_HOLD/RESEARCH_REQUIRED;
-- every current real record stays commercially BLOCKED with null destination;
-- priority ranks are unique/contiguous;
-- the priority projection contains no URLs, tracking parameters or commission-rate inputs.
+### V2-3 — Comparison-detail deterministic mapping — IMPLEMENTED / CI-VERIFIED
+`fixtures/au-surveys/build_presentation_read_model.py` plus `test_presentation_read_model.py` deterministically join staging + publication + priority state by stable program ID. List/detail presentation receives bounded fields and `commercial_action: null` for all current real records.
 
-### V2-3 — Comparison-detail deterministic mapping — IMPLEMENTED / CI PENDING
-Added `fixtures/au-surveys/build_presentation_read_model.py` plus `test_presentation_read_model.py`.
+### V2-4 — Executable presentation verification — IMPLEMENTED / EXACT-HEAD CI GREEN
+Added `wp-content/themes/affiliate-master/inc/au-surveys-renderer.php` as a pure PHP presentation renderer. It never loads staging/canonical data and never resolves affiliate URLs.
 
-The builder deterministically joins staging + publication + priority state by stable program ID, then emits presentation-safe list/detail fields with `commercial_action: null` for all current real records. Tests verify stable identity, contiguous ordering, current freshness for verified records, RESEARCH_HOLD behavior and commercial blocking.
+Added `fixtures/au-surveys/test_theme_renderer.php`, which executes that exact renderer against the generated governed read model and verifies:
+- verified records render;
+- RESEARCH_REQUIRED records are excluded from the verified list and fail closed on detail;
+- blocked state emits no `<a>` link or URL;
+- injected blocked commercial actions are ignored;
+- untrusted text is HTML-escaped;
+- commercial blocking remains visible to the user.
 
-### V2-4 — Runtime presentation verification — NEXT
-Exercise the AU survey templates against bounded fixture/read-model data. Claim runtime verification only if actually exercised.
+`functions.php` now exposes a presentation-only WordPress seam through:
+- `affiliate_master_au_surveys_read_model` filter;
+- `[affiliate_au_surveys_list]` shortcode;
+- `affiliate_master_au_survey_program_id` filter;
+- `[affiliate_au_survey_detail]` shortcode.
+
+The theme does not read `data/au/*.json` directly. If no governed provider supplies records/context, the UI fails closed to unavailable/informational output.
+
+The AU category/detail templates now call the governed shortcodes instead of embedding synthetic comparison rows as apparent runtime content.
+
+Exact executable head: `03643ca8fd423a2462c0205cadc4f87f5ec7f8dc`.
+
+GitHub Actions evidence at that exact head:
+- Theme Validation run `34826642659` — SUCCESS;
+- Commercial CTA fixture validation run `34826642642` — SUCCESS.
+
+This verifies the executable PHP presentation seam and its fail-closed behavior. It does **not** claim a full WordPress+database browser session because the repo has no such runtime harness yet.
 
 ### V2-5 — Research depth — CONTINUOUS
-Continue first-party AU verification only where it improves consumer choice. YouGov AU reward catalogue remains highest evidence gap. Add new programs only with material differentiation and strong first-party AU evidence.
+Fresh YouGov first-party recheck completed on 2026-09-14. Current official YouGov material verifies the global member model: paid survey/data-sharing activity in points, Wallet accumulation, reward conversion and fair-reward principles. It still did not surface sufficiently direct AU-specific member reward-catalogue evidence to justify promotion. `yougov-au` therefore remains RESEARCHED / RESEARCH_REQUIRED / RESEARCH_HOLD.
+
+Do not substitute the 2026 global Reality Report examples (bank transfer/Amazon/ASOS/Asda) for an AU-specific reward catalogue.
 
 ### V2-6 — Commercial readiness ledger — BLOCKED BY EXTERNAL APPROVAL
-Track publisher application/approval/destination evidence separately from consumer research. Public referral pages never count as publisher approval.
+Publisher application/approval/destination evidence remains separate from consumer research. Public referral pages never count as publisher approval.
 
-### V2-7 — Final vertical closure criteria
+### V2-7 — Full browser/runtime verification — OPEN
+The remaining runtime gap is a real WordPress environment/browser session. Do not claim this until an actual WordPress runtime exists and the category/detail pages are rendered through it with a governed provider fixture/adapter.
+
+### V2-8 — Final vertical closure criteria
 The AU Surveys vertical can only be called implementation-ready when:
 - canonical source/read-model boundary is explicit;
 - list/detail mapping is deterministic;
 - stale/conflicting/partial evidence fails closed;
 - exact-head CI passes;
-- runtime template rendering is evidenced;
+- executable presentation renderer is exercised;
+- full WordPress/browser rendering is evidenced;
 - no real commercial CTA is enabled without authenticated publisher approval and approved destination;
 - independent Green/PRS evidence exists where required.
 
 ## Current execution commits
 
+Earlier V2 tranche:
 - `dfc96b5ceb45d19b656236101e9a0824902f9c81` — create V2 standing batch protocol.
 - `87cd44b33742d24d1235de7844a42ca75cd75510` — define non-authoritative read-model contract.
 - `214ee4e21734902d886c0bd71c24da9a2d037f62` — add read-model/drift assurance tests.
@@ -114,6 +137,24 @@ The AU Surveys vertical can only be called implementation-ready when:
 - `47381f5b65930f57e61ddd65f14702cd1181172b` — add deterministic presentation read-model builder.
 - `c6a3bda2990834f0fa0ba596f4048f2eaf354e21` — add deterministic list/detail mapping tests.
 - `a7937e307d394be89b37cc92df3b2144b603c5f9` — wire deterministic mapping tests into CI.
+
+Current runtime-ready tranche:
+- `eba9993527c2451fbb37a6e8cf50052bda9314d7` — pure PHP AU surveys renderer.
+- `7fcc6a5523c21ce48a6a60d5a8de30697ad715d9` — executable renderer assurance test.
+- `3d04ee331fd1486f1d2dea052ddf2a8e7aee0d7e` — Theme Validation executes governed renderer.
+- `dbee2c82b2c7c9029967ba4deefcf015dc11ff6f` — WordPress filter/shortcode presentation seam.
+- `d90e241d52557a0079c205f2bcbb4be237c312a1` — category template governed renderer binding.
+- `03643ca8fd423a2462c0205cadc4f87f5ec7f8dc` — detail template governed renderer binding; exact-head Theme + Commercial CTA CI GREEN.
+
+## Next highest-value safe actions
+
+1. Fresh-scan before any mutation.
+2. Reconcile any newer `main`, PR #13/#14/#15 and CI changes.
+3. Establish the smallest bounded real WordPress runtime harness only if it can reuse existing theme/data authority without creating a parallel deployment architecture.
+4. Exercise category and detail pages in a browser/runtime if the harness exists; capture evidence and test unavailable-provider behavior.
+5. Add accessibility/semantic checks for generated list/detail HTML where they materially improve user safety/usability.
+6. Continue YouGov AU-specific reward-catalogue research; keep hold if country-specific evidence remains insufficient.
+7. Keep publisher approvals/destinations blocked pending authenticated external evidence.
 
 ## Per-cycle maximum-value rule
 
