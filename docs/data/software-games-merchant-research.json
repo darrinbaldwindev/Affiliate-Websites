@@ -1,0 +1,115 @@
+{
+  "schema_version": "0.1-research",
+  "workstream": "software-games",
+  "verified_on": "2026-09-14",
+  "status": "RESEARCH_ONLY",
+  "production_truth": false,
+  "rules": [
+    "No record implies affiliate approval for this project.",
+    "No record proves provenance of every individual licence/key.",
+    "Prices, stock, commissions and programme terms are volatile and require re-verification before publication.",
+    "Country eligibility must be resolved independently for AU, UK and US.",
+    "Marketplace-level evidence must not be treated as seller-level provenance evidence."
+  ],
+  "merchants": [
+    {
+      "merchant_id": "gamers-outlet",
+      "name": "Gamers-Outlet",
+      "merchant_class": "DIRECT_RESELLER_REQUIRES_PROVENANCE_DILIGENCE",
+      "categories": ["windows", "office", "software", "games"],
+      "affiliate_evidence": {
+        "state": "VERIFIED_PUBLIC_PROGRAMME_EXISTS",
+        "commission_claim": "8% standard commission",
+        "payout_threshold": "EUR 50",
+        "net_sales_basis": true,
+        "source": "https://www.gamers-outlet.net/en/affiliate/login",
+        "terms_source": "https://www.gamers-outlet.net/en/affiliate-agreement",
+        "verified_on": "2026-09-14"
+      },
+      "feed_or_api": "UNKNOWN",
+      "provenance_state": "REQUIRES_OFFER_LEVEL_VERIFICATION",
+      "publication_state": "HOLD_PENDING_OFFER_LEVEL_LICENCE_EVIDENCE"
+    },
+    {
+      "merchant_id": "fanatical",
+      "name": "Fanatical",
+      "merchant_class": "AUTHORISED_RETAIL_SIGNAL",
+      "categories": ["games", "bundles"],
+      "affiliate_evidence": {
+        "state": "VERIFIED_PUBLIC_PROGRAMME_EXISTS",
+        "network": "Awin",
+        "source": "https://www.fanatical.com/en/affiliates",
+        "verified_on": "2026-09-14"
+      },
+      "authorisation_signal": "Merchant states 100M+ genuine officially licensed game keys sold",
+      "feed_or_api": "NOT_VERIFIED_IN_THIS_BATCH",
+      "provenance_state": "STRONG_MERCHANT_LEVEL_SIGNAL_BUT_OFFER_DATA_STILL_REQUIRES_FRESHNESS",
+      "publication_state": "CANDIDATE_PENDING_PROJECT_AFFILIATE_APPROVAL_AND_COUNTRY_CHECK"
+    },
+    {
+      "merchant_id": "green-man-gaming",
+      "name": "Green Man Gaming",
+      "merchant_class": "AUTHORISED_RETAIL_SIGNAL",
+      "categories": ["games", "bundles"],
+      "affiliate_evidence": {
+        "state": "VERIFIED_PUBLIC_PROGRAMME_EXISTS",
+        "commission_claim": "up to 5% standard; 10% bundles",
+        "source": "https://www.greenmangaming.com/affiliates",
+        "verified_on": "2026-09-14"
+      },
+      "authorisation_signal": "Merchant states games are sourced directly from 700+ publishers",
+      "feed_or_api": "VERIFIED_PRODUCT_CATALOG_API_SIGNAL_7000_PLUS_GAMES",
+      "provenance_state": "STRONG_MERCHANT_LEVEL_SIGNAL",
+      "publication_state": "CANDIDATE_PENDING_PROJECT_AFFILIATE_APPROVAL_AND_COUNTRY_CHECK"
+    },
+    {
+      "merchant_id": "gog",
+      "name": "GOG",
+      "merchant_class": "AUTHORISED_RETAIL_SIGNAL",
+      "categories": ["games"],
+      "affiliate_evidence": {
+        "state": "VERIFIED_PUBLIC_PROGRAMME_EXISTS",
+        "commission_claim": "6% of net sales",
+        "cookie_or_attribution": "7-day last click",
+        "source": "https://affiliate.gog.com/",
+        "verified_on": "2026-09-14"
+      },
+      "feed_or_api": "VERIFIED_PRODUCT_FEED_API_SIGNAL",
+      "provenance_state": "STRONG_MERCHANT_LEVEL_SIGNAL",
+      "publication_state": "CANDIDATE_PENDING_PROJECT_AFFILIATE_APPROVAL_AND_COUNTRY_CHECK"
+    },
+    {
+      "merchant_id": "gamivo",
+      "name": "GAMIVO",
+      "merchant_class": "MARKETPLACE_OR_MULTI_SELLER_HIGH_DILIGENCE",
+      "categories": ["games", "software"],
+      "affiliate_evidence": {
+        "state": "VERIFIED_PUBLIC_PROGRAMME_EXISTS",
+        "commission_claim": "up to 8%",
+        "cookie_or_attribution": "24 hours",
+        "payout_threshold": "EUR 250",
+        "source": "https://www.gamivo.com/affiliate",
+        "verified_on": "2026-09-14"
+      },
+      "feed_or_api": "XML_FEED_AVAILABLE_ON_REQUEST",
+      "provenance_state": "SELLER_OR_OFFER_LEVEL_DILIGENCE_REQUIRED",
+      "publication_state": "HOLD_UNTIL_MARKETPLACE_SELLER_AND_LICENCE_RULES_ARE_DEFINED"
+    },
+    {
+      "merchant_id": "k4g",
+      "name": "K4G",
+      "merchant_class": "MARKETPLACE_OR_MULTI_SELLER_HIGH_DILIGENCE",
+      "categories": ["games", "software"],
+      "affiliate_evidence": {
+        "state": "VERIFIED_PUBLIC_PROGRAMME_EXISTS",
+        "commission_claim": "5% direct; 0.80% second tier; 0.20% third tier",
+        "cookie_or_attribution": "30 days",
+        "source": "https://k4g.com/affiliate-terms-and-conditions",
+        "verified_on": "2026-09-14"
+      },
+      "feed_or_api": "UNKNOWN",
+      "provenance_state": "SELLER_OR_OFFER_LEVEL_DILIGENCE_REQUIRED",
+      "publication_state": "HOLD_UNTIL_MARKETPLACE_SELLER_AND_LICENCE_RULES_ARE_DEFINED"
+    }
+  ]
+}
