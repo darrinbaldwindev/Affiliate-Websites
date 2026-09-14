@@ -23,9 +23,11 @@ Each country implementation should define:
 
 | Code | Name | Locale | Currency | Status |
 |---|---|---|---|---|
-| AU | Australia | en_AU | AUD | active-design |
-| GB | United Kingdom | en_GB | GBP | active-design |
-| US | United States | en_US | USD | active-design |
+| AU | Australia | en_AU | AUD | planned |
+| GB | United Kingdom | en_GB | GBP | planned |
+| US | United States | en_US | USD | planned |
+
+Design work is in progress for all three countries; this is not a runtime activation state. The table uses the declared `planned` status vocabulary.
 
 The production `country_url` values are deployment configuration, not hard-coded example domains. The architecture target is a global homepage with country subdomains.
 

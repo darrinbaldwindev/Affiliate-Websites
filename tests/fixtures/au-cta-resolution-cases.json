@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "unknown-publisher-fallback",
+      "input": {
+        "country": "AU",
+        "entity_type": "program",
+        "entity_id": "fixture-au-survey-unknown",
+        "action": "join",
+        "placement": "program-detail-primary",
+        "relationship_state": "UNKNOWN",
+        "evidence_state": "CURRENT",
+        "country_eligible": true,
+        "fixture": false
+      },
+      "expected": {
+        "resolution_state": "non-affiliate-fallback",
+        "destination_kind": "canonical-non-affiliate",
+        "affiliate_allowed": false
+      }
+    },
+    {
+      "id": "fixture-is-always-test-safe",
+      "input": {
+        "country": "AU",
+        "entity_type": "program",
+        "entity_id": "fixture-au-survey-test",
+        "action": "join",
+        "placement": "comparison-primary",
+        "relationship_state": "VERIFIED",
+        "evidence_state": "CURRENT",
+        "country_eligible": true,
+        "fixture": true
+      },
+      "expected": {
+        "resolution_state": "blocked-test-safe",
+        "destination_kind": "none",
+        "affiliate_allowed": false
+      }
+    },
+    {
+      "id": "consumer-referral-is-not-publisher-affiliate",
+      "input": {
+        "country": "AU",
+        "entity_type": "program",
+        "entity_id": "fixture-au-survey-referral-only",
+        "action": "join",
+        "placement": "program-detail-primary",
+        "relationship_state": "CONSUMER_REFERRAL_ONLY",
+        "evidence_state": "CURRENT",
+        "country_eligible": true,
+        "fixture": false
+      },
+      "expected": {
+        "resolution_state": "non-affiliate-fallback",
+        "destination_kind": "canonical-non-affiliate",
+        "affiliate_allowed": false
+      }
+    },
+    {
+      "id": "stale-verified-fails-closed",
+      "input": {
+        "country": "AU",
+        "entity_type": "program",
+        "entity_id": "fixture-au-survey-stale",
+        "action": "join",
+        "placement": "program-detail-primary",
+        "relationship_state": "VERIFIED",
+        "evidence_state": "STALE",
+        "country_eligible": true,
+        "fixture": false
+      },
+      "expected": {
+        "resolution_state": "non-affiliate-fallback",
+        "destination_kind": "canonical-non-affiliate",
+        "affiliate_allowed": false
+      }
+    },
+    {
+      "id": "ineligible-country-blocks",
+      "input": {
+        "country": "AU",
+        "entity_type": "program",
+        "entity_id": "fixture-au-survey-ineligible",
+        "action": "join",
+        "placement": "program-detail-primary",
+        "relationship_state": "VERIFIED",
+        "evidence_state": "CURRENT",
+        "country_eligible": false,
+        "fixture": false
+      },
+      "expected": {
+        "resolution_state": "blocked",
+        "destination_kind": "none",
+        "affiliate_allowed": false
+      }
+    }
+  ]
+}
