@@ -119,6 +119,24 @@ class GovernedCtaTests(unittest.TestCase):
         with self.assertRaises(SystemExit):
             run_case(data)
 
+    def test_empty_program_batch_rejected(self):
+        data = json.loads(json.dumps(BASE))
+        data["programs"] = []
+        with self.assertRaises(SystemExit):
+            run_case(data)
+
+    def test_missing_country_program_rejected(self):
+        data = json.loads(json.dumps(BASE))
+        data["programs"] = [item for item in data["programs"] if item["country"] != "US"]
+        with self.assertRaises(SystemExit):
+            run_case(data)
+
+    def test_duplicate_country_declaration_rejected(self):
+        data = json.loads(json.dumps(BASE))
+        data["countries"].append("AU")
+        with self.assertRaises(SystemExit):
+            run_case(data)
+
 
 if __name__ == "__main__":
     unittest.main()
