@@ -27,9 +27,9 @@ jobs:
           python-version: '3.12'
       - name: Validate synthetic country CTA fixture
         run: python fixtures/commercial-cta/validate_country_cta.py fixtures/commercial-cta/country-programs.synthetic.json
-      - name: Run negative cases
+      - name: Run country and AU survey CTA negative cases
         working-directory: fixtures/commercial-cta
-        run: python -m unittest -v test_country_cta.py
+        run: python -m unittest -v test_country_cta.py test_au_surveys_cta_gate.py
       - name: Validate AU surveys vertical fixture
         working-directory: fixtures/au-surveys
         run: python -m unittest -v test_shortlist_fixture.py
