@@ -1,0 +1,33 @@
+{
+  "schema": "affiliate.master.publication-state-mapping.v1",
+  "fixture": true,
+  "production_use": false,
+  "contains_tracking_urls": false,
+  "cases": [
+    {
+      "id": "verified-consumer-commercial-blocked",
+      "input": {"verification_status": "verified", "freshness_status": "current", "conflict": false, "publisher_relationship_status": "unknown", "commercial_resolution_status": "blocked"},
+      "expected": {"display_state": "VERIFIED", "commercial_state": "COMMERCIAL_ACTION_BLOCKED"}
+    },
+    {
+      "id": "research-required",
+      "input": {"verification_status": "research_required", "freshness_status": "current", "conflict": false, "publisher_relationship_status": "unknown", "commercial_resolution_status": "blocked"},
+      "expected": {"display_state": "RESEARCH_REQUIRED", "commercial_state": "COMMERCIAL_ACTION_BLOCKED"}
+    },
+    {
+      "id": "stale-evidence",
+      "input": {"verification_status": "verified", "freshness_status": "stale", "conflict": false, "publisher_relationship_status": "unknown", "commercial_resolution_status": "blocked"},
+      "expected": {"display_state": "VERIFICATION_DUE", "commercial_state": "COMMERCIAL_ACTION_BLOCKED"}
+    },
+    {
+      "id": "conflict-wins",
+      "input": {"verification_status": "verified", "freshness_status": "current", "conflict": true, "publisher_relationship_status": "verified", "commercial_resolution_status": "blocked"},
+      "expected": {"display_state": "CONFLICTING_INFORMATION", "commercial_state": "COMMERCIAL_ACTION_BLOCKED"}
+    },
+    {
+      "id": "unknown-fails-closed",
+      "input": {"verification_status": "unknown", "freshness_status": "unknown", "conflict": false, "publisher_relationship_status": "unknown", "commercial_resolution_status": "unresolved"},
+      "expected": {"display_state": "RESEARCH_REQUIRED", "commercial_state": "COMMERCIAL_ACTION_BLOCKED"}
+    }
+  ]
+}
