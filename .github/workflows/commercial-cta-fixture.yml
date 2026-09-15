@@ -33,9 +33,9 @@ jobs:
         run: python fixtures/uk-vertical-slice/validate_uk_vertical_slice.py fixtures/uk-vertical-slice/technology-appliances.synthetic.json fixtures/commercial-cta/uk-governance.synthetic.json
       - name: Validate synthetic Software & Games offer fixture
         run: python fixtures/commercial-cta/validate_software_games_offer.py fixtures/commercial-cta/software-games-offers.synthetic.json
-      - name: Run governed CTA negative cases
+      - name: Run governed CTA and Software & Games assurance cases
         working-directory: fixtures/commercial-cta
-        run: python -m unittest -v test_country_cta.py test_software_games_offer.py test_uk_audit_reasons.py
+        run: python -m unittest -v test_country_cta.py test_software_games_offer.py test_software_games_ranking.py test_uk_audit_reasons.py
       - name: Run UK vertical-slice negative cases
         working-directory: fixtures/uk-vertical-slice
         run: python -m unittest -v test_uk_vertical_slice.py
