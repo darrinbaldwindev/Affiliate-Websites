@@ -1,0 +1,30 @@
+{
+  "contract": "software_offer",
+  "version": 1,
+  "purpose": "Normalized read-model contract for governed Software & Games comparison ingestion",
+  "authority": "Canonical commerce data remains outside WordPress; this contract does not create a second store",
+  "required_fields": [
+    "offer_id", "merchant_id", "merchant_class", "merchant_approval", "country", "currency",
+    "category", "product_family", "edition", "licence_type", "equivalence_group", "source_sku",
+    "offer_region", "price", "observed_at", "price_freshness", "evidence_state", "seller_provenance",
+    "disclosure_present"
+  ],
+  "software_required_fields": [
+    "transferability", "account_binding", "device_install_count", "activation_platform"
+  ],
+  "identity_key": ["merchant_id", "source_sku", "offer_region"],
+  "equivalence_key": ["product_family", "edition", "licence_type", "equivalence_group"],
+  "ranking_inputs": {
+    "lowest_observed_price": ["price", "currency", "equivalence_group", "publishability"],
+    "best_verified_value": ["merchant_class", "seller_provenance", "evidence_state", "transferability", "account_binding", "device_install_count", "price", "equivalence_group", "publishability"],
+    "highest_assurance": ["merchant_class", "seller_provenance", "evidence_state", "merchant_approval", "publishability"]
+  },
+  "commercial_fields_excluded_from_ranking": [
+    "affiliate_commission_rate", "affiliate_bounty", "epc", "cookie_days", "payout_threshold", "network_bonus"
+  ],
+  "fail_closed": [
+    "missing required field", "duplicate identity key", "contradictory evidence for same identity key",
+    "unknown software licence semantics", "stale price", "region mismatch", "unapproved merchant",
+    "unverified marketplace seller", "equivalence mismatch"
+  ]
+}
