@@ -6,11 +6,15 @@ on:
     paths:
       - 'fixtures/commercial-cta/**'
       - 'fixtures/uk-vertical-slice/**'
+      - 'fixtures/master/**'
+      - 'docs/data/PUBLICATION-STATE-PRESENTATION-MAPPING.md'
       - '.github/workflows/commercial-cta-fixture.yml'
   pull_request:
     paths:
       - 'fixtures/commercial-cta/**'
       - 'fixtures/uk-vertical-slice/**'
+      - 'fixtures/master/**'
+      - 'docs/data/PUBLICATION-STATE-PRESENTATION-MAPPING.md'
       - '.github/workflows/commercial-cta-fixture.yml'
   workflow_dispatch:
 
@@ -39,3 +43,5 @@ jobs:
       - name: Run UK vertical-slice negative cases
         working-directory: fixtures/uk-vertical-slice
         run: python -m unittest -v test_uk_vertical_slice.py
+      - name: Run master publication-state mapping cases
+        run: python -m pytest -q fixtures/master/test_publication_state_mapping.py
