@@ -1,0 +1,50 @@
+{
+  "schema": "affiliate.presentation-fixture.v1",
+  "fixture": true,
+  "production_use": false,
+  "contains_tracking_urls": false,
+  "cases": [
+    {
+      "id": "verified-consumer-commercial-blocked",
+      "payload": {
+        "schema": "affiliate.presentation.v1",
+        "country": "AU",
+        "entity_type": "program",
+        "entity_id": "fixture-program-001",
+        "display": {"state": "VERIFIED", "reason_codes": []},
+        "commercial": {"state": "BLOCKED", "action": "join", "reason_codes": ["PUBLISHER_RELATIONSHIP_UNKNOWN"]},
+        "evidence": {"verified_at": "2026-09-15", "freshness": "current"},
+        "fixture": true
+      },
+      "expected_action": "NON_AFFILIATE_FALLBACK"
+    },
+    {
+      "id": "conflict-blocked",
+      "payload": {
+        "schema": "affiliate.presentation.v1",
+        "country": "AU",
+        "entity_type": "program",
+        "entity_id": "fixture-program-002",
+        "display": {"state": "CONFLICTING_INFORMATION", "reason_codes": ["SOURCE_CONFLICT"]},
+        "commercial": {"state": "BLOCKED", "action": "join", "reason_codes": ["CONFLICT"]},
+        "evidence": {"verified_at": null, "freshness": "unknown"},
+        "fixture": true
+      },
+      "expected_action": "NON_AFFILIATE_FALLBACK"
+    },
+    {
+      "id": "eligible-semantic-handoff-only",
+      "payload": {
+        "schema": "affiliate.presentation.v1",
+        "country": "AU",
+        "entity_type": "program",
+        "entity_id": "fixture-program-003",
+        "display": {"state": "VERIFIED", "reason_codes": []},
+        "commercial": {"state": "ELIGIBLE_FOR_RESOLUTION", "action": "join", "reason_codes": []},
+        "evidence": {"verified_at": "2026-09-15", "freshness": "current"},
+        "fixture": true
+      },
+      "expected_action": "RESOLVER_HANDOFF"
+    }
+  ]
+}

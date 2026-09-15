@@ -6,11 +6,15 @@ on:
     paths:
       - 'fixtures/commercial-cta/**'
       - 'fixtures/uk-vertical-slice/**'
+      - 'fixtures/master/**'
+      - 'docs/api/WORDPRESS-PRESENTATION-PAYLOAD-CONTRACT.md'
       - '.github/workflows/commercial-cta-fixture.yml'
   pull_request:
     paths:
       - 'fixtures/commercial-cta/**'
       - 'fixtures/uk-vertical-slice/**'
+      - 'fixtures/master/**'
+      - 'docs/api/WORDPRESS-PRESENTATION-PAYLOAD-CONTRACT.md'
       - '.github/workflows/commercial-cta-fixture.yml'
   workflow_dispatch:
 
@@ -41,3 +45,6 @@ jobs:
       - name: Run UK vertical-slice and presentation negative cases
         working-directory: fixtures/uk-vertical-slice
         run: python -m unittest -v test_uk_vertical_slice.py test_presentation_seam.py
+      - name: Run master presentation payload cases
+        working-directory: fixtures/master
+        run: python -m unittest -v test_presentation_payload.py
