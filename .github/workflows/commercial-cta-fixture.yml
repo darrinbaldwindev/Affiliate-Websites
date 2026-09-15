@@ -31,11 +31,13 @@ jobs:
         run: python fixtures/commercial-cta/validate_country_cta.py fixtures/commercial-cta/uk-governance.synthetic.json
       - name: Validate UK technology vertical slice fixture
         run: python fixtures/uk-vertical-slice/validate_uk_vertical_slice.py fixtures/uk-vertical-slice/technology-appliances.synthetic.json fixtures/commercial-cta/uk-governance.synthetic.json
+      - name: Exercise UK fixture-to-presentation seam
+        run: python fixtures/uk-vertical-slice/render_presentation.py fixtures/uk-vertical-slice/technology-appliances.synthetic.json fixtures/commercial-cta/uk-governance.synthetic.json
       - name: Validate synthetic Software & Games offer fixture
         run: python fixtures/commercial-cta/validate_software_games_offer.py fixtures/commercial-cta/software-games-offers.synthetic.json
       - name: Run governed CTA negative cases
         working-directory: fixtures/commercial-cta
         run: python -m unittest -v test_country_cta.py test_software_games_offer.py test_uk_audit_reasons.py
-      - name: Run UK vertical-slice negative cases
+      - name: Run UK vertical-slice and presentation negative cases
         working-directory: fixtures/uk-vertical-slice
-        run: python -m unittest -v test_uk_vertical_slice.py
+        run: python -m unittest -v test_uk_vertical_slice.py test_presentation_seam.py
