@@ -44,4 +44,5 @@ jobs:
         working-directory: fixtures/uk-vertical-slice
         run: python -m unittest -v test_uk_vertical_slice.py
       - name: Run master publication-state mapping cases
-        run: python -m pytest -q fixtures/master/test_publication_state_mapping.py
+        working-directory: fixtures/master
+        run: python -m unittest -v test_publication_state_mapping.py
