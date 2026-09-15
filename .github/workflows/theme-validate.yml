@@ -34,6 +34,7 @@ jobs:
           set -euo pipefail
           find wp-content/themes/affiliate-master -type f -name '*.php' -print0 | xargs -0 -n1 php -l
           php -l fixtures/au-surveys/test_theme_renderer.php
+          php -l fixtures/au-surveys/test_wordpress_presentation_seam.php
 
       - name: Validate theme.json
         shell: bash
@@ -77,6 +78,8 @@ jobs:
           grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/category.html
           grep -Fq '"slug":"header"' wp-content/themes/affiliate-master/templates/single.html
           grep -Fq '"slug":"footer"' wp-content/themes/affiliate-master/templates/single.html
+          grep -Fq '[affiliate_au_surveys_list]' wp-content/themes/affiliate-master/templates/page-au-earn-surveys.html
+          grep -Fq '[affiliate_au_survey_detail]' wp-content/themes/affiliate-master/templates/page-au-earn-surveys-detail.html
 
       - name: Exercise AU surveys governed presentation renderer
         shell: bash
@@ -84,3 +87,9 @@ jobs:
           set -euo pipefail
           python fixtures/au-surveys/build_presentation_read_model.py > /tmp/au-surveys-read-model.json
           php fixtures/au-surveys/test_theme_renderer.php /tmp/au-surveys-read-model.json
+
+      - name: Exercise WordPress presentation seam
+        shell: bash
+        run: |
+          set -euo pipefail
+          php fixtures/au-surveys/test_wordpress_presentation_seam.php
