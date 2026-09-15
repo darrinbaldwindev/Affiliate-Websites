@@ -69,6 +69,23 @@ Primary intended acquisition is organic editorial/search traffic and direct/repe
 **Still required privately**  
 Impact account identity, legal entity/account type, verified email/phone, mailing address, tax residency/forms, payout currency/payment destination, verified media property, marketplace approval, Freecash campaign acceptance and final contract terms.
 
+### Impact / Ipsos iSay
+
+**Relationship evidence**  
+Current first-party Ipsos iSay partner material states that affiliates earn commissions for successfully recruited panel signups and that the partner program uses Impact Radius for signup, tracking and marketing materials. The public material reviewed does not state a numeric commission, so exact publisher payout remains `UNKNOWN` until the accepted Impact contract supplies it.
+
+**Application note**  
+We operate a US-focused consumer decision-support property covering legitimate survey, paid-research and rewards opportunities. Ipsos iSay is a strong fit for readers comparing established survey panels. Coverage will explain consumer rewards and eligibility separately from publisher compensation, use transparent affiliate disclosure, avoid guaranteed-income claims, and retain current source/freshness evidence for material claims.
+
+**Planned placements**  
+Survey-panel comparisons, Ipsos iSay profile/review, reputable survey-site guides, rewards-method explainers and opportunity matching by activity type.
+
+**Still required privately**  
+Impact marketplace/account approval, Ipsos iSay advertiser acceptance, accepted contract terms including exact commission and qualification event, approved promotional restrictions, current US destination, tracking identifier and payment/tax setup.
+
+**CTA state**  
+Publisher relationship may be classified `VERIFIED_PUBLISHER`, but production monetisation remains fail-closed until advertiser acceptance and a controlled destination exist. Do not infer numeric commission from generic language such as “generous compensation.”
+
 ### Awin / SurveyRewards US and QuickRewards
 
 **Promotional-space description**  
